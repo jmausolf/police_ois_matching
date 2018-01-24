@@ -1,23 +1,36 @@
 import wget
 import datetime
-import os
 import subprocess
 
 #Get Date for Filenames
 now = datetime.datetime.now()
 date = now.strftime("%Y-%m-%d")
 
-#Specify File Source (Key) and URL (Value)
-crowd_source_ois_reports = {
-	"wp" : "https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv",
-	"gd" : "https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip"
+#Specify File Key (Source) and Value [report type, URL]
+#Crowd Source OIS Reports
+crowdsource_ois_reports = {
+	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
+	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip']
 }
 
-#Download
-for k, v in crowd_source_ois_reports.items():
+#Police OIS Reports
+police_ois_reports = {
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD']
+}
 
-	tmp = wget.download(v)
+#All Reports
+ois_reports = [crowdsource_ois_reports, police_ois_reports]
+
+
+#Download and Rename Files
+
+def wget_download_rename(key, value):
+	report_type = value[0]
+	tmp = wget.download(value[1])
 	ext = tmp.split(".")[1]
-	filename = "{}_crowdsource_ois_report_{}.{}".format(k, date, ext)
+	filename = "{}_{}_ois_report_{}.{}".format(key, report_type, date, ext)
 	subprocess.call("mv {} {}".format(tmp, filename), shell=True)
-	
+
+
+[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
+
