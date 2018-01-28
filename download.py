@@ -1,6 +1,9 @@
 import wget
 import datetime
 import subprocess
+import pandas as pd
+from glob import glob
+import re
 
 #Get Date for Filenames
 now = datetime.datetime.now()
@@ -33,4 +36,5 @@ def wget_download_rename(key, value):
 
 
 [wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
+
 
