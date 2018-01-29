@@ -36,4 +36,6 @@ print(joined)
 #Write Results
 outfile <- "dfw_wp_matched_police_crowdsource_files.csv"
 write_csv(joined, outfile)
-system(paste("open", outfile, sep = " "))
+system(paste("open", outfile, ";", sep = " "))
+
+

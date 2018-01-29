@@ -4,11 +4,12 @@ import argparse
 
 
 def run_tasks(d, c, m):
+
 	if d is True and c is True and m is True:
 		download(ois_reports)
 		clean_dfw_police_ois()
 		clean_wp_crowdsource()
-		subprocess.call("Rscript merge.R && ", shell=True)
+		subprocess.call("Rscript merge.R", shell=True)
 	elif d is True and c is True:
 		download(ois_reports)
 		clean_dfw_police_ois()
@@ -20,7 +21,6 @@ def run_tasks(d, c, m):
 		download(ois_reports)
 
 	elif d is False:
-		print("download is false")
 		if c is True and m is True:
 			clean_dfw_police_ois()
 			clean_wp_crowdsource()
@@ -42,6 +42,8 @@ if __name__=='__main__':
 	parser.add_argument("-m", "--merge", default=False, type=bool, help="merge files")	
 	args = parser.parse_args()
 
+	if not (args.download or args.clean or args.merge):
+	    parser.error('No action requested, add --download True or --clean True or --merge True')
 	
 	print("[*] Running requested tasks...")
 	run_tasks(args.download, args.clean, args.merge)
