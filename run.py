@@ -2,36 +2,35 @@ from download import *
 from clean import *
 import argparse
 
-#subprocess.call("Rscript merge.R", shell=True)
 
 def run_tasks(d, c, m):
 	if d is True and c is True and m is True:
-		print("All true")
-		#run all
 		download(ois_reports)
 		clean_dfw_police_ois()
 		clean_wp_crowdsource()
-		subprocess.call("Rscript merge.R", shell=True)
+		subprocess.call("Rscript merge.R && ", shell=True)
 	elif d is True and c is True:
-		print("download and clean")
+		download(ois_reports)
+		clean_dfw_police_ois()
+		clean_wp_crowdsource()
 	elif d is True and m is True:
-		print("download and merge, no clean")
+		download(ois_reports)
+		subprocess.call("Rscript merge.R", shell=True)
 	elif d is True:
-		print("download only")
+		download(ois_reports)
 
 	elif d is False:
 		print("download is false")
 		if c is True and m is True:
-			print("clean and merge only")
 			clean_dfw_police_ois()
 			clean_wp_crowdsource()
 			subprocess.call("Rscript merge.R", shell=True)
 		elif c is True and m is False:
-			print("clean only")
+			clean_dfw_police_ois()
+			clean_wp_crowdsource()
 		elif c is False and m is True:
-			print("merge only")
+			subprocess.call("Rscript merge.R", shell=True)
 		else:
-			print("pass")
 			pass 
 
 
@@ -44,10 +43,7 @@ if __name__=='__main__':
 	args = parser.parse_args()
 
 	
-	#for arg in vars(args):
-	#     print(arg, getattr(args, arg))
-
-	
-	#print("[*] Calculating the result...")
+	print("[*] Running requested tasks...")
 	run_tasks(args.download, args.clean, args.merge)
-	#lower_return_refs(args.textfile, args.replace)
+	print("[*] Done.")
+

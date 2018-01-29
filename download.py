@@ -36,4 +36,5 @@ def wget_download_rename(key, value):
 
 
 def download(ois_reports):
+	print("[*] downloading files...")
 	[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]

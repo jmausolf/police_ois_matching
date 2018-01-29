@@ -71,6 +71,7 @@ def ren(invar, outvar, df):
 
 #Clean police data frame
 def clean_dfw_police_ois():
+    print("[*] cleaning police ois report...")
     infile = glob('*{}*.csv'.format('police'))[0].replace('.csv', '')
     #infile = 'dfw_police_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
@@ -86,6 +87,7 @@ def clean_dfw_police_ois():
 
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
+    print("[*] cleaning crowdsource ois report...")
     infile = glob('*{}*.csv'.format('crowdsource'))[0].replace('.csv', '')
     #infile = 'wp_crowdsource_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
