@@ -5,8 +5,8 @@ library(tidyverse)
 library(lubridate)
 
 #Load DF's
-pdf <- read_csv("dfw_police_ois_report_2018-01-28_cleaned.csv")
-cdf <- read_csv("wp_crowdsource_ois_report_2018-01-28_cleaned.csv")
+pdf <- read_csv(Sys.glob("*police_ois_report*cleaned.csv"))
+cdf <- read_csv(Sys.glob("*crowdsource_ois_report*cleaned.csv"))
 
 #Filter DF's
 police <- pdf %>% 
