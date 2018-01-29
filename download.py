@@ -35,6 +35,5 @@ def wget_download_rename(key, value):
 	subprocess.call("mv {} {}".format(tmp, filename), shell=True)
 
 
-[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
-
-
+def download(ois_reports):
+	[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]

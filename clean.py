@@ -3,18 +3,11 @@ from glob import glob
 import re
 
 
-
+#Some Utility Functions for Cleaning the Data
 def loadCSVs():
-
-    #company = str(company).replace(" ", "_")
     police_files = glob('*{}*.csv'.format('police'))
     crowdsource_files = glob('*{}*.csv'.format('crowdsource'))
-    #assert len(filenames) == 1, "Only one file expected, check files and perform merge first..."
-    print(police_files)
-    for pf in police_files:
-    	print(pf)
-    	df = pd.read_csv(pf)
-    	print(df.head(5))
+    return(police_files, crowdsource_files)
 
 
 def remove_non_ascii_2(text):
@@ -26,14 +19,15 @@ def remove_punct(text):
     return re.sub(r'[]\\?!\"\'#$%&(){}+*/:;,._`|~\\[<=>@\\^-]', "", text)
 
 
-#df = pd.read_csv('dfw_police_ois_report_2018-01-24.csv')
-
 def clean_cols(df):
     df.columns = [remove_punct(x) for x in df.columns]
     df.columns = [x.lower().replace(' ', '') for x in df.columns]
     return(df)
 
 def split_subjects(var, df):
+    #Make a Copy
+    df['original'] = df[var]
+
     #Split on Subjects by ';'
     s = df[var].str.replace(', ', '_').str.replace('; ', ';').str.split(';')
     s.name = var
@@ -75,27 +69,29 @@ def ren(invar, outvar, df):
     return(df)
 
 
-#police data frame
-infile = 'dfw_police_ois_report_2018-01-28'
-df = pd.read_csv('{}.csv'.format(infile))
-df = clean_cols(df)
-df = split_subjects('subjects', df)
-df = split_race_gender(df)
-df = reverse_names('name', df)
-ren('subjectdeceasedinjuredorshootandmiss', 'outcome', df)
-ren('attorneygeneralformsurl', 'ag_url', df)
-df = lower_var('outcome', df)
-print(df.head(10))
-df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+#Clean police data frame
+def clean_dfw_police_ois():
+    infile = glob('*{}*.csv'.format('police'))[0].replace('.csv', '')
+    #infile = 'dfw_police_ois_report_2018-01-28'
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = split_subjects('subjects', df)
+    df = split_race_gender(df)
+    df = reverse_names('name', df)
+    ren('subjectdeceasedinjuredorshootandmiss', 'outcome', df)
+    ren('attorneygeneralformsurl', 'ag_url', df)
+    df = lower_var('outcome', df)
+    print(df.head(10))
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-#wp df
-#police data frame
-infile = 'wp_crowdsource_ois_report_2018-01-28'
-df = pd.read_csv('{}.csv'.format(infile))
-df = clean_cols(df)
-df = lower_var('name', df)
-#print(cdf.head(10))
-df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+#Clean crowdsource data frame
+def clean_wp_crowdsource():
+    infile = glob('*{}*.csv'.format('crowdsource'))[0].replace('.csv', '')
+    #infile = 'wp_crowdsource_ois_report_2018-01-28'
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = lower_var('name', df)
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 
 
