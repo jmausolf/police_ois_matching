@@ -1,6 +1,9 @@
 import pandas as pd
 from glob import glob
 import re
+import unicodedata
+import sys
+import json
 
 
 #Some Utility Functions for Cleaning the Data
@@ -18,6 +21,22 @@ def remove_punct(text):
     import re
     return re.sub(r'[]\\?!\"\'#$%&(){}+*/:;,._`|~\\[<=>@\\^-]', "", text)
 
+
+def remove_unicode_punct(text):
+    #tbl = dict.fromkeys(i for i in xrange(sys.maxunicode)
+    #                      if unicodedata.category(unichr(i)).startswith('P'))
+    #return text.translate(tbl)
+    #return re.sub(u'\p{P}+', "", text)
+    #return unicodedata.normalize('NFKD', text).encode('ascii','ignore')
+    #return unicodedata.normalize('NFKD', text).decode('utf-8')
+    #return text.encode('ascii','ignore')
+    #return unicodedata.decomposition(text)
+    #return re.sub(u'[\u201c-\u201d]+', "", text)
+    return text.replace('\u201c', '')
+    #return text
+
+s = "u'David \u201cKrockett\u201d Krieger', u'hospitalized': "
+print(remove_unicode_punct(s))
 
 def clean_cols(df):
     df.columns = [remove_punct(x) for x in df.columns]
@@ -37,6 +56,46 @@ def split_subjects(var, df):
     s = df.apply(lambda x: pd.Series(x[var]),axis=1).stack().reset_index(level=1, drop=True)
     s.name = var
     df = df.drop(var, axis=1).join(s)
+    return(df)
+
+def split_subjects_gv(var, df):
+    #Make a Copy
+    df['original'] = df[var]
+    #df['infoaboutparticipants'].map(eval)
+
+    #Split on Subjects by ';'
+    #s = df[var].str.replace(', ', '_').str.replace('; ', ';').str.split(';')
+    #s = df[var].str.replace("[{", '').str.split('}, {')
+    #s = df[var].map(eval).str.split('}, {')
+    
+    #s = df[var].map(eval)
+    #s.name = var
+    #df = df.drop(var, axis=1).join(s)
+
+    #works
+    #s = df[var].str.split('}, {').str.replace("{", '').str.replace("}", '').str.replace("[", '').str.replace("]", '')
+    #s = df[var].str.split('}, {')
+    s = df[var].str.replace('}, {', 'x_x, x_x')
+    s = s.str.replace('{', '').str.replace('}', '')
+    s = s.str.replace('[', '').str.replace(']', '').str.split("x_x, x_x")
+    #TODO turn back into a dict
+    s.name = var
+    df = df.drop(var, axis=1).join(s)
+
+
+    #s = df[var].str.split("_}_, _{_")
+    #s.name = var
+    #df = df.drop(var, axis=1).join(s)
+
+    #Convert Multiple Subjects to Multiple Rows
+    s = df.apply(lambda x: pd.Series(x[var]),axis=1).stack().reset_index(level=1, drop=True)
+    s.name = var
+    df = df.drop(var, axis=1).join(s)
+
+
+    #s = df[var].str.replace("{", '').str.replace("}", '').str.replace("[", '').str.replace("]", '')
+    #s.name = var
+    #df = df.drop(var, axis=1).join(s)
     return(df)
 
 def split_vars(ovar, nvar1, nvar2, delim, df):
@@ -66,7 +125,8 @@ def lower_var(var, df):
 
 def lower_var_rm_nonascii(var, df):
     print("remove_non_ascii_2")
-    s = df[var].str.lower().apply(lambda x: remove_non_ascii_2(x))
+    #s = df[var].str.lower().apply(lambda x: remove_unicode_punct(x))
+    s = df[var].str.lower().replace('\u201c', '')
     df = df.drop(var, axis=1).join(s)
     return(df)
 
@@ -101,15 +161,51 @@ def clean_wp_crowdsource():
     df = lower_var('name', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
+
+def unpack(df, column, fillna=None):
+    ret = None
+    if fillna is None:
+        ret = pd.concat([df, pd.DataFrame((d for idx, d in df[column].iteritems()))], axis=1)
+        del ret[column]
+    else:
+        ret = pd.concat([df, pd.DataFrame((d for idx, d in df[column].iteritems())).fillna(fillna)], axis=1)
+        del ret[column]
+    return ret
+
 def clean_gv_crowdsource():
     print("[*] cleaning crowdsource ois report...")
     infile = glob('*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
     print(infile)
-    df = pd.read_csv('{}.tsv'.format(infile), delimiter='\t')
+    df = pd.read_csv('{}.tsv'.format(infile), delimiter='\t', encoding='utf-8')
     df = clean_cols(df)
+
+
+    #df = df['infoaboutparticipants'].map(eval)
+    df = split_subjects_gv('infoaboutparticipants', df)
+    
+
     #df = lower_var('infoaboutparticipants', df)
-    df = lower_var_rm_nonascii('infoaboutparticipants', df)
-    #df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+    #df = df['infoaboutparticipants'].map(eval)
+    #s = df['infoaboutparticipants'].map(eval)
+    #s = df['infoaboutparticipants'].
+    #s = df['infoaboutparticipants'].to_json()
+    #ss = pd.DataFrame.from_dict(list(s))
+    #ss = pd.DataFrame.from_dict(s)
+    #ss = json.loads(s)
+    #ss = unpack(df, 'infoaboutparticipants', 1)
+    #.apply(pd.Series)
+    #ss = pd.DataFrame.from_dict(s)
+    #ss = pd.DataFrame.from_dict(df['infoaboutparticipants'])
+    #df['infoaboutparticipants'].apply(pd.Series)
+    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), df['infoaboutparticipants'].apply(pd.Series)], axis=1)
+    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), ss], axis=1)
+    #s = df['infoaboutparticipants']
+    #print(pd.DataFrame.from_dict(s))
+    #print(s)
+    #print(ss)
+    #TODO remove unicode punct
+    #df = lower_var_rm_nonascii('infoaboutparticipants', df)
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
     print(df)
 
