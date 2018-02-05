@@ -64,6 +64,12 @@ def lower_var(var, df):
 	df = df.drop(var, axis=1).join(s)
 	return(df)
 
+def lower_var_rm_nonascii(var, df):
+    print("remove_non_ascii_2")
+    s = df[var].str.lower().apply(lambda x: remove_non_ascii_2(x))
+    df = df.drop(var, axis=1).join(s)
+    return(df)
+
 def ren(invar, outvar, df):
     df.rename(columns={invar:outvar}, inplace=True)
     return(df)
@@ -94,6 +100,21 @@ def clean_wp_crowdsource():
     df = clean_cols(df)
     df = lower_var('name', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+def clean_gv_crowdsource():
+    print("[*] cleaning crowdsource ois report...")
+    infile = glob('*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
+    print(infile)
+    df = pd.read_csv('{}.tsv'.format(infile), delimiter='\t')
+    df = clean_cols(df)
+    #df = lower_var('infoaboutparticipants', df)
+    df = lower_var_rm_nonascii('infoaboutparticipants', df)
+    #df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+    print(df)
+
+clean_gv_crowdsource()
+
 
 
 
