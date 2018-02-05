@@ -159,37 +159,30 @@ def clean_gv_crowdsource():
     df = pd.read_csv('{}.tsv'.format(infile), delimiter='\t', encoding='utf-8')
     df = clean_cols(df)
 
-
-    #df = df['infoaboutparticipants'].map(eval)
     df = split_subjects_gv('infoaboutparticipants', df)
-    
+
+    #TODO map dicts to columns
+    #s = df['infoaboutparticipants'].map(eval)
+    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), s.apply(pd.Series)], axis=1)
+    #need to also generalize into a function
 
     #df = lower_var('infoaboutparticipants', df)
-    #df = df['infoaboutparticipants'].map(eval)
-    #s = df['infoaboutparticipants'].map(eval)
-    #s = df['infoaboutparticipants'].
     #s = df['infoaboutparticipants'].to_json()
     #ss = pd.DataFrame.from_dict(list(s))
     #ss = pd.DataFrame.from_dict(s)
     #ss = json.loads(s)
     #ss = unpack(df, 'infoaboutparticipants', 1)
-    #.apply(pd.Series)
     #ss = pd.DataFrame.from_dict(s)
     #ss = pd.DataFrame.from_dict(df['infoaboutparticipants'])
-    #df['infoaboutparticipants'].apply(pd.Series)
-    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), df['infoaboutparticipants'].apply(pd.Series)], axis=1)
     #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), ss], axis=1)
-    #s = df['infoaboutparticipants']
-    #print(pd.DataFrame.from_dict(s))
-    #print(s)
-    #print(ss)
+
     #TODO remove unicode punct
     #df = lower_var_rm_nonascii('infoaboutparticipants', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
     print(df)
 
-clean_gv_crowdsource()
+#clean_gv_crowdsource()
 
 
 
