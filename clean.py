@@ -61,41 +61,21 @@ def split_subjects(var, df):
 def split_subjects_gv(var, df):
     #Make a Copy
     df['original'] = df[var]
-    #df['infoaboutparticipants'].map(eval)
 
-    #Split on Subjects by ';'
-    #s = df[var].str.replace(', ', '_').str.replace('; ', ';').str.split(';')
-    #s = df[var].str.replace("[{", '').str.split('}, {')
-    #s = df[var].map(eval).str.split('}, {')
-    
-    #s = df[var].map(eval)
-    #s.name = var
-    #df = df.drop(var, axis=1).join(s)
-
-    #works
-    #s = df[var].str.split('}, {').str.replace("{", '').str.replace("}", '').str.replace("[", '').str.replace("]", '')
-    #s = df[var].str.split('}, {')
+    #Split on Subjects by '}, {', will not allow replace '[{' or '}]'
     s = df[var].str.replace('}, {', 'x_x, x_x')
     s = s.str.replace('{', '').str.replace('}', '')
     s = s.str.replace('[', '').str.replace(']', '').str.split("x_x, x_x")
-    #TODO turn back into a dict
     s.name = var
     df = df.drop(var, axis=1).join(s)
-
-
-    #s = df[var].str.split("_}_, _{_")
-    #s.name = var
-    #df = df.drop(var, axis=1).join(s)
 
     #Convert Multiple Subjects to Multiple Rows
     s = df.apply(lambda x: pd.Series(x[var]),axis=1).stack().reset_index(level=1, drop=True)
     s.name = var
     df = df.drop(var, axis=1).join(s)
 
-
-    #s = df[var].str.replace("{", '').str.replace("}", '').str.replace("[", '').str.replace("]", '')
-    #s.name = var
-    #df = df.drop(var, axis=1).join(s)
+    #Turn back into a dictionary
+    df[var] = ('{' + df[var] + '}')
     return(df)
 
 def split_vars(ovar, nvar1, nvar2, delim, df):
