@@ -142,15 +142,14 @@ def clean_wp_crowdsource():
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 
-def unpack(df, column, fillna=None):
-    ret = None
-    if fillna is None:
-        ret = pd.concat([df, pd.DataFrame((d for idx, d in df[column].iteritems()))], axis=1)
-        del ret[column]
-    else:
-        ret = pd.concat([df, pd.DataFrame((d for idx, d in df[column].iteritems())).fillna(fillna)], axis=1)
-        del ret[column]
-    return ret
+def map_dict_col(var, df):
+    """
+    ## Maps a col containing dict's to seperate columns
+    ## Expected variable cell: '{u'key': u'value', u'key': u'value'}
+    """
+    s = df[var].map(eval)
+    df = pd.concat([df.drop([var], axis=1), s.apply(pd.Series)], axis=1)
+    return df
 
 def clean_gv_crowdsource():
     print("[*] cleaning crowdsource ois report...")
@@ -160,29 +159,16 @@ def clean_gv_crowdsource():
     df = clean_cols(df)
 
     df = split_subjects_gv('infoaboutparticipants', df)
-
-    #TODO map dicts to columns
-    #s = df['infoaboutparticipants'].map(eval)
-    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), s.apply(pd.Series)], axis=1)
-    #need to also generalize into a function
-
-    #df = lower_var('infoaboutparticipants', df)
-    #s = df['infoaboutparticipants'].to_json()
-    #ss = pd.DataFrame.from_dict(list(s))
-    #ss = pd.DataFrame.from_dict(s)
-    #ss = json.loads(s)
-    #ss = unpack(df, 'infoaboutparticipants', 1)
-    #ss = pd.DataFrame.from_dict(s)
-    #ss = pd.DataFrame.from_dict(df['infoaboutparticipants'])
-    #df = pd.concat([df.drop(['infoaboutparticipants'], axis=1), ss], axis=1)
+    df = map_dict_col('infoaboutparticipants', df)
+    df = lower_var('name', df)
 
     #TODO remove unicode punct
-    #df = lower_var_rm_nonascii('infoaboutparticipants', df)
+    #df = lower_var_rm_nonascii('name', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
     print(df)
 
-#clean_gv_crowdsource()
+clean_gv_crowdsource()
 
 
 
