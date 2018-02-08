@@ -28,8 +28,13 @@ police_ois_reports = {
 ois_reports = [crowdsource_ois_reports, police_ois_reports]
 
 
-#Download and Rename Files
+#Create Merge Profiles
+pk = [k for k, v in police_ois_reports.items()]
+ck = [k for k, v in crowdsource_ois_reports.items()]
+merge_profiles = [[p, c] for p in pk for c in ck]
 
+
+#Download and Rename Files
 def wget_download_rename(key, value):
 	report_type = value[0]
 	tmp = wget.download(value[1])

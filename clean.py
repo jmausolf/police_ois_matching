@@ -173,7 +173,7 @@ def clean_gv_crowdsource():
 
     print(df)
 
-clean_gv_crowdsource()
+#clean_gv_crowdsource()
 
 
 
