@@ -35,8 +35,8 @@ def remove_unicode_punct(text):
     return text.replace('\u201c', '')
     #return text
 
-s = "u'David \u201cKrockett\u201d Krieger', u'hospitalized': "
-print(remove_unicode_punct(s))
+#s = "u'David \u201cKrockett\u201d Krieger', u'hospitalized': "
+#print(remove_unicode_punct(s))
 
 def clean_cols(df):
     df.columns = [remove_punct(x) for x in df.columns]
@@ -100,7 +100,12 @@ def reverse_names(var, df, lower=True):
 
 def lower_var(var, df):
 	s = df[var].str.lower()
-	df = df.drop(var, axis=1).join(s)
+	print(s.shape)
+	print(df.shape)
+	df = df.drop(var, axis=1)
+	df = pd.concat([df, s], axis=1)
+	#df = df.drop(var, axis=1).join(s)
+	print(df.shape)
 	return(df)
 
 def lower_var_rm_nonascii(var, df):
@@ -134,7 +139,7 @@ def clean_dfw_police_ois():
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
     print("[*] cleaning crowdsource ois report...")
-    infile = glob('*{}*.csv'.format('crowdsource'))[0].replace('.csv', '')
+    infile = glob('{}*{}*.csv'.format('wp', 'crowdsource'))[0].replace('.csv', '')
     #infile = 'wp_crowdsource_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)

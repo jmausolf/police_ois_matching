@@ -4,9 +4,16 @@ print("[*] merging ois reports...")
 library(tidyverse)
 library(lubridate)
 
+pd <- ''
+police_glob <- paste0(pd, "*police_ois_report*cleaned.csv")
+
+cs <- 'wp'
+crowd_glob <- paste0(cs, "*crowdsource_ois_report*cleaned.csv")
+
+
 #Load DF's
-pdf <- read_csv(Sys.glob("*police_ois_report*cleaned.csv"))
-cdf <- read_csv(Sys.glob("*crowdsource_ois_report*cleaned.csv"))
+pdf <- read_csv(Sys.glob(police_glob))
+cdf <- read_csv(Sys.glob(crowd_glob))
 
 #Filter DF's
 police <- pdf %>% 
