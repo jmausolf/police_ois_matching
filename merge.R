@@ -1,5 +1,3 @@
-print("[*] merging ois reports...")
-
 #Load Libraries
 library(tidyverse)
 library(lubridate)
@@ -7,65 +5,110 @@ library(lubridate)
 #Load merge sources
 source("merge_profile.R")
 
-#pd <- 'oha'
+#Select files
 police_glob <- paste0(pd, "*police_ois_report*cleaned.csv")
-
-#cs <- 'wp'
 crowd_glob <- paste0(cs, "*crowdsource_ois_report*cleaned.csv")
-
 
 #Load DF's
 pdf <- read_csv(Sys.glob(police_glob))
 cdf <- read_csv(Sys.glob(crowd_glob))
 
-#TODO
-#need to define the cleaning scripts as functions
-#call only certain functions based on merge profile
 
-#####################
-#make functions
+#################################################
+#Functions
+#Load Police Departments Functions
+#################################################
 
-police_test <- function(pd){
-  if(pd == 'dfw') police <- "dallas"
+dallas_pd <- function(pdf, start_date, ois_type){
+  if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(ois_type)){
+    df <- pdf
+    type <- "All types of OIS"
+  } else {
+    df <- pdf %>% filter(outcome == ois_type)
+    type <- ois_type
+  }
+  
+  df <- df %>%
+    mutate(police = TRUE,
+           date = mdy(date)) %>%
+    filter(date >=  start_date) %>%
+    select(case, date, name, everything()) %>%
+    rename(race_p = race,
+           gender_p = gender)
+    
+    print(paste("Dallas Police:", start_date, type, sep = " "))
+    return(df)
+}
+
+
+
+
+#################################################
+#Functions
+#Load Crowd Source Data
+#################################################
+
+washington_post_cs <- function(cdf, start_date, .city, .state){
+  if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(.city) && missing(.state)){ 
+    df <- cdf
+    location <- "All cities, states"
+  } else if(missing(.city) || missing(.state)){
+    warning("[*] warning, please specify a city and state")
+  } else {
+    location <- paste(.city, .state, sep = " ")
+    df <- cdf %>% filter(city == .city,
+                         state == .state)
+  }
+  
+  df <- df %>%
+    mutate(crowd = TRUE) %>%
+    mutate(date = as.Date(date)) %>% 
+    filter(date >=  start_date) %>% 
+    select(date, name, city, everything()) %>%
+    rename(race_c = race,
+           gender_c = gender)
+  
+  print(paste("Washington Post:", start_date, location, sep = " "))
+  return(df)
+}
+
+
+
+
+#################################################
+#Functions
+#Select Police Department and Crowdsource
+#################################################
+
+police_select <- function(pd){
+  if(pd == 'dfw') police <- dallas_pd(pdf, '2015-01-01', 'deceased')
   if(pd == 'oha') police <- "chicago"  #insert police <- clean_chicago()
-
+  
   return(police)  
 }
 
-police_test(pd)
 
-crowd_test <- function(cs){
-  if(cs == 'wp') crowd <- "washington post"
+crowd_select <- function(cs){
+  if(cs == 'wp') crowd <- washington_post_cs(cdf, '2015-01-01', 'Dallas', 'TX')
   if(cs == 'gv') crowd <- "gun violence"  #crowd function
   
   return(crowd)  
 }
 
-crowd_test(cs)
 
 
-#Filter DF's
-police <- pdf %>%
-    mutate(police = TRUE,
-           date = mdy(date)) %>%
-    filter(outcome == 'deceased',
-           date >=  '2015-01-01') %>%
-    select(case, date, name, everything()) %>%
-    rename(race_p = race,
-           gender_p = gender)
+#################################################
+#Load and Join
+#################################################
 
-crowd <- cdf %>%
-  mutate(crowd = TRUE) %>%
-  mutate(date = as.Date(date)) %>% 
-  filter(date >=  '2015-01-01') %>% 
-  filter(city == 'Dallas',
-         state == 'TX') %>%
-  select(date, name, everything())
-  #select(date, name, city, everything()) %>%
-  # rename(race_c = race,
-  #        gender_c = gender)
+#Load Requested Police and Crowd Sources
+police <- police_select(pd)
+crowd <- crowd_select(cs)
 
 #Merge DF's
+print("[*] merging ois reports...")
 joined <- full_join(police, crowd, by = c('name', 'date')) %>%
   select(date, name, police, crowd, original, everything()) %>%
   arrange(date)
