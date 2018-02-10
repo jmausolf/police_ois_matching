@@ -6,10 +6,12 @@ import sys
 import json
 
 
+
+
 #Some Utility Functions for Cleaning the Data
 def loadCSVs():
-    police_files = glob('*{}*.csv'.format('police'))
-    crowdsource_files = glob('*{}*.csv'.format('crowdsource'))
+    police_files = glob('downloads/*{}*.csv'.format('police'))
+    crowdsource_files = glob('downloads/*{}*.csv'.format('crowdsource'))
     return(police_files, crowdsource_files)
 
 
@@ -123,7 +125,7 @@ def ren(invar, outvar, df):
 #Clean police data frame
 def clean_dfw_police_ois():
     print("[*] cleaning police ois report...")
-    infile = glob('*{}*.csv'.format('police'))[0].replace('.csv', '')
+    infile = glob('downloads/*{}*.csv'.format('police'))[0].replace('.csv', '')
     #infile = 'dfw_police_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
@@ -139,7 +141,7 @@ def clean_dfw_police_ois():
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
     print("[*] cleaning crowdsource ois report...")
-    infile = glob('{}*{}*.csv'.format('wp', 'crowdsource'))[0].replace('.csv', '')
+    infile = glob('downloads/{}*{}*.csv'.format('wp', 'crowdsource'))[0].replace('.csv', '')
     #infile = 'wp_crowdsource_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
@@ -158,7 +160,7 @@ def map_dict_col(var, df):
 
 def clean_gv_crowdsource():
     print("[*] cleaning crowdsource ois report...")
-    infile = glob('*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
+    infile = glob('downloads/*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
     print(infile)
     df = pd.read_csv('{}.tsv'.format(infile), delimiter='\t', encoding='utf-8')
     df = clean_cols(df)

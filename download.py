@@ -63,7 +63,5 @@ def download(ois_reports):
 	print("[*] unzipping downloaded files...")
 	unzip_rename('gv_crowdsource_ois_report', 'wget', ['Events.tsv'])
 	unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
-
-
-
+	subprocess.call("bash collect_files.sh", shell=True)
 

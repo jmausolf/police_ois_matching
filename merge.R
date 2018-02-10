@@ -6,8 +6,8 @@ library(lubridate)
 source("merge_profile.R")
 
 #Select files
-police_glob <- paste0(pd, "*police_ois_report*cleaned.csv")
-crowd_glob <- paste0(cs, "*crowdsource_ois_report*cleaned.csv")
+police_glob <- paste0('downloads/', pd, "*police_ois_report*cleaned.csv")
+crowd_glob <- paste0('downloads/', cs, "*crowdsource_ois_report*cleaned.csv")
 
 #Load DF's
 pdf <- read_csv(Sys.glob(police_glob))
@@ -115,7 +115,7 @@ joined <- full_join(police, crowd, by = c('name', 'date')) %>%
 
 print(joined)
 #Write Results
-outfile <- paste(pd, cs, 'matched_police_crowdsource_files.csv', sep = '_')
+outfile <- paste0('data/', paste(pd, cs, 'matched_police_crowdsource_files.csv', sep = '_'))
 write_csv(joined, outfile)
 system(paste("open", outfile, ";", sep = " "))
 
