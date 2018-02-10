@@ -4,9 +4,12 @@ import re
 import unicodedata
 import sys
 import json
+import subprocess
 
 
-
+#Clear cleaned files to allow running-script numerous times
+def rm_cleaned_files():
+    subprocess.call("rm downloads/*_cleaned.csv", shell=True)
 
 #Some Utility Functions for Cleaning the Data
 def loadCSVs():
