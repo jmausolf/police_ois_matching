@@ -11,6 +11,7 @@ import subprocess
 def rm_cleaned_files():
     subprocess.call("rm downloads/*_cleaned.csv", shell=True)
 
+
 #Some Utility Functions for Cleaning the Data
 def loadCSVs():
     police_files = glob('downloads/*{}*.csv'.format('police'))
@@ -22,31 +23,17 @@ def remove_non_ascii_2(text):
     import re
     return re.sub(r'[^\x00-\x7F]+', "", text)
 
+
 def remove_punct(text):
     import re
     return re.sub(r'[]\\?!\"\'#$%&(){}+*/:;,._`|~\\[<=>@\\^-]', "", text)
 
 
-def remove_unicode_punct(text):
-    #tbl = dict.fromkeys(i for i in xrange(sys.maxunicode)
-    #                      if unicodedata.category(unichr(i)).startswith('P'))
-    #return text.translate(tbl)
-    #return re.sub(u'\p{P}+', "", text)
-    #return unicodedata.normalize('NFKD', text).encode('ascii','ignore')
-    #return unicodedata.normalize('NFKD', text).decode('utf-8')
-    #return text.encode('ascii','ignore')
-    #return unicodedata.decomposition(text)
-    #return re.sub(u'[\u201c-\u201d]+', "", text)
-    return text.replace('\u201c', '')
-    #return text
-
-#s = "u'David \u201cKrockett\u201d Krieger', u'hospitalized': "
-#print(remove_unicode_punct(s))
-
 def clean_cols(df):
     df.columns = [remove_punct(x) for x in df.columns]
     df.columns = [x.lower().replace(' ', '') for x in df.columns]
     return(df)
+
 
 def split_subjects(var, df):
     #Make a Copy
@@ -62,6 +49,7 @@ def split_subjects(var, df):
     s.name = var
     df = df.drop(var, axis=1).join(s)
     return(df)
+
 
 def split_subjects_gv(var, df):
     #Make a Copy
@@ -83,10 +71,12 @@ def split_subjects_gv(var, df):
     df[var] = ('{' + df[var] + '}')
     return(df)
 
+
 def split_vars(ovar, nvar1, nvar2, delim, df):
     df[nvar1], df[nvar2] = df[ovar].str.split(delim, 1).str
     df.drop([ovar], axis=1, inplace=True)
     return(df)
+
 
 def split_race_gender(df):
     #Split Race/Gender to New Vars
@@ -94,6 +84,7 @@ def split_race_gender(df):
     df['race'], df['gender'] = df['race_gender'].str.split('/', 1).str
     df.drop(['subjects', 'race_gender'], axis=1, inplace=True)
     return(df)
+
 
 def reverse_names(var, df, lower=True):
     if lower is True:
@@ -109,16 +100,16 @@ def lower_var(var, df):
 	print(df.shape)
 	df = df.drop(var, axis=1)
 	df = pd.concat([df, s], axis=1)
-	#df = df.drop(var, axis=1).join(s)
 	print(df.shape)
 	return(df)
 
+
 def lower_var_rm_nonascii(var, df):
     print("remove_non_ascii_2")
-    #s = df[var].str.lower().apply(lambda x: remove_unicode_punct(x))
     s = df[var].str.lower().replace('\u201c', '')
     df = df.drop(var, axis=1).join(s)
     return(df)
+
 
 def ren(invar, outvar, df):
     df.rename(columns={invar:outvar}, inplace=True)
@@ -129,7 +120,6 @@ def ren(invar, outvar, df):
 def clean_dfw_police_ois():
     print("[*] cleaning police ois report...")
     infile = glob('downloads/*{}*.csv'.format('police'))[0].replace('.csv', '')
-    #infile = 'dfw_police_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
     df = split_subjects('subjects', df)
@@ -141,11 +131,11 @@ def clean_dfw_police_ois():
     print(df.head(10))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
+
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
     print("[*] cleaning crowdsource ois report...")
     infile = glob('downloads/{}*{}*.csv'.format('wp', 'crowdsource'))[0].replace('.csv', '')
-    #infile = 'wp_crowdsource_ois_report_2018-01-28'
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
     df = lower_var('name', df)
@@ -161,6 +151,7 @@ def map_dict_col(var, df):
     df = pd.concat([df.drop([var], axis=1), s.apply(pd.Series)], axis=1)
     return df
 
+
 def clean_gv_crowdsource():
     print("[*] cleaning crowdsource ois report...")
     infile = glob('downloads/*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
@@ -173,12 +164,10 @@ def clean_gv_crowdsource():
     df = lower_var('name', df)
 
     #TODO remove unicode punct
-    #df = lower_var_rm_nonascii('name', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-    print(df)
 
-#clean_gv_crowdsource()
+
 
 
 

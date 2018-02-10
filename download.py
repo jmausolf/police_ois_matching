@@ -15,23 +15,47 @@ date = now.strftime("%Y-%m-%d")
 #Crowd Source OIS Reports
 crowdsource_ois_reports = {
 	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
-	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
+	#'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
 	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/']
 }
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD']
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all']],
+	#'oha' : ['police', 'url', ['deceased', 'injured', 'all']]
 }
 
 #All Reports
 ois_reports = [crowdsource_ois_reports, police_ois_reports]
 
+def add_list(*args):
+	output = []
+	for item in args:
+		output.append(item)
+	#print(output)
+	return output
 
-#Create Merge Profiles
-pk = [k for k, v in police_ois_reports.items()]
-ck = [k for k, v in crowdsource_ois_reports.items()]
-merge_profiles = [[p, c] for p in pk for c in ck]
+def unlist(listoflist):
+	return [x for y in listoflist for x in y]
+
+
+def make_report_profiles(police_ois_reports, crowdsource_ois_reports):
+	profiles = []
+
+	pk = [[k, v[2]] for k, v in police_ois_reports.items()]
+	ck = [k for k, v in crowdsource_ois_reports.items()]
+	merge_profiles = [[p, c] for p in pk for c in ck]
+
+	for mp in merge_profiles:
+		pd = mp[0][0]
+		ois_types = mp[0][1]
+		cs = mp[1]
+		pf = [[pd, ois, cs] for ois in ois_types]
+
+		for report in pf:
+			profiles.append(report)
+
+	return profiles
 
 
 #Download and Rename Files
@@ -62,6 +86,6 @@ def download(ois_reports):
 	[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
 	print("[*] unzipping downloaded files...")
 	unzip_rename('gv_crowdsource_ois_report', 'wget', ['Events.tsv'])
-	unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
+	#unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
 	subprocess.call("bash collect_files.sh", shell=True)
 

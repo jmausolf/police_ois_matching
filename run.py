@@ -5,15 +5,16 @@ import re
 
 
 
-def provide_merge_sources(pd, cs, script="merge_profile.R"):
+def provide_merge_sources(profile, script="merge_profile.R"):
 	"""
 	Provides the police department and crowd source codes to merge.
 	## pd: code for the desired police dept, e.g. 'dfw'
 	## cs: code for the desired crowd source, e.g. 'wp'
 	"""
 	code = open(script, 'w')
-	code.write('pd <- "{}"\n'.format(pd))
-	code.write('cs <- "{}"\n'.format(cs))
+	code.write('pd <- "{}"\n'.format(profile[0]))
+	code.write('ois_type <- "{}"\n'.format(profile[1]))
+	code.write('cs <- "{}"\n'.format(profile[2]))
 	code.close()
 
 
@@ -23,30 +24,34 @@ def clean_files():
 	clean_wp_crowdsource()
 	clean_gv_crowdsource()
 
+def merge_report(profile):
+	provide_merge_sources(profile)
+	subprocess.call("Rscript merge.R", shell=True)
 
-def run_tasks(d, c, m):
+
+def run_tasks(d, c, m, profiles):
 
 	if d is True and c is True and m is True:
 		download(ois_reports)
 		clean_files()
-		subprocess.call("Rscript merge.R", shell=True)
+		[merge_report(p) for p in profiles]
 	elif d is True and c is True:
 		download(ois_reports)
 		clean_files()
 	elif d is True and m is True:
 		download(ois_reports)
-		subprocess.call("Rscript merge.R", shell=True)
+		[merge_report(p) for p in profiles]
 	elif d is True:
 		download(ois_reports)
 
 	elif d is False:
 		if c is True and m is True:
 			clean_files()
-			subprocess.call("Rscript merge.R", shell=True)
+			[merge_report(p) for p in profiles]
 		elif c is True and m is False:
 			clean_files()
 		elif c is False and m is True:
-			subprocess.call("Rscript merge.R", shell=True)
+			[merge_report(p) for p in profiles]
 		else:
 			pass 
 
@@ -61,17 +66,11 @@ if __name__=='__main__':
 
 	if not (args.download or args.clean or args.merge):
 	    parser.error('No action requested, add --download True or --clean True or --merge True')
-	
-	provide_merge_sources('dfw', 'gv')
-	#provide_merge_sources('dfw', 'wp')
-	#TODO (eventually)
-	#for profile in merge_profiles:
-	#	pd = profile[0]
-	#	cs = profile[1]
-	#	provide_merge_sources(pd, cs)
 
+	#Load Profiles and Run
+	profiles = make_report_profiles(police_ois_reports, crowdsource_ois_reports)
 	print("[*] Running requested tasks...")
-	run_tasks(args.download, args.clean, args.merge)
+	run_tasks(args.download, args.clean, args.merge, profiles)
 	print("[*] Done.")
 
 
