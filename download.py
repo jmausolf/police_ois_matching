@@ -15,8 +15,9 @@ date = now.strftime("%Y-%m-%d")
 #Crowd Source OIS Reports
 crowdsource_ois_reports = {
 	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
-	#'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
-	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/']
+	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
+	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
+	'ds' : ['crowdsource', 'https://docs.google.com/spreadsheets/d/1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw/export?format=csv&id=1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw&gid=1144428085']
 }
 
 #Police OIS Reports
@@ -62,7 +63,7 @@ def make_report_profiles(police_ois_reports, crowdsource_ois_reports):
 def wget_download_rename(key, value):
 	report_type = value[0]
 	tmp = wget.download(value[1])
-	ext = tmp.split(".")[1]
+	ext = tmp.rsplit(".", 1)[1]
 	filename = "{}_{}_ois_report_{}.{}".format(key, report_type, date, ext)
 	subprocess.call("mv {} {}".format(tmp, filename), shell=True)
 
