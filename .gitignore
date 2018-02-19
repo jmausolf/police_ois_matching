@@ -1,6 +1,7 @@
 #R Files
 .Rapp.history
 *.Rhistory
+merge_profile.R
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
