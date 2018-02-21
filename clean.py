@@ -95,13 +95,16 @@ def reverse_names(var, df, lower=True):
     return(df)
 
 def lower_var(var, df):
-	s = df[var].str.lower()
-	print(s.shape)
-	print(df.shape)
-	df = df.drop(var, axis=1)
-	df = pd.concat([df, s], axis=1)
-	print(df.shape)
-	return(df)
+    s = df[var].str.lower()
+    df = df.drop(var, axis=1)
+    df = pd.concat([df, s], axis=1)
+    return(df)
+
+def title_var(var, df):
+    s = df[var].str.title()
+    df = df.drop(var, axis=1)
+    df = pd.concat([df, s], axis=1)
+    return(df)
 
 
 def lower_var_rm_nonascii(var, df):
@@ -114,6 +117,16 @@ def lower_var_rm_nonascii(var, df):
 def ren(invar, outvar, df):
     df.rename(columns={invar:outvar}, inplace=True)
     return(df)
+
+
+def map_dict_col(var, df):
+    """
+    ## Maps a col containing dict's to seperate columns
+    ## Expected variable cell: '{u'key': u'value', u'key': u'value'}
+    """
+    s = df[var].map(eval)
+    df = pd.concat([df.drop([var], axis=1), s.apply(pd.Series)], axis=1)
+    return df
 
 
 #Clean police data frame
@@ -142,16 +155,6 @@ def clean_wp_crowdsource():
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 
-def map_dict_col(var, df):
-    """
-    ## Maps a col containing dict's to seperate columns
-    ## Expected variable cell: '{u'key': u'value', u'key': u'value'}
-    """
-    s = df[var].map(eval)
-    df = pd.concat([df.drop([var], axis=1), s.apply(pd.Series)], axis=1)
-    return df
-
-
 def clean_gv_crowdsource():
     print("[*] cleaning crowdsource ois report...")
     infile = glob('downloads/*{}*.tsv'.format('crowdsource'))[0].replace('.tsv', '')
@@ -164,6 +167,34 @@ def clean_gv_crowdsource():
     df = lower_var('name', df)
 
     #TODO remove unicode punct
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+
+def clean_gd_crowdsource():
+    print("[*] cleaning crowdsource ois report...")
+    infiles = glob('downloads/{}*{}*.csv'.format('gd', 'crowdsource'))
+    infiles = [file.replace('.csv', '') for file in infiles]
+    outfile = infiles[0].rsplit('-', 1)[0]
+
+    df1 = pd.read_csv('{}.csv'.format(infiles[0]))
+    df2 = pd.read_csv('{}.csv'.format(infiles[1]))
+    df = df1.append(df2, ignore_index=True)
+    df = ren('raceethnicity', 'race', df)
+    df = lower_var('name', df)
+    df.to_csv('{}_cleaned.csv'.format(outfile), index=False)
+
+
+
+def clean_ds_crowdsource():
+    print("[*] cleaning crowdsource ois report...")
+    infile = glob('downloads/{}*{}*.csv'.format('ds', 'crowdsource'))[0].replace('.csv', '')
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = ren('name', 'other_name', df)
+    df = ren('victimname', 'name', df)
+    df = lower_var('name', df)
+    df = title_var('city', df)
+    df = split_vars('state', 'state_abv', 'state_name', '-', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 

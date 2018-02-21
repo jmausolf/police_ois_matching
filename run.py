@@ -23,6 +23,8 @@ def clean_files():
 	clean_dfw_police_ois()
 	clean_wp_crowdsource()
 	clean_gv_crowdsource()
+	clean_gd_crowdsource()
+	clean_ds_crowdsource()
 
 def merge_report(profile):
 	provide_merge_sources(profile)
