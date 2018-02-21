@@ -96,11 +96,14 @@ def reverse_names(var, df, lower=True):
 
 def lower_var(var, df):
     s = df[var].str.lower()
-    print(s.shape)
-    print(df.shape)
     df = df.drop(var, axis=1)
     df = pd.concat([df, s], axis=1)
-    print(df.shape)
+    return(df)
+
+def title_var(var, df):
+    s = df[var].str.title()
+    df = df.drop(var, axis=1)
+    df = pd.concat([df, s], axis=1)
     return(df)
 
 
@@ -178,11 +181,15 @@ def clean_ds_crowdsource():
     infile = glob('downloads/{}*{}*.csv'.format('ds', 'crowdsource'))[0].replace('.csv', '')
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
-    df = ren('victim name', 'name', df)
+    df = ren('name', 'other_name', df)
+    df = ren('victimname', 'name', df)
+    df = lower_var('name', df)
+    df = title_var('city', df)
+    df = split_vars('state', 'state_abv', 'state_name', '-', df)
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 
-#clean_ds_crowdsource()
+
 
 
 

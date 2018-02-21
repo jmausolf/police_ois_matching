@@ -14,15 +14,16 @@ date = now.strftime("%Y-%m-%d")
 #Specify File Key (Source) and Value [report type, URL]
 #Crowd Source OIS Reports
 crowdsource_ois_reports = {
-	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
-	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
-	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
+	#'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
+	#'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
+	#'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
 	'ds' : ['crowdsource', 'https://docs.google.com/spreadsheets/d/1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw/export?format=csv&id=1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw&gid=1144428085']
 }
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all']],
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['all']],
+	#'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all']],
 	#'oha' : ['police', 'url', ['deceased', 'injured', 'all']]
 }
 

@@ -89,6 +89,37 @@ washington_post_cs <- function(cdf, start_date, .city, .state){
 }
 
 
+deadspin_cs <- function(cdf, start_date, end_date, .city, .state){
+  
+  df <- cdf %>% rename(state = state_abv)
+  
+  if(missing(start_date)) start_date = '2011-01-01'
+  if(missing(end_date)) end_date = '2015-01-01'
+  if(missing(.city) && missing(.state)){ 
+    df <- df
+    location <- "All cities, states"
+  } else if(missing(.city) || missing(.state)){
+    warning("[*] warning, please specify a city and state")
+  } else {
+    location <- paste(.city, .state, sep = " ")
+    df <- df %>% filter(city == .city,
+                         state == .state)
+  }
+  
+
+  df <- df %>%
+    mutate(crowd = TRUE) %>%
+    mutate(date = mdy(dateofincident)) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
+    select(date, name, city, everything()) %>%
+    rename(race_c = race,
+           gender_c = victimsgender)
+  
+  print(paste("Deadspin:", start_date, end_date, location, sep = " "))
+  return(df)
+}
+
 
 gun_violence_cs <- function(cdf, start_date, .city, .state){
   
@@ -126,7 +157,7 @@ gun_violence_cs <- function(cdf, start_date, .city, .state){
   return(df)
 }
 
-type <-"injured"
+
 
 #################################################
 #Functions
@@ -134,7 +165,7 @@ type <-"injured"
 #################################################
 
 police_select <- function(pd, outcome='all'){
-  if(pd == 'dfw') police <- dallas_pd(pdf, '2015-01-01', outcome)
+  if(pd == 'dfw') police <- dallas_pd(pdf, '2011-01-01', outcome)
   if(pd == 'oha') police <- "chicago"  #insert police <- clean_chicago()
   
   return(police)  
@@ -144,6 +175,7 @@ police_select <- function(pd, outcome='all'){
 crowd_select <- function(cs){
   if(cs == 'wp') crowd <- washington_post_cs(cdf, '2015-01-01', 'Dallas', 'TX')
   if(cs == 'gv') crowd <- gun_violence_cs(cdf, '2015-01-01', 'Dallas', 'TX')
+  if(cs == 'ds') crowd <- deadspin_cs(cdf, '2011-01-01', '2015-01-01', 'Dallas', 'TX')
   
   return(crowd)  
 }
