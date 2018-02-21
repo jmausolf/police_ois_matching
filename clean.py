@@ -171,10 +171,19 @@ def clean_gv_crowdsource():
 
 
 def clean_gd_crowdsource():
-    #two+ files to merge
     print("[*] cleaning crowdsource ois report...")
-    infile = glob('downloads/{}*{}*.csv'.format('wp', 'crowdsource'))[0].replace('.csv', '')
-    df = pd.read_csv('{}.csv'.format(infile))
+    infiles = glob('downloads/{}*{}*.csv'.format('gd', 'crowdsource'))
+    infiles = [file.replace('.csv', '') for file in infiles]
+    outfile = infiles[0].rsplit('-', 1)[0]
+
+    df1 = pd.read_csv('{}.csv'.format(infiles[0]))
+    df2 = pd.read_csv('{}.csv'.format(infiles[1]))
+    df = df1.append(df2, ignore_index=True)
+    df = ren('raceethnicity', 'race', df)
+    df = lower_var('name', df)
+    df.to_csv('{}_cleaned.csv'.format(outfile), index=False)
+
+
 
 def clean_ds_crowdsource():
     print("[*] cleaning crowdsource ois report...")

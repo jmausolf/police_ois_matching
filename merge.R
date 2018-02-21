@@ -93,6 +93,41 @@ washington_post_cs <- function(cdf, start_date, end_date, .city, .state){
 }
 
 
+guardian_cs <- function(cdf, start_date, end_date, .city, .state){
+  
+  #make date column from month, day, year
+  df <- cdf %>% unite(date, c(month, day, year), sep = "-", remove = FALSE)
+  
+  if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(end_date)) end_date = '2017-01-01'
+  if(missing(.city) && missing(.state)){ 
+    df <- cdf
+    location <- "All cities, states"
+  } else if(missing(.city) || missing(.state)){
+    warning("[*] warning, please specify a city and state")
+  } else {
+    location <- paste(.city, .state, sep = " ")
+    .city = "Dallas"
+    .state = "TX"
+    df <- df %>% filter(city == .city,
+                         state == .state)
+  }
+  
+  df <- df %>%
+    mutate(crowd = TRUE) %>%
+    mutate(date = mdy(date)) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
+    select(date, name, city, everything()) %>%
+    rename(race_c = race,
+           gender_c = gender)
+  
+  print(paste("Guardian:", start_date, "-", end_date, location, sep = " "))
+  return(df)
+}
+
+
+
 deadspin_cs <- function(cdf, start_date, end_date, .city, .state){
   
   df <- cdf %>% rename(state = state_abv)
@@ -188,6 +223,11 @@ crowd_select <- function(cs, citystate){
     start_date <- '2015-01-01'
     end_date <- '2018-01-01'
     crowd <- washington_post_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
+  }
+  if(cs == 'gd') {
+    start_date <- '2015-01-01'
+    end_date <- '2018-01-01'
+    crowd <- guardian_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   if(cs == 'gv') {
     start_date <- '2015-01-01'

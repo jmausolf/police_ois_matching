@@ -15,16 +15,14 @@ date = now.strftime("%Y-%m-%d")
 #Crowd Source OIS Reports
 crowdsource_ois_reports = {
 	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
-	#'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
+	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
 	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
 	'ds' : ['crowdsource', 'https://docs.google.com/spreadsheets/d/1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw/export?format=csv&id=1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw&gid=1144428085']
 }
 
 #Police OIS Reports
 police_ois_reports = {
-	#'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['all']],
 	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all']],
-	#'oha' : ['police', 'url', ['deceased', 'injured', 'all']]
 }
 
 #All Reports
@@ -88,6 +86,6 @@ def download(ois_reports):
 	[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
 	print("[*] unzipping downloaded files...")
 	unzip_rename('gv_crowdsource_ois_report', 'wget', ['Events.tsv'])
-	#unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
+	unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
 	subprocess.call("bash collect_files.sh", shell=True)
 
