@@ -20,7 +20,7 @@ cdf <- read_csv(Sys.glob(crowd_glob))
 #Load Police Departments Functions
 #################################################
 
-dallas_pd <- function(pdf, start_date, ois_type){
+dallas_pd <- function(pdf, start_date, end_date, ois_type){
   
   #clean types
   df <- pdf %>% 
@@ -34,7 +34,8 @@ dallas_pd <- function(pdf, start_date, ois_type){
            "shootmiss" = "shoot and miss",
            "other" = "other"))
   
-  if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(start_date)) start_date = '2011-01-01'
+  if(missing(end_date)) end_date = '2015-01-01'
   if(missing(ois_type) || ois_type=='all'){
     df <- pdf
     type <- "All types of OIS"
@@ -46,12 +47,13 @@ dallas_pd <- function(pdf, start_date, ois_type){
   df <- df %>%
     mutate(police = TRUE,
            date = mdy(date)) %>%
-    filter(date >=  start_date) %>%
+    filter(date >=  start_date,
+           date < end_date) %>% 
     select(case, date, name, everything()) %>%
     rename(race_p = race,
            gender_p = gender)
     
-    print(paste("Dallas Police:", start_date, type, sep = " "))
+    print(paste("Dallas Police:", start_date, "-", end_date, type, sep = " "))
     return(df)
 }
 
@@ -63,8 +65,9 @@ dallas_pd <- function(pdf, start_date, ois_type){
 #Load Crowd Source Data
 #################################################
 
-washington_post_cs <- function(cdf, start_date, .city, .state){
-  if(missing(start_date)) start_date = '2015-01-01'
+washington_post_cs <- function(cdf, start_date, end_date, .city, .state){
+  if(missing(start_date)) start_date = '2011-01-01'
+  if(missing(end_date)) end_date = '2015-01-01'
   if(missing(.city) && missing(.state)){ 
     df <- cdf
     location <- "All cities, states"
@@ -79,12 +82,13 @@ washington_post_cs <- function(cdf, start_date, .city, .state){
   df <- df %>%
     mutate(crowd = TRUE) %>%
     mutate(date = as.Date(date)) %>% 
-    filter(date >=  start_date) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
     select(date, name, city, everything()) %>%
     rename(race_c = race,
            gender_c = gender)
   
-  print(paste("Washington Post:", start_date, location, sep = " "))
+  print(paste("Washington Post:", start_date, "-", end_date, location, sep = " "))
   return(df)
 }
 
@@ -116,12 +120,12 @@ deadspin_cs <- function(cdf, start_date, end_date, .city, .state){
     rename(race_c = race,
            gender_c = victimsgender)
   
-  print(paste("Deadspin:", start_date, end_date, location, sep = " "))
+  print(paste("Deadspin:", start_date, "-", end_date, location, sep = " "))
   return(df)
 }
 
 
-gun_violence_cs <- function(cdf, start_date, .city, .state){
+gun_violence_cs <- function(cdf, start_date, end_date, .city, .state){
   
   #need to preprocess city, state before if else
   df <- cdf %>%
@@ -133,7 +137,8 @@ gun_violence_cs <- function(cdf, start_date, .city, .state){
     rename(org_state = state,
            state = .state) 
   
-  #if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(start_date)) start_date = '2011-01-01'
+  if(missing(end_date)) end_date = '2015-01-01'
   if(missing(.city) && missing(.state)){ 
     df <- df
     location <- "All cities, states"
@@ -148,12 +153,13 @@ gun_violence_cs <- function(cdf, start_date, .city, .state){
   df <- df %>%
     mutate(crowd = TRUE) %>%
     mutate(date = as.Date(date)) %>% 
-    filter(date >=  start_date) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
     select(date, name, city, everything()) %>%
     rename(race_c = race,
            gender_c = gender)
   
-  print(paste("Gun Violence:", start_date, location, sep = " "))
+  print(paste("Gun Violence:", start_date, "-", end_date, location, sep = " "))
   return(df)
 }
 
@@ -164,20 +170,37 @@ gun_violence_cs <- function(cdf, start_date, .city, .state){
 #Select Police Department and Crowdsource
 #################################################
 
-police_select <- function(pd, outcome='all'){
-  if(pd == 'dfw') police <- dallas_pd(pdf, '2011-01-01', outcome)
-  if(pd == 'oha') police <- "chicago"  #insert police <- clean_chicago()
+police_select <- function(pd, start_date, end_date, outcome='all'){
+  if(pd == 'dfw') police <- dallas_pd(pdf, start_date, end_date, outcome)
   
   return(police)  
 }
 
-
-crowd_select <- function(cs){
-  if(cs == 'wp') crowd <- washington_post_cs(cdf, '2015-01-01', 'Dallas', 'TX')
-  if(cs == 'gv') crowd <- gun_violence_cs(cdf, '2015-01-01', 'Dallas', 'TX')
-  if(cs == 'ds') crowd <- deadspin_cs(cdf, '2011-01-01', '2015-01-01', 'Dallas', 'TX')
+police_citystate <- function(pd){
+  if(pd == 'dfw') citystate <- list("Dallas", "TX")
   
-  return(crowd)  
+  return(citystate)  
+}
+
+
+crowd_select <- function(cs, citystate){
+  if(cs == 'wp') {
+    start_date <- '2015-01-01'
+    end_date <- '2018-01-01'
+    crowd <- washington_post_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
+  }
+  if(cs == 'gv') {
+    start_date <- '2015-01-01'
+    end_date <- '2018-01-01'
+    crowd <- gun_violence_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
+  } 
+  if(cs == 'ds') {
+    start_date <- '2011-01-01'
+    end_date <- '2015-01-01'
+    crowd <- deadspin_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
+  }
+  
+  return(list(crowd, start_date, end_date))  
 }
 
 
@@ -187,8 +210,19 @@ crowd_select <- function(cs){
 #################################################
 
 #Load Requested Police and Crowd Sources
-police <- police_select(pd, ois_type)
-crowd <- crowd_select(cs)
+
+#Police Citystate
+citystate <- police_citystate(pd)
+
+
+#Crowd Profile
+crowd_profile <- crowd_select(cs, citystate)
+crowd <- crowd_profile[[1]]
+start_date <- crowd_profile[[2]]
+end_date <- crowd_profile[[3]]
+
+#Police Profile
+police <- police_select(pd, start_date, end_date, ois_type)
 
 #Merge DF's
 print("[*] merging ois reports...")
