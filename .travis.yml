@@ -1,8 +1,10 @@
 matrix:
   include:
+
     - language: python
       python: 
-        - "3.6"
+        - "3.6.0"
+      sudo: false
       install:
         - pip install -r requirements.txt
 
