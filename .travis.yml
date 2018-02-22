@@ -1,17 +1,16 @@
 matrix:
   include:
     - language: python
+      python: 
+        - "3.6"
       install:
         - pip install -r requirements.txt
 
 
 
-    - language: r
+    - language: R
+      cache: packages
 
-      r_packages:
-        - tidyverse
-        - lubridate
-        - forcats
 
 
 
