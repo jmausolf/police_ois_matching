@@ -1,0 +1,81 @@
+date,name,police,crowd,case,location,subjectweapon,officers,grandjurydisposition,ag_url,summaryurl,geolocation,original,race_p,gender_p,outcome,city,uid,age,gender_c,race_c,month,day,year,streetaddress,state,classification,lawenforcementagency,armed
+2015-02-09,desmond luster,TRUE,TRUE,031347-2015,7400 Bonnie View Road,Vehicle,"Tollerton, Aaron W/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_031347-2015.pdf,"7400 Bonnie View Road
+Dallas, Texas
+(32.656712, -96.750342)","Luster, Desmond Dwayne B/M",Dwayne B,M,deceased,Dallas,112,45,Male,Black,February,9,2015,7400 Bonnie View Rd,TX,Gunshot,Dallas Police Department,Firearm
+2015-06-12,martin rivas,TRUE,NA,133475-2015,2620 Creative Place,Unarmed,"Bernal, Jose L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_133475-2015.pdf,"2620 Creative Place
+Dallas, Texas
+(32.759052, -96.864368)","Rivas, Martin L/M",L,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-06-13,james boulware,TRUE,NA,134472-2015,1400 South Lamar Street,Rifle,"Rieg, Keith W/M; Lang, Mark W/M; Webb, Christopher W/M; Thompson, Stephen W/M; Babb, Daniel W/M; Crow, Jason W/M; Arispi, Cynthia L/F; Ochoa, Michelle L/F; Vanderslice, Christopher W/M; Nowiki, Thomas W/M; King, Mark W/M; Strand, Emmanuel A/M, Guerra, Carlos L/M; Brower, Jason W/M; Hill, Maurico B/M; Hernandez, Raciel L/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_134472-2015.pdf,"1400 South Lamar Street
+Dallas, Texas
+(32.767306, -96.795013)","Boulware, James W/M",W,M,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-06-14,juvenal delbosque,TRUE,NA,135229-2015,3211 Reynolds Avenue,Handgun,"Burch, Darren W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_135229-2015.pdf,"3211 Reynolds Avenue
+Dallas, Texas
+(32.786422, -96.740186)","Delbosque, Juvenal L/M",L,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-06-26,fernando garcia,TRUE,NA,146068-2015,3306 Irving Boulevard,Handgun,"Anderson, Leonard B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_146068-2015.pdf,"3306 Irving Boulevard
+Dallas, Texas
+(32.807917, -96.874081)","Garcia, Fernando L/M",L,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-07-07,joe cody,TRUE,TRUE,155466-2015,1100 N. Bishop Blvd,Handgun,"Cummings, Robert W/M; Prince, Stephen W/M; Howard, Lonnie W/M; Hooker, Matthew NA/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_155466-2015.pdf,"1100 N Bishop Blvd
+Dallas, Texas
+(32.756137, -96.827795)","Cody, Joe W/M",W,M,deceased,Dallas,578,59,Male,White,July,7,2015,1100 N Bishop Ave,TX,Gunshot,Dallas Police Department,Firearm
+2015-08-27,bertrand davis,TRUE,TRUE,199250-2015,3610 Penelope Street,Pellet Gun,"Terry, Mathew W/M; Neal, Scott W/M; Joseph, Bryan B/M; Thomas, Kevin B/M; Rice, Rachel W/F; Flores, Lucas L/M; Jones, Rory B/M; Mills, Tyler W/M; King, Joe L/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_199250-2015.pdf,"3610 Penelope Street
+Dallas, Texas
+(32.770787, -96.753149)","Davis, Bertrand B/M",B,M,deceased,Dallas,768,43,Male,Black,August,27,2015,3600 Penelope St,TX,Gunshot,Dallas Police Department,Non-lethal firearm
+2015-09-21,gerardo ramirez,TRUE,TRUE,219229-2015,10800 Stone Canyon Rd,Handgun,"Hill, Christopher W/M; Akin, Theron W/M",Pending,http://dallaspolice.net/reports/OIS/ag_forms/AGF_219229-2015.pdf,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_219229-2015.pdf,"10800 Stone Canyon Rd
+Dallas, Texas
+(32.894434, -96.774734)","Ramirez, Gerardo L/M",L,M,deceased,Dallas,850,24,Male,Hispanic/Latino,September,21,2015,10830 Stone Canyon Rd,TX,Gunshot,Dallas Police Department,Firearm
+2015-09-30,sebastian coleman,TRUE,NA,226926-2015,4207 Wiley College Dr,Handgun,"Zabriske, Alexander W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_226926-2015.pdf,"4207 Wiley College Dr
+Dallas, Texas
+(32.670058, -96.748462)","Coleman, Sebastian B/M",B,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-11-09,de,TRUE,NA,260896-2015,2435 W. Northwest Hwy,Vehicle,"Browning, Shannon B/M; Barrientos, Antonio L/M; Lujan, Edmundo L/M",Pending,http://dallaspolice.net/reports/OIS/ag_forms/AGF_260896-2015.pdf,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_260896-2015.pdf,"2435 W Northwest Hwy
+Dallas, Texas
+(32.858799, -96.882629)","De Lao, Jeffery L/M",Lao_Jeffery L,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-11-15,carystal jones,TRUE,NA,266130-2015,8687 N. Central Expy,Vehicle,"Hayden, Kevin B/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_266130-2015.pdf,"8687 N Central Expy
+Dallas, Texas
+(32.792713, -96.791891)","Jones, Carystal B/F; Brooks, Sekeitha B/F",B,F,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-11-15,sekeitha brooks,TRUE,NA,266130-2015,8687 N. Central Expy,Vehicle,"Hayden, Kevin B/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_266130-2015.pdf,"8687 N Central Expy
+Dallas, Texas
+(32.792713, -96.791891)","Jones, Carystal B/F; Brooks, Sekeitha B/F",B,F,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-11-15,carystal jones,TRUE,NA,266130-2015,8687 N. Central Expy,Vehicle,"Hayden, Kevin B/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_266130-2015.pdf,"8687 N Central Expy
+Dallas, Texas
+(32.792713, -96.791891)","Jones, Carystal B/F; Brooks, Sekeitha B/F",B,F,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-11-15,sekeitha brooks,TRUE,NA,266130-2015,8687 N. Central Expy,Vehicle,"Hayden, Kevin B/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_266130-2015.pdf,"8687 N Central Expy
+Dallas, Texas
+(32.792713, -96.791891)","Jones, Carystal B/F; Brooks, Sekeitha B/F",B,F,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-03-26,bryan gilstrap,TRUE,NA,072458-2016,8218 Willoughby Boulevard,Shotgun,"Cardenas, Steven L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_072458-2016.pdf,"8218 Willoughby Boulevard
+Dallas, Texas
+(32.647231, -96.829362)","Gilstrap, Bryan B/M",B,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-04-16,unknown,TRUE,NA,089985-2016,4800 Columbia Ave,Handgun,"Ruben, Fredirick W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_089985.pdf,"4800 Columbia Ave
+Dallas, Texas
+(32.794732, -96.764017)",Unknown L/M,L,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-06-10,shawn diamond,TRUE,NA,140172-2016,8008 Herb Keheller,Rock,"Kilgore, Roman W/M",NA,PENDING,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_140172.pdf,"8008 Herb
+Keheller Dallas, Texas
+(32.85262, -96.85281)","Diamond, Shawn B/M",B,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-06-11,unknown,TRUE,NA,141461-2016,2700 Custer Drive,Vehicle,"Moore, Douglas B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_141461.pdf,"2700 Custer Drive
+Dallas, Texas
+(32.704834, -96.779494)",Unknown B/M,B,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-07-03,desroy brown,TRUE,NA,161616-2016,7440 Chesterfield Drive,Handgun,"Crenshaw, Joshua W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_161616.pdf,"7440 Chesterfield Drive
+Dallas, Texas
+(32.656285, -96.869793)","Brown, Desroy B/M",B,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-07-07,micah johnson,TRUE,TRUE,165193-2016,801 Main Street,Assault Rifle,"Edwards, Henry W/M; Wells, Giovanni B/M; Junger, Paul W/M; Lopez, Joe L/M; Banes, Matthew W/M; Canete, Daniel A/M; Scott, Ryan W/M; Michaels, Mark W/M; Borchardt, Jeremy W/M; Craig, Robert W/M; Cannon, Elmar W/M; Stuart, Kristopher B/M;",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_165193-2016.pdf,"801 Main Street
+Dallas, Texas
+(32.779453, -96.804915)","Johnson, Micah B/M",B,M,deceased,Dallas,2016573,25,Male,Black,July,7,2016,Main St,TX,Other,Dallas Police Department,Firearm
+2016-07-23,unknown,TRUE,NA,177645-2016,1716 Chattanooga Place,Handgun,"Rosen, Brett W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_177645-2016.pdf,"1716 Chattanooga Place
+Dallas, Texas
+(32.816643, -96.851409)",Unknown B/M,B,M,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-08-25,unknown,TRUE,NA,203639-2016,414 N Kramer,Handgun,"Wagner, Christopher W/M",NA,NA,PENDING,"414 N Kramer
+Dallas, Texas
+(32.748632, -96.878279)",Unknown L/M,L,M,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-09-20,arnaz williams,TRUE,NA,226497-2016,1500 Argentia Drive,Handgun,"Haywood, Jarvis B/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_226497-2016.pdf,NA,"Williams, Arnaz B/M",B,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-10-14,george zapata,TRUE,TRUE,247294-2016,300 East Brownlee Avenue,Handgun,"McMillin, Robert W/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_247294-2016.pdf,NA,"Zapata, George L/M",L,M,deceased,Dallas,2016861,24,Male,Hispanic/Latino,October,14,2016,300 E Brownlee Ave,TX,Gunshot,Dallas Police Department,Firearm
+2016-10-19,anthony garcia,TRUE,TRUE,251177-2016,3500 Virginia Boulevard,BB Gun,"Guzman, Jose L/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_251177-2016.pdf,NA,"Garcia, Anthony L/M",L,M,deceased,Dallas,2016872,24,Male,Hispanic/Latino,October,19,2016,3500 Virginia Blvd,TX,Gunshot,Dallas Police Department,Firearm
+2016-10-26,tradareon choice,TRUE,NA,257303-2016,3000 Martin Luther King Boulevard,Handgun,"Helm, Zachary W/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_257303-2016.pdf,NA,"Choice, Tradareon B/M",B,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-12-07,phan phang,TRUE,NA,291025-2016,11350 LBJ Freeway,Handgun,"Johanns, Christopher W/M",NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_291025-2016.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_291025-2016.pdf,NA,"Phang, Phan A/M",A,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017-01-18,genevive dawes,TRUE,NA,013548-2017,4700 Eastside Avenue,Vehicle,"Kimpel, Jason W/M; Hess, Christopher W/M",NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_013548-2017.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2017_013548-2017.pdf,NA,"Dawes, Genevive L/F",L,F,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017-03-30,dominique holligan,TRUE,NA,071174-2017,3001 Clydedale Drive,Handgun,"Willis, Jason W/M",NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_071174-2017.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2017_071174-2017.pdf,NA,"Holligan, Dominique B/M",B,M,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017-04-05,jaquelin arevalos,TRUE,NA,075474-2017,2830 Webb Chapel Extension,Knife,NA,NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_075474-2017.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2017_075474-2017.pdf,NA,"Arevalos, Jaquelin L/F",L,F,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-04-14,colby robinson,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,496,26,Male,Black,April,14,2015,7000 Altaire Ave,TX,Gunshot,DeSoto Police Department,Unknown
+2015-06-08,ross anthony,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,492,25,Male,Black,June,8,2015,5400 N Jim Miller Rd,TX,Taser,Dallas Police Department,No
+2015-08-01,joseph hutcheson,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,681,48,Male,White,August,1,2015,111 W Commerce St.,TX,Death in custody,Dallas County Sheriff's Office,No
+2016-01-19,gary jones,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,201644,36,Male,White,January,19,2016,1100 Riverwood Rd,TX,Gunshot,"Forney Police Department, Mesquite Police Department",Firearm
+2016-08-24,elias portillo,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2016704,36,Male,Hispanic/Latino,August,24,2016,3700 W Davis St,TX,Gunshot,Dallas Police Department,Firearm
+2016-12-07,keelan murray,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,20161007,37,Male,White,December,7,2016,1500 Commerce St,TX,Gunshot,Duncanville Police Department,Unknown
