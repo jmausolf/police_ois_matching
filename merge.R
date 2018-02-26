@@ -39,6 +39,9 @@ dallas_pd <- function(pdf, start_date, end_date, ois_type){
   if(missing(ois_type) || ois_type=='all'){
     df <- pdf
     type <- "All types of OIS"
+  } else if (ois_type=='non_fatal'){
+    df <- pdf %>% filter(outcome !='deceased')
+    type <- "All non-fatal types of OIS"
   } else {
     df <- pdf %>% filter(outcome == ois_type)
     type <- ois_type

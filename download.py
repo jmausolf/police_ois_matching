@@ -22,7 +22,7 @@ crowdsource_ois_reports = {
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all']],
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']],
 }
 
 #All Reports
@@ -32,7 +32,6 @@ def add_list(*args):
 	output = []
 	for item in args:
 		output.append(item)
-	#print(output)
 	return output
 
 def unlist(listoflist):
