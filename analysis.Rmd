@@ -1,0 +1,20 @@
+---
+title: "Untitled"
+author: "Joshua Mausolf"
+date: "2/26/2018"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = FALSE, message=FALSE, warning=FALSE)
+```
+
+TESTING
+
+```{r, echo=FALSE}
+source("analysis.R")
+```
+
