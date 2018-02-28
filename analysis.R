@@ -3,6 +3,7 @@ library(tidyverse)
 library(lubridate)
 library(forcats)
 library(tibble)
+library(stargazer)
 
 pd <- "dfw"
 ois_type <- "all"
@@ -83,7 +84,8 @@ gd_df_deceased <- refine_matches(gd_df, "deceased") %>%
   mutate(date_qc = if_else(date == "2016-08-24" & name =="elias portillo", as.Date("2016-08-25"), date_qc),
          name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc),
          match_qc = if_else(date_qc == "2016-08-25" & name_qc =="elias portillo", "yes_match", match_qc)) %>% 
-  distinct(date_qc, name_qc, match_qc)
+  distinct(date_qc, name_qc, match_qc) 
+
 
 
 
@@ -92,3 +94,86 @@ gd_df_deceased <- refine_matches(gd_df, "deceased") %>%
 #DS Cleaning
 ds_df_deceased <- refine_matches(ds_df, "deceased")
 ds_df_nonfatal <- refine_matches(ds_df, "non_fatal")
+
+
+
+#Tables
+save_stargazer <- function(output.file, ...) {
+  output <- capture.output(stargazer(...))
+  cat(paste(output, collapse = "\n"), "\n", file=output.file, append = FALSE)
+}
+
+
+make_pd_df <- function(){
+  N <- 10
+  Years <- "Example"
+  Matches = 0.80
+  No_Match_Crowd = 0.20
+  No_Match_Police = 0.20
+  departments <- "Example"
+  x <- data.frame(Years, N, Matches, No_Match_Crowd, No_Match_Police)
+  
+  x <- x %>% mutate(Years = as.character(Years))
+  
+  row.names(x) <- departments
+  
+  return(x)
+}
+
+add_pd_case <- function(df, dept, rowvector){
+  idx <- nrow(df) + 1
+  df[idx,] = rowvector
+  rownames(df)[idx]<- dept
+  return(df)
+}
+
+summary_row <- function(df) {
+  
+  minyr <- year(min(df[["date_qc"]]))
+  maxyr <- year(max(df[["date_qc"]]))
+  yrs <- paste(minyr, maxyr, sep="-")
+  
+  n <- nrow(df)
+  avg_matches = sprintf(mean(df[["matches"]]), fmt = '%#.2f')
+  avg_crowd_missing = sprintf(mean(df[["no_match_crowd"]]), fmt = '%#.2f')
+  avg_police_missing = sprintf(mean(df[["no_match_police"]]), fmt = '%#.2f')
+  
+  rv <- c(yrs, n, avg_matches, avg_crowd_missing, avg_police_missing)
+  return(rv)
+  
+}
+
+
+#Create Desired DF Table
+#make function to prep table data
+gddf <- gd_df_deceased %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+df <- make_pd_df()[-1,] %>% 
+  add_pd_case("Dallas Police Department", summary_row(gddf)) %>% 
+  rename("No Matches Crowd" = No_Match_Crowd,
+         "No Matches Police" = No_Match_Police)
+  
+
+
+#for testing
+# stargazer(as.data.frame(df), header=FALSE, type='html',
+#           font.size = "scriptsize",
+#           title = "Data Matches and Completeness: Guardian - Counted by Police Department",
+#           dep.var.caption  = "Match Metrics by Police Department",
+#           dep.var.labels   = "Matches and Mismatches by Source as Proportions",
+#           summary = FALSE)
+
+#saving
+save_stargazer("table1.tex", as.data.frame(df), header=FALSE, type='latex',
+          font.size = "scriptsize",
+          title = "Matched Reports of Fatal Officer Involved Shootings - The Guardian",
+          notes  = "Notes: Match Metrics by Police Department, Matches and Mismatches by Source Displayed as Proportions",
+          summary = FALSE)
+
+
+
+

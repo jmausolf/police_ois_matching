@@ -4,6 +4,7 @@ author: "Joshua Mausolf"
 date: "2/26/2018"
 output:
   pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
 ---
@@ -16,5 +17,8 @@ TESTING
 
 ```{r, echo=FALSE}
 source("analysis.R")
+```
+
+```{r, child='table1.tex'}
 ```
 
