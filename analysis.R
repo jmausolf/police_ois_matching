@@ -5,6 +5,10 @@ library(forcats)
 library(tibble)
 library(stargazer)
 
+##Make directories
+system('mkdir -p images')
+system('mkdir -p tables')
+
 pd <- "dfw"
 ois_type <- "all"
 cs_types <- c("wp", "gd", "ds")
@@ -120,7 +124,7 @@ wpdf <- make_pd_df()[-1,] %>%
          "Not Matched by Police" = No_Match_Police)
 
 #Save Table
-save_stargazer("table1.tex", as.data.frame(wpdf), header=FALSE, type='latex',
+save_stargazer("tables/table1.tex", as.data.frame(wpdf), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matched Reports of Fatal Officer Involved Shootings - Washington Post",
                notes  = "Notes: Match Metrics by Police Department, Matches and Mismatches by Source Displayed as Proportions",
@@ -161,7 +165,7 @@ gddf <- make_pd_df()[-1,] %>%
 
 
 #Save Table
-save_stargazer("table2.tex", as.data.frame(gddf), header=FALSE, type='latex',
+save_stargazer("tables/table2.tex", as.data.frame(gddf), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matched Reports of Fatal Officer Involved Shootings - The Guardian",
                notes  = "Notes: Match Metrics by Police Department, Matches and Mismatches by Source Displayed as Proportions",
@@ -225,7 +229,7 @@ dsdf <- make_pd_df()[-1,] %>%
 
 
 #Save Table
-save_stargazer("table3.tex", as.data.frame(dsdf), header=FALSE, type='latex',
+save_stargazer("tables/table3.tex", as.data.frame(dsdf), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matched Reports of Fatal and Non-Fatal Officer Involved Shootings - Deadspin",
                notes  = "Notes: Match Metrics by Police Department, Matches and Mismatches by Source Displayed as Proportions",
@@ -255,8 +259,7 @@ df <- rbind(wp, gd, ds) %>%
       labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) 
 
 
-##Make directory
-system('mkdir -p images')
+
 
 
 #Graph

@@ -31,15 +31,15 @@ Edit Tables with Line
 
 -->
 
-```{r, child='table1edit.tex'}
+```{r, child='tables/table1edit.tex'}
 ```
 
 
-```{r, child='table2edit.tex'}
+```{r, child='tables/table2edit.tex'}
 ```
 
 
-```{r, child='table3edit.tex'}
+```{r, child='tables/table3edit.tex'}
 ```
 
 
