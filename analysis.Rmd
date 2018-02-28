@@ -1,7 +1,5 @@
 ---
-title: "Untitled"
-author: "Joshua Mausolf"
-date: "2/26/2018"
+title: "Tables and Figures"
 output:
   pdf_document: default
   word_document: default
@@ -13,12 +11,41 @@ output:
 knitr::opts_chunk$set(echo = FALSE, cache = FALSE, message=FALSE, warning=FALSE)
 ```
 
-TESTING
+
 
 ```{r, echo=FALSE}
 source("analysis.R")
 ```
 
-```{r, child='table1.tex'}
+<!--
+Make Base Tables with analysis.R
+
+Currently Stargazer does not support making a caption above descriptive variables 
+(unlike regression output with dep.var.caption)
+
+Edit Tables with Line
+%insert mod
+ &&& \multicolumn{3}{c}{Proportions} \\ \cline{4-6} \\[-4.8ex]  \\
+\hline \\[-1.8ex] 
+%end mod
+
+-->
+
+```{r, child='table1edit.tex'}
 ```
 
+
+```{r, child='table2edit.tex'}
+```
+
+
+```{r, child='table3edit.tex'}
+```
+
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{./images/plt1.png}
+		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Dallas Police Department by Crowdsource}
+		\label{fig:gs1}
+\end{figure}
