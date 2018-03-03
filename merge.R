@@ -223,23 +223,23 @@ police_citystate <- function(pd){
 
 crowd_select <- function(cs, citystate){
   if(cs == 'wp') {
-    start_date <- '2015-01-01'
-    end_date <- '2018-01-01'
+    start_date <- '2015-01-01' #earliest wp data
+    end_date <- '2017-05-01' #latest dfw is 04/2017
     crowd <- washington_post_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   if(cs == 'gd') {
-    start_date <- '2015-01-01'
-    end_date <- '2018-01-01'
+    start_date <- '2015-01-01' #earliest gd data
+    end_date <- '2017-01-01' #latest gd data is in 2016
     crowd <- guardian_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   if(cs == 'gv') {
     start_date <- '2015-01-01'
-    end_date <- '2018-01-01'
+    end_date <- '2017-05-01'
     crowd <- gun_violence_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   } 
   if(cs == 'ds') {
-    start_date <- '2011-01-01'
-    end_date <- '2015-01-01'
+    start_date <- '2011-01-01' #dallas data good, ds data many events
+    end_date <- '2015-01-01' #dallas data good, ds data many events
     crowd <- deadspin_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   

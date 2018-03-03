@@ -43,6 +43,21 @@ Edit Tables with Line
 ```
 
 
+
+```{r, child='tables/table1.tex', eval=FALSE}
+```
+
+
+```{r, child='tables/table2.tex', eval=FALSE}
+```
+
+
+```{r, child='tables/table3.tex', eval=FALSE}
+```
+
+
+
+
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=1.0\textwidth]{./images/plt1.png}
