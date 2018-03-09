@@ -88,9 +88,17 @@ summary_row <- function(df) {
   yrs <- paste(minyr, maxyr, sep="-")
   
   n <- nrow(df)
-  avg_matches = sprintf(mean(df[["matches"]]), fmt = '%#.2f')
-  avg_crowd_missing = sprintf(mean(df[["no_match_crowd"]]), fmt = '%#.2f')
-  avg_police_missing = sprintf(mean(df[["no_match_police"]]), fmt = '%#.2f')
+  avgmat = sprintf(mean(df[["matches"]]), fmt = '%#.2f')
+  avgcmis = sprintf(mean(df[["no_match_crowd"]]), fmt = '%#.2f')
+  avgpmis = sprintf(mean(df[["no_match_police"]]), fmt = '%#.2f')  
+  
+  nmat = sum(df[["matches"]] == 1)
+  ncmis = sum(df[["no_match_crowd"]] == 1)
+  npmis = sum(df[["no_match_police"]] == 1)
+  
+  avg_matches = paste0(avgmat, " (", nmat, ")")
+  avg_crowd_missing = paste0(avgcmis, " (", ncmis, ")")
+  avg_police_missing = paste0(avgpmis, " (", npmis, ")")
   
   rv <- c(yrs, n, avg_matches, avg_crowd_missing, avg_police_missing)
   return(rv)

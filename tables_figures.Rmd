@@ -25,7 +25,7 @@ Currently Stargazer does not support making a caption above descriptive variable
 
 Edit Tables with Line
 %insert mod
- &&& \multicolumn{3}{c}{Proportions} \\ \cline{4-6} \\[-4.8ex]  \\
+ &&& \multicolumn{3}{c}{Proportions (N)} \\ \cline{4-6} \\[-4.8ex]  \\
 \hline \\[-1.8ex] 
 %end mod
 
