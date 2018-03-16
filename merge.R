@@ -20,30 +20,67 @@ cdf <- read_csv(Sys.glob(crowd_glob))
 #Load Police Departments Functions
 #################################################
 
+denver_pd <- function(pdf, start_date, end_date, ois_type){
+  
+  #clean types
+  df <- pdf %>% 
+    mutate(outcome = fct_recode(casualty,
+            "not_injured" = "not injured"))
+  
+  if(missing(start_date)) start_date = '2015-01-01'
+  if(missing(end_date)) end_date = '2018-02-15'
+  if(missing(ois_type) || ois_type=='all'){
+    df <- df
+    type <- "All types of OIS"
+  } else if (ois_type=='non_fatal'){
+    df <- df %>% filter(outcome !='deceased')
+    type <- "All non-fatal types of OIS"
+  } else {
+    df <- df %>% filter(outcome == ois_type)
+    type <- ois_type
+  }
+  
+  df <- df %>%
+    mutate(police = TRUE) %>% 
+    mutate(date = as.Date(date)) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
+    filter(role == "Subject") %>% 
+    select(incidentnumber, date, name, everything()) %>%
+    rename(race_p = race,
+           gender_p = gender,
+           ethnicity_p = ethnicity)
+    
+    print(paste("Denver Police:", start_date, "-", end_date, type, sep = " "))
+    return(df)
+}
+
+
+
 dallas_pd <- function(pdf, start_date, end_date, ois_type){
   
   #clean types
   df <- pdf %>% 
     mutate(det_outcome = outcome,
            outcome = fct_recode(outcome,
-           "deceased" = "1 deceased 1 injured",
-           "deceased" = "deceased injured",
-           "deceased" = "deceased",
-           "injured"  = "injured",
-           "injured"  = "2 injured",
-           "shootmiss" = "shoot and miss",
-           "other" = "other"))
+                                "deceased" = "1 deceased 1 injured",
+                                "deceased" = "deceased injured",
+                                "deceased" = "deceased",
+                                "injured"  = "injured",
+                                "injured"  = "2 injured",
+                                "shootmiss" = "shoot and miss",
+                                "other" = "other"))
   
   if(missing(start_date)) start_date = '2011-01-01'
   if(missing(end_date)) end_date = '2015-01-01'
   if(missing(ois_type) || ois_type=='all'){
-    df <- pdf
+    df <- df
     type <- "All types of OIS"
   } else if (ois_type=='non_fatal'){
-    df <- pdf %>% filter(outcome !='deceased')
+    df <- df %>% filter(outcome !='deceased')
     type <- "All non-fatal types of OIS"
   } else {
-    df <- pdf %>% filter(outcome == ois_type)
+    df <- df %>% filter(outcome == ois_type)
     type <- ois_type
   }
   
@@ -55,11 +92,10 @@ dallas_pd <- function(pdf, start_date, end_date, ois_type){
     select(case, date, name, everything()) %>%
     rename(race_p = race,
            gender_p = gender)
-    
-    print(paste("Dallas Police:", start_date, "-", end_date, type, sep = " "))
-    return(df)
+  
+  print(paste("Dallas Police:", start_date, "-", end_date, type, sep = " "))
+  return(df)
 }
-
 
 
 
@@ -110,8 +146,6 @@ guardian_cs <- function(cdf, start_date, end_date, .city, .state){
     warning("[*] warning, please specify a city and state")
   } else {
     location <- paste(.city, .state, sep = " ")
-    .city = "Dallas"
-    .state = "TX"
     df <- df %>% filter(city == .city,
                          state == .state)
   }
@@ -210,13 +244,13 @@ gun_violence_cs <- function(cdf, start_date, end_date, .city, .state){
 
 police_select <- function(pd, start_date, end_date, outcome='all'){
   if(pd == 'dfw') police <- dallas_pd(pdf, start_date, end_date, outcome)
-  
+  if(pd == 'den') police <- denver_pd(pdf, start_date, end_date, outcome)  
   return(police)  
 }
 
 police_citystate <- function(pd){
   if(pd == 'dfw') citystate <- list("Dallas", "TX")
-  
+  if(pd == 'den') citystate <- list("Denver", "CO")  
   return(citystate)  
 }
 

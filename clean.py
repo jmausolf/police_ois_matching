@@ -86,11 +86,12 @@ def split_race_gender(df):
     return(df)
 
 
-def reverse_names(var, df, lower=True):
+def reverse_names(var, df, lower=True, delim='_'):
+    d = delim
     if lower is True:
-        s = df[var].apply(lambda x: '_'.join(x.split('_')[::-1])).str.replace('_', ' ').str.lower()
+        s = df[var].apply(lambda x: d.join(x.split(d)[::-1])).str.replace(d, ' ').str.lower()
     else:
-        s = df[var].apply(lambda x: '_'.join(x.split('_')[::-1])).str.replace('_', ' ')   
+        s = df[var].apply(lambda x: d.join(x.split(d)[::-1])).str.replace(d, ' ')   
     df = df.drop(var, axis=1).join(s)
     return(df)
 
@@ -132,7 +133,7 @@ def map_dict_col(var, df):
 #Clean police data frame
 def clean_dfw_police_ois():
     print("[*] cleaning police ois report...")
-    infile = glob('downloads/*{}*.csv'.format('police'))[0].replace('.csv', '')
+    infile = glob('downloads/{}*{}*.csv'.format('dfw', 'police'))[0].replace('.csv', '')
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
     df = split_subjects('subjects', df)
@@ -143,6 +144,22 @@ def clean_dfw_police_ois():
     df = lower_var('outcome', df)
     print(df.head(10))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+
+def clean_den_police_ois():
+    print("[*] cleaning police ois report...")
+    infile = glob('downloads/{}*{}*.csv'.format('den', 'police'))[0].replace('.csv', '')
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = split_vars('citystate', 'city', 'state', ',', df)
+    df = reverse_names('lastfirstname', df, delim=',')
+    df = ren('lastfirstname', 'name', df)
+    df = ren('incidentdate', 'date', df)
+    df = lower_var('casualty', df)
+    print(df.head(10))
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+
 
 
 #Clean crowdsource data frame

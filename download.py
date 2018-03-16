@@ -16,13 +16,20 @@ date = now.strftime("%Y-%m-%d")
 crowdsource_ois_reports = {
 	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
 	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
-	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
+	#'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
 	'ds' : ['crowdsource', 'https://docs.google.com/spreadsheets/d/1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw/export?format=csv&id=1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw&gid=1144428085']
 }
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', ['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']],
+	'dfw' : ['police', 
+				'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
+				['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']
+				],
+	'den' : ['police', 
+				'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']
+				]
 }
 
 #All Reports
@@ -55,6 +62,7 @@ def make_report_profiles(police_ois_reports, crowdsource_ois_reports):
 			profiles.append(report)
 
 	return profiles
+
 
 
 #Download and Rename Files

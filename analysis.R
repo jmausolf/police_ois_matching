@@ -9,17 +9,23 @@ library(stargazer)
 system('mkdir -p images')
 system('mkdir -p tables')
 
-pd <- "dfw"
+#pd <- "dfw"
+pd_types <- c("dfw", "den")
 ois_type <- "all"
 cs_types <- c("wp", "gd", "ds")
 
 
 
 #Load Requested Data Frames
-for (cs in cs_types) {
-  analysis_glob <- paste0('data/', pd, '_', cs, '_', ois_type, "*.csv")
-  assign(paste0(cs, '_df' ), read_csv(Sys.glob(analysis_glob)))
+for (pd in pd_types) {
+
+  for (cs in cs_types) {
+    analysis_glob <- paste0('data/', pd, '_', cs, '_', ois_type, "*.csv")
+    assign(paste(pd, cs, 'df', sep = "_" ), read_csv(Sys.glob(analysis_glob)))
+  }
+    
 }
+
 
 #General Pre-QC Processing for each DF
 
@@ -106,9 +112,8 @@ summary_row <- function(df) {
 }
 
 
-
-#WP Cleaning
-wp_df_deceased <- refine_matches(wp_df, "deceased") %>% 
+#WP Cleaning - Dallas PD
+dfw_wp_df_deceased <- refine_matches(dfw_wp_df, "deceased") %>% 
   mutate(date_qc = date, 
          name_qc = name,
          match_qc = match) %>% 
@@ -124,9 +129,30 @@ wp_df_deceased <- refine_matches(wp_df, "deceased") %>%
            no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
+#WP Cleaning - Dallas PD
+den_wp_df_deceased <- refine_matches(den_wp_df, "deceased") %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match) %>% 
+  
+  #mutate(uof = if_else(is.na(mannerofdeath) & police == TRUE, "shot", mannerofdeath)) %>% 
+  #select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, uof, everything()) %>% 
+  #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
+  #filter(!(uof !=  "shot" & match != "yes_match")) %>% 
+  #Alter qc details for elias portillo case
+  #mutate(name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc)) %>% 
+  distinct(date_qc, name_qc, match_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+
+
 #Create Desired DF Table
 wpdf <- make_pd_df()[-1,] %>% 
-  add_pd_case("Dallas Police Department", summary_row(wp_df_deceased)) %>% 
+  add_pd_case("Dallas Police Department", summary_row(dfw_wp_df_deceased)) %>% 
+  add_pd_case("Denver Police Department", summary_row(den_wp_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -142,7 +168,7 @@ save_stargazer("tables/table1.tex", as.data.frame(wpdf), header=FALSE, type='lat
 
 
 #GD Cleaning
-gd_df_deceased <- refine_matches(gd_df, "deceased") %>%
+dfw_gd_df_deceased <- refine_matches(dfw_gd_df, "deceased") %>%
   mutate(date_qc = date, 
          name_qc = name,
          match_qc = match) %>% 
@@ -166,7 +192,7 @@ gd_df_deceased <- refine_matches(gd_df, "deceased") %>%
 
 #Create Desired DF Table
 gddf <- make_pd_df()[-1,] %>% 
-  add_pd_case("Dallas Police Department", summary_row(gd_df_deceased)) %>% 
+  add_pd_case("Dallas Police Department", summary_row(dfw_gd_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -183,7 +209,7 @@ save_stargazer("tables/table2.tex", as.data.frame(gddf), header=FALSE, type='lat
 
 
 #DS Cleaning
-ds_df_all <- refine_matches(ds_df, "all") %>% 
+dfw_ds_df_all <- refine_matches(dfw_ds_df, "all") %>% 
   mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
   mutate(date_qc = date, 
          name_qc = name,
@@ -221,16 +247,16 @@ ds_df_all <- refine_matches(ds_df, "all") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
-ds_df_deceased <- ds_df_all %>% 
+dfw_ds_df_deceased <- dfw_ds_df_all %>% 
   filter(outcome_qc == "deceased")
 
-ds_df_nonfatal <- ds_df_all %>% 
+dfw_ds_df_nonfatal <- dfw_ds_df_all %>% 
   filter(outcome_qc != "deceased")
 
 #Create Desired DF Table
 dsdf <- make_pd_df()[-1,] %>% 
-  add_pd_case("Dallas Police Department - Fatal", summary_row(ds_df_deceased)) %>% 
-  add_pd_case("Dallas Police Department - Non Fatal", summary_row(ds_df_nonfatal)) %>% 
+  add_pd_case("Dallas Police Department - Fatal", summary_row(dfw_ds_df_deceased)) %>% 
+  add_pd_case("Dallas Police Department - Non Fatal", summary_row(dfw_ds_df_nonfatal)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -246,15 +272,15 @@ save_stargazer("tables/table3.tex", as.data.frame(dsdf), header=FALSE, type='lat
 
 
 #Graph Data
-wp <- wp_df_deceased %>%
+wp <- dfw_wp_df_deceased %>%
   mutate(outcome = "Fatal") %>% 
   mutate(source = "Washington Post")
 
-gd <- gd_df_deceased %>%
+gd <- dfw_gd_df_deceased %>%
   mutate(outcome = "Fatal") %>% 
   mutate(source = "The Guardian")
   
-ds <- ds_df_all %>% 
+ds <- dfw_ds_df_all %>% 
   mutate(outcome = if_else(outcome_qc == "deceased", "Fatal", "Non-Fatal")) %>% 
   mutate(source = "Deadspin") %>% 
   select(-outcome_qc) 
