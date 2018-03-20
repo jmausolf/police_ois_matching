@@ -139,13 +139,29 @@ den_wp_df_deceased <- refine_matches(den_wp_df, "deceased") %>%
   #select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, uof, everything()) %>% 
   #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
   #filter(!(uof !=  "shot" & match != "yes_match")) %>% 
-  #Alter qc details for elias portillo case
-  #mutate(name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc)) %>% 
+  
+  #Alter qc details for jessica hernandez case (wp used nick-name versus full name)
+  mutate(name_qc = if_else(date == "2015-01-26" & name =="jessie hernandez", "jessica hernandez", name_qc),
+         match_qc = if_else(date_qc == "2015-01-26" & name_qc =="jessica hernandez", "yes_match", match_qc)) %>% 
+  
+  #Alter qc details for gerardino cayetano-gonzalez case (police mispelled name)
+  mutate(name_qc = if_else(date == "2016-02-22" & name =="garardino cayetano-gonzalez", "gerardino cayetano gonzalez", name_qc),
+         match_qc = if_else(date_qc == "2016-02-22" & name_qc =="gerardino cayetano gonzalez", "yes_match", match_qc)) %>% 
+  
+  #Alter qc details for dion damon case (wp mispelled name)
+  mutate(name_qc = if_else(date == "2016-04-12" & name =="dion daman", "dion damon", name_qc),
+         match_qc = if_else(date_qc == "2016-04-12" & name_qc =="dion damon", "yes_match", match_qc)) %>% 
+  
+  #Alter qc details for miguel angel martinez case (wp uses middle name, den pd does not)
+  mutate(name_qc = if_else(date == "2015-11-22" & name =="miguel martinez", "miguel angel martinez", name_qc),
+         match_qc = if_else(date_qc == "2015-11-22" & name_qc =="miguel angel martinez", "yes_match", match_qc)) %>% 
   distinct(date_qc, name_qc, match_qc) %>% 
   mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
          no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
+
+  
 
 
 
