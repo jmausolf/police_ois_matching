@@ -62,5 +62,11 @@ Edit Tables with Line
 		\centering
 		\includegraphics[width=1.0\textwidth]{./images/plt1.png}
 		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Dallas Police Department by Crowdsource}
-		\label{fig:gs1}
+\end{figure}
+
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{./images/plt2.png}
+		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Denver Police Department by Crowdsource}
 \end{figure}
