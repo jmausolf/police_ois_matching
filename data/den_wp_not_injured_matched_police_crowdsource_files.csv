@@ -1,0 +1,15 @@
+date,name,police,crowd,incidentnumber,incidenttime,dayofweek,initialcontact,contactbasis,streetaddress,role,officerrank,badgenumber,dutystatus,uniformplainclothes,gender_p,age.x,race_p,ethnicity_p,armedwith,dischargedfirearm,decisionletterurl,xcoordinate,ycoordinate,city.x,state.x,casualty,outcome,city.y,id,mannerofdeath,armed,age.y,gender_c,race_c,state.y,signsofmentalillness,threatlevel,flee,bodycamera
+2015-12-14,shawn crnich,TRUE,NA,2015726322,1525,Monday,Citizen-Initiated,Burglary - In Progress,1101 N Bellaire St,Subject,NA,NA,NA,NA,M,42,W,NH,Replica or Air Gun,No,None available,3158168,1692420,Denver,CO,not injured,not_injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-06-25,aris ashford,TRUE,NA,2016398914,115,Saturday,Citizen-Initiated,Domestic Violence - In Progress,3535 N Elm St,Subject,NA,NA,NA,NA,M,33,B,NH,Replica or Air Gun,No,None available,3160327,1704513,Denver,CO,not injured,not_injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-09-05,shawn scott,TRUE,NA,2016568888,1207,Monday,Officer-Initiated,Warrant,300 blk N. Osage St.,Subject,NA,NA,NA,NA,M,39,W,NH,Firearm,Yes,None available,3139108,1688147,Denver,CO,not injured,not_injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017-02-19,saith lopez,TRUE,NA,20175000874,2245,Sunday,Officer-Initiated,Shot Spotter,3788 W. Exposition Ave.,Subject,NA,NA,NA,NA,M,28,W,H,Firearm,No,None available,3130384,1681544,Denver,CO,not injured,not_injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-01-26,jessie hernandez,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,20,shot,vehicle,17,F,H,CO,False,other,Not fleeing,False
+2015-07-12,paul castaway,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,628,shot,knife,35,M,N,CO,True,other,Foot,False
+2015-11-22,miguel angel martinez,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1029,shot,gun,28,M,H,CO,False,attack,Not fleeing,False
+2015-12-02,phillip munoz,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1049,shot,gun,35,M,H,CO,False,attack,Car,False
+2016-01-11,ramone lonergan,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1164,shot,gun,32,M,W,CO,False,other,Not fleeing,False
+2016-02-22,gerardino cayetano gonzalez,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1301,shot,gun,33,M,H,CO,False,attack,Other,False
+2016-04-12,dion daman,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1456,shot,unarmed,40,M,W,CO,False,other,Car,False
+2016-08-27,terry salazar,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1821,shot and Tasered,knife,49,M,NA,CO,False,other,Not fleeing,False
+2016-08-31,michael ferguson,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,1841,shot,gun,21,M,W,CO,False,attack,Foot,False
+2016-11-08,juan ramos,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Denver,2031,shot,gun,23,M,H,CO,False,attack,Other,False
