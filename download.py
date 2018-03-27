@@ -7,6 +7,7 @@ import re
 import zipfile
 import os
 
+
 #Get Date for Filenames
 now = datetime.datetime.now()
 date = now.strftime("%Y-%m-%d")
@@ -16,20 +17,18 @@ date = now.strftime("%Y-%m-%d")
 crowdsource_ois_reports = {
 	'wp' : ['crowdsource', 'https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/fatal-police-shootings-data.csv'],
 	'gd' : ['crowdsource', 'https://interactive.guim.co.uk/2015/the-counted/thecounted-data.zip'],
-	#'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
+	'gv' : ['crowdsource', 'http://gun-violence.org/portal/download/'],
 	'ds' : ['crowdsource', 'https://docs.google.com/spreadsheets/d/1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw/export?format=csv&id=1cEGQ3eAFKpFBVq1k2mZIy5mBPxC6nBTJHzuSWtZQSVw&gid=1144428085']
 }
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 
-				'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
-				['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']
-				],
-	'den' : ['police', 
-				'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
-				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']
-				]
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
+				['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']],
+	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
+	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
 }
 
 #All Reports
@@ -67,11 +66,19 @@ def make_report_profiles(police_ois_reports, crowdsource_ois_reports):
 
 #Download and Rename Files
 def wget_download_rename(key, value):
+	subprocess.call("bash collect_files.sh", shell=True)
 	report_type = value[0]
 	tmp = wget.download(value[1])
 	ext = tmp.rsplit(".", 1)[1]
-	filename = "{}_{}_ois_report_{}.{}".format(key, report_type, date, ext)
-	subprocess.call("mv {} {}".format(tmp, filename), shell=True)
+	lb = '\n'
+	tmp = glob('*.{}'.format(ext))[0].replace(" ", "\ ")
+	try:
+		filename = "{}_{}_ois_report_{}.{}".format(key, report_type, date, ext)
+		print("{}[*] downloaded {}...".format(lb, filename))
+		subprocess.call("mv {} {}".format(tmp, filename), shell=True)
+	except Exception as e:
+		print(e)
+		pass
 
 
 def unzip(zipfilename, subfilename="", rename=""):
@@ -82,7 +89,7 @@ def unzip(zipfilename, subfilename="", rename=""):
 
 
 def unzip_rename(globstem, ext, req_subfiles):
-	zip_files = glob('{}*.{}'.format(globstem, ext))	
+	zip_files = glob('downloads/{}*.{}'.format(globstem, ext))	
 	name_stem = [n.split(".")[0] for n in zip_files]
 	sub = req_subfiles
 	[unzip(z, s, '{}_{}'.format(n, s.lower())) for z in zip_files for n in name_stem for s in sub ]

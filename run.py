@@ -18,6 +18,10 @@ def provide_merge_sources(profile, script="merge_profile.R"):
 	code.close()
 
 
+def download_files():
+	subprocess.call("rm downloads/* 2>/dev/null", shell=True)
+	download(ois_reports)
+
 def clean_files():
 	rm_cleaned_files()
 	clean_dfw_police_ois()
@@ -35,17 +39,17 @@ def merge_report(profile):
 def run_tasks(d, c, m, profiles):
 
 	if d is True and c is True and m is True:
-		download(ois_reports)
+		download_files()
 		clean_files()
 		[merge_report(p) for p in profiles]
 	elif d is True and c is True:
-		download(ois_reports)
+		download_files()
 		clean_files()
 	elif d is True and m is True:
-		download(ois_reports)
+		download_files()
 		[merge_report(p) for p in profiles]
 	elif d is True:
-		download(ois_reports)
+		download_files()
 
 	elif d is False:
 		if c is True and m is True:
