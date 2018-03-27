@@ -4,6 +4,7 @@ library(lubridate)
 library(forcats)
 library(tibble)
 library(stargazer)
+library(ggpubr)
 
 ##Make directories
 system('mkdir -p images')
@@ -129,29 +130,21 @@ dfw_wp_df_deceased <- refine_matches(dfw_wp_df, "deceased") %>%
            no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
-#WP Cleaning - Dallas PD
+
+#WP Cleaning - Denver PD
 den_wp_df_deceased <- refine_matches(den_wp_df, "deceased") %>% 
   mutate(date_qc = date, 
          name_qc = name,
          match_qc = match) %>% 
-  
-  #mutate(uof = if_else(is.na(mannerofdeath) & police == TRUE, "shot", mannerofdeath)) %>% 
-  #select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, uof, everything()) %>% 
-  #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
-  #filter(!(uof !=  "shot" & match != "yes_match")) %>% 
-  
   #Alter qc details for jessica hernandez case (wp used nick-name versus full name)
   mutate(name_qc = if_else(date == "2015-01-26" & name =="jessie hernandez", "jessica hernandez", name_qc),
          match_qc = if_else(date_qc == "2015-01-26" & name_qc =="jessica hernandez", "yes_match", match_qc)) %>% 
-  
   #Alter qc details for gerardino cayetano-gonzalez case (police mispelled name)
   mutate(name_qc = if_else(date == "2016-02-22" & name =="garardino cayetano-gonzalez", "gerardino cayetano gonzalez", name_qc),
          match_qc = if_else(date_qc == "2016-02-22" & name_qc =="gerardino cayetano gonzalez", "yes_match", match_qc)) %>% 
-  
   #Alter qc details for dion damon case (wp mispelled name)
   mutate(name_qc = if_else(date == "2016-04-12" & name =="dion daman", "dion damon", name_qc),
          match_qc = if_else(date_qc == "2016-04-12" & name_qc =="dion damon", "yes_match", match_qc)) %>% 
-  
   #Alter qc details for miguel angel martinez case (wp uses middle name, den pd does not)
   mutate(name_qc = if_else(date == "2015-11-22" & name =="miguel martinez", "miguel angel martinez", name_qc),
          match_qc = if_else(date_qc == "2015-11-22" & name_qc =="miguel angel martinez", "yes_match", match_qc)) %>% 
@@ -161,14 +154,14 @@ den_wp_df_deceased <- refine_matches(den_wp_df, "deceased") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
-  
-
-
+#Combined Data, All Departments
+all_wp_df_deceased <- rbind(dfw_wp_df_deceased, den_wp_df_deceased)
 
 #Create Desired DF Table
 wpdf <- make_pd_df()[-1,] %>% 
   add_pd_case("Dallas Police Department", summary_row(dfw_wp_df_deceased)) %>% 
   add_pd_case("Denver Police Department", summary_row(den_wp_df_deceased)) %>% 
+  add_pd_case("All Police Departments  ", summary_row(all_wp_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -206,9 +199,38 @@ dfw_gd_df_deceased <- refine_matches(dfw_gd_df, "deceased") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
+den_gd_df_deceased <- refine_matches(den_gd_df, "deceased") %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match) %>% 
+  rename(pd = lawenforcementagency) %>% 
+  mutate(pd = if_else(is.na(pd) & police == TRUE, "Denver Police Department", pd)) %>% 
+  mutate(uof = if_else(is.na(classification) & police == TRUE, "Gunshot", classification)) %>% 
+  select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, pd, uof, everything()) %>% 
+  #Remove Cases That Are Not Denver PD
+  filter(!(pd !=  "Denver Police Department" & match != "yes_match")) %>% 
+  #Remove Cases That Are Not OIS
+  filter(!(uof !=  "Gunshot" & match != "yes_match")) %>% 
+  #Alter qc details for jessica hernandez case (gd used nickname)
+  mutate(name_qc = if_else(date == "2015-01-26" & name =="jesse hernandez", "jessica hernandez", name_qc),
+         match_qc = if_else(date_qc == "2015-01-26" & name_qc =="jessica hernandez", "yes_match", match_qc)) %>% 
+  #Alter qc details for gerardino cayetano-gonzalez case (police mispelled name, gd used hyphen)
+  mutate(name_qc = if_else(date == "2016-02-22" & name =="garardino cayetano-gonzalez", "gerardino cayetano gonzalez", name_qc),
+         name_qc = if_else(date == "2016-02-22" & name =="gerardino cayetano-gonzalez", "gerardino cayetano gonzalez", name_qc),
+         match_qc = if_else(date_qc == "2016-02-22" & name_qc =="gerardino cayetano gonzalez", "yes_match", match_qc)) %>% 
+  distinct(date_qc, name_qc, match_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+  
+#Combined Data, All Departments
+all_gd_df_deceased <- rbind(dfw_gd_df_deceased, den_gd_df_deceased)
+
 #Create Desired DF Table
 gddf <- make_pd_df()[-1,] %>% 
   add_pd_case("Dallas Police Department", summary_row(dfw_gd_df_deceased)) %>% 
+  add_pd_case("Denver Police Department", summary_row(den_gd_df_deceased)) %>% 
+  add_pd_case("All Police Departments  ", summary_row(all_gd_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -287,7 +309,7 @@ save_stargazer("tables/table3.tex", as.data.frame(dsdf), header=FALSE, type='lat
 
 
 
-#Graph Data
+#Graph Data - Dallas
 wp <- dfw_wp_df_deceased %>%
   mutate(outcome = "Fatal") %>% 
   mutate(source = "Washington Post")
@@ -301,27 +323,89 @@ ds <- dfw_ds_df_all %>%
   mutate(source = "Deadspin") %>% 
   select(-outcome_qc) 
 
-df <- rbind(wp, gd, ds) %>% 
+gdf_dfw <- rbind(wp, gd, ds) %>% 
   mutate(outcome = factor(outcome),
          source = factor(source)) %>% 
   mutate(match_qc = factor(match_qc, 
       levels = c("no_match_police_missing", "no_match_crowd_missing", "yes_match"),
-      labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) 
+      labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) %>% 
+  mutate(pd = "Dallas Police Department")
 
 
-
-
-
-#Graph
-ggplot(df) +
+#Graph - Dallas
+ggplot(gdf_dfw) +
   geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
   facet_grid(.~outcome) +
   scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
   xlab("Crowd Source") +
   ylab("Proportion of Matches and Non Matches by Type") +
-  ggtitle(paste("Matched Reports of Officer Involved Shootings")) +
+  labs(title = "Matched Reports of Officer Involved Shootings",
+       subtitle = "Dallas Police Department, 2011 - 2017") +
+  theme(legend.position="bottom") +
+  theme(legend.title=element_blank()) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+ggsave("images/plt1.png", width = 8, height = 4.8)
+
+
+#Graph Data - Denver
+wp <- den_wp_df_deceased %>%
+  mutate(outcome = "Fatal") %>% 
+  mutate(source = "Washington Post")
+
+gd <- den_gd_df_deceased %>%
+  mutate(outcome = "Fatal") %>% 
+  mutate(source = "The Guardian")
+
+
+gdf_den <- rbind(wp, gd) %>% 
+  mutate(outcome = factor(outcome),
+         source = factor(source)) %>% 
+  mutate(match_qc = factor(match_qc, 
+                           levels = c("no_match_police_missing", "no_match_crowd_missing", "yes_match"),
+                           labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) %>% 
+  mutate(pd = "Denver Police Department")
+
+
+#Graph - Denver
+ggplot(gdf_den) +
+  geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
+  facet_grid(.~outcome) +
+  scale_fill_manual(values=c("#BF1200")) +
+  xlab("Crowd Source") +
+  ylab("Proportion of Matches and Non Matches by Type") +
+  labs(title = "Matched Reports of Officer Involved Shootings",
+       subtitle = "Denver Police Department, 2015 - 2016") +
   theme(legend.position="bottom") +
   theme(legend.title=element_blank()) + 
   theme(plot.title = element_text(hjust = 0.5))
-ggsave("images/plt1.png", width = 8, height = 4.8)
+ggsave("images/plt2.png", width = 8, height = 4.8)
 
+
+#Combined Graphs
+base_combine <- rbind(gdf_dfw, gdf_den)
+duplicate_all <- base_combine %>%
+  mutate(pd = "All Police Departments")
+gdf_combined <- rbind(base_combine, duplicate_all) %>% 
+  filter(outcome == "Fatal")
+
+
+by_pd <- ggplot(gdf_combined) +
+  geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
+  facet_grid(.~pd) +
+  scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
+  xlab("Crowd Source") +
+  ylab("Proportion of Matches and Non Matches by Type") +
+  labs(title = "Matched Reports of Officer Involved Shootings",
+       caption = "Dallas Police Department, 2011 - 2017\nDenver Police Department, 2015 - 2016") +
+  theme(legend.position="bottom") +
+  theme(legend.title=element_blank()) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+ggsave("images/plt3.png", width = 8, height = 4.8)
+
+
+
+#Additional way to combine graphs
+# ggarrange(by_pd, combined_pd,
+#           common.legend = TRUE, legend = "bottom") 
+# ggsave("images/combined.png", width = 8, height = 4.8)
