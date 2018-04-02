@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE, message=FALSE, warning=FALSE)
 
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=F}
 source("analysis.R")
 ```
 
@@ -23,9 +23,15 @@ Make Base Tables with analysis.R
 Currently Stargazer does not support making a caption above descriptive variables 
 (unlike regression output with dep.var.caption)
 
-Edit Tables with Line
+Edit Tables with Line (Tables 1-3)
 %insert mod
  &&& \multicolumn{3}{c}{Proportions (N)} \\ \cline{4-6} \\[-4.8ex]  \\
+\hline \\[-1.8ex] 
+%end mod
+
+Edit Tables with Line (Table 4)
+%insert mod
+ && \multicolumn{3}{c}{Proportions (N)} \\ \cline{3-5} \\[-4.8ex]  \\
 \hline \\[-1.8ex] 
 %end mod
 
@@ -45,19 +51,23 @@ $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 ```
 
 
-
-```{r, child='tables/table1.tex', eval=T}
+```{r, child='tables/table4edit.tex', eval=T}
 ```
 
 
-```{r, child='tables/table2.tex', eval=T}
+
+```{r, child='tables/table1.tex', eval=F}
 ```
 
 
-```{r, child='tables/table3.tex', eval=T}
+```{r, child='tables/table2.tex', eval=F}
 ```
 
-```{r, child='tables/table4.tex', eval=T}
+
+```{r, child='tables/table3.tex', eval=F}
+```
+
+```{r, child='tables/table4.tex', eval=F}
 ```
 
 
