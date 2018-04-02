@@ -46,15 +46,18 @@ $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 
 
 
-```{r, child='tables/table1.tex', eval=F}
+```{r, child='tables/table1.tex', eval=T}
 ```
 
 
-```{r, child='tables/table2.tex', eval=F}
+```{r, child='tables/table2.tex', eval=T}
 ```
 
 
-```{r, child='tables/table3.tex', eval=F}
+```{r, child='tables/table3.tex', eval=T}
+```
+
+```{r, child='tables/table4.tex', eval=T}
 ```
 
 
