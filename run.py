@@ -26,6 +26,7 @@ def clean_files():
 	rm_cleaned_files()
 	clean_dfw_police_ois()
 	clean_den_police_ois()
+	clean_jax_police_ois()
 	clean_wp_crowdsource()
 	#clean_gv_crowdsource()
 	clean_gd_crowdsource()
