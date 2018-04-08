@@ -28,7 +28,7 @@ police_ois_reports = {
 	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
 				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
 	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
-				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
+				['deceased', 'shot_alive', 'not_shot_alive', 'all', 'non_fatal']]
 }
 
 #All Reports

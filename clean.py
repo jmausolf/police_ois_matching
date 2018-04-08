@@ -160,6 +160,24 @@ def clean_den_police_ois():
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 
+def clean_jax_police_ois():
+    print("[*] cleaning police ois report...")
+    infile = glob('downloads/{}*{}*.csv'.format('jax', 'police'))[0].replace('.csv', '')
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = reverse_names('suspectname', df, delim=',')
+    df = ren('suspectname', 'name', df)
+    df = ren('incidentnbr', 'incidentnumber', df)
+    df = split_vars('incidentdate', 'date', 'time', ' ', df)
+    df = lower_var('suspectshot', df)
+    df = lower_var('fatal', df)
+    df['outcome'] = ''
+    df.loc[(df.fatal=='yes'), 'outcome'] = 'deceased'
+    df.loc[((df.fatal=='no') & (df.suspectshot=='yes')), 'outcome'] = 'shot_alive'
+    df.loc[((df.fatal=='no') & (df.suspectshot=='no')), 'outcome'] = 'not_shot_alive'  
+    print(df.head(10))
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
 
 
 #Clean crowdsource data frame

@@ -20,6 +20,41 @@ cdf <- read_csv(Sys.glob(crowd_glob))
 #Load Police Departments Functions
 #################################################
 
+
+jacksonville_pd <- function(pdf, start_date, end_date, ois_type){
+  
+  #clean types
+  df <- pdf
+  
+  if(missing(start_date)) start_date = '2015-07-01'
+  if(missing(end_date)) end_date = '2017-11-04'
+  if(missing(ois_type) || ois_type=='all'){
+    df <- df
+    type <- "All types of OIS"
+  } else if (ois_type=='non_fatal'){
+    df <- df %>% filter(outcome !='deceased')
+    type <- "All non-fatal types of OIS"
+  } else {
+    df <- df %>% filter(outcome == ois_type)
+    type <- ois_type
+  }
+  
+  df <- df %>%
+    mutate(police = TRUE) %>% 
+    mutate(date = mdy(date)) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
+    select(incidentnumber, date, name, everything()) %>%
+    rename(race_p = suspectrace,
+           gender_p = suspectgender)
+  
+  print(paste("Jacksonville Police:", start_date, "-", end_date, type, sep = " "))
+  return(df)
+}
+
+
+
+
 denver_pd <- function(pdf, start_date, end_date, ois_type){
   
   #clean types
@@ -27,8 +62,8 @@ denver_pd <- function(pdf, start_date, end_date, ois_type){
     mutate(outcome = fct_recode(casualty,
             "not_injured" = "not injured"))
   
-  if(missing(start_date)) start_date = '2015-01-01'
-  if(missing(end_date)) end_date = '2018-02-15'
+  if(missing(start_date)) start_date = '2015-01-08'
+  if(missing(end_date)) end_date = '2018-02-14'
   if(missing(ois_type) || ois_type=='all'){
     df <- df
     type <- "All types of OIS"
@@ -244,13 +279,15 @@ gun_violence_cs <- function(cdf, start_date, end_date, .city, .state){
 
 police_select <- function(pd, start_date, end_date, outcome='all'){
   if(pd == 'dfw') police <- dallas_pd(pdf, start_date, end_date, outcome)
-  if(pd == 'den') police <- denver_pd(pdf, start_date, end_date, outcome)  
+  if(pd == 'den') police <- denver_pd(pdf, start_date, end_date, outcome)
+  if(pd == 'jax') police <- jacksonville_pd(pdf, start_date, end_date, outcome)
   return(police)  
 }
 
 police_citystate <- function(pd){
   if(pd == 'dfw') citystate <- list("Dallas", "TX")
-  if(pd == 'den') citystate <- list("Denver", "CO")  
+  if(pd == 'den') citystate <- list("Denver", "CO")
+  if(pd == 'jax') citystate <- list("Jacksonville", "FL")
   return(citystate)  
 }
 
@@ -258,7 +295,7 @@ police_citystate <- function(pd){
 crowd_select <- function(cs, citystate){
   if(cs == 'wp') {
     start_date <- '2015-01-01' #earliest wp data
-    end_date <- '2017-05-01' #latest dfw is 04/2017
+    end_date <- '2018-05-01' #latest wp is ongoing
     crowd <- washington_post_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   if(cs == 'gd') {
@@ -272,8 +309,8 @@ crowd_select <- function(cs, citystate){
     crowd <- gun_violence_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   } 
   if(cs == 'ds') {
-    start_date <- '2011-01-01' #dallas data good, ds data many events
-    end_date <- '2015-01-01' #dallas data good, ds data many events
+    start_date <- '2011-01-01' #ds data many events
+    end_date <- '2015-01-01' #ds data many events
     crowd <- deadspin_cs(cdf, start_date, end_date, citystate[[1]], citystate[[2]])
   }
   
