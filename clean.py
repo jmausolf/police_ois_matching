@@ -29,6 +29,16 @@ def remove_punct(text):
     return re.sub(r'[]\\?!\"\'#$%&(){}+*/:;,._`|~\\[<=>@\\^-]', "", text)
 
 
+def rm_mid_initials_suffixes(var, df):
+
+    s = df[var].str.replace(r"[a-z]+\.", '')
+    s = s.str.replace(' jr', ' ').str.replace(' sr', ' ').str.strip()
+    s = s.str.replace(r"\s{2,}", ' ')
+    s.name = var
+    df = df.drop(var, axis=1).join(s)
+    return(df)
+
+
 def clean_cols(df):
     df.columns = [remove_punct(x) for x in df.columns]
     df.columns = [x.lower().replace(' ', '') for x in df.columns]
@@ -167,6 +177,7 @@ def clean_jax_police_ois():
     df = clean_cols(df)
     df = reverse_names('suspectname', df, delim=',')
     df = ren('suspectname', 'name', df)
+    df = rm_mid_initials_suffixes('name', df)
     df = ren('incidentnbr', 'incidentnumber', df)
     df = split_vars('incidentdate', 'date', 'time', ' ', df)
     df = lower_var('suspectshot', df)
@@ -178,7 +189,7 @@ def clean_jax_police_ois():
     print(df.head(10))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-
+#clean_jax_police_ois()
 
 #Clean crowdsource data frame
 def clean_wp_crowdsource():

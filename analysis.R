@@ -11,7 +11,7 @@ system('mkdir -p images')
 system('mkdir -p tables')
 
 #pd <- "dfw"
-pd_types <- c("dfw", "den")
+pd_types <- c("dfw", "den", "jax")
 ois_type <- "all"
 cs_types <- c("wp", "gd", "ds")
 
@@ -239,6 +239,41 @@ den_wp_df_deceased <- refine_matches(den_wp_df, "deceased") %>%
   mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
          no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+
+#WP Cleaning - Jacksonville PD
+jax_wp_df_deceased <- refine_matches(jax_wp_df, "deceased") %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match,
+         race_eth_qc = race_p,
+         armed_qc = suspectweapon) %>% 
+  #mutate(uof = if_else(is.na(mannerofdeath) & police == TRUE, "shot", mannerofdeath)) %>% 
+  #Clean up race_eth_qc
+  mutate(race_eth_qc = if_else(is.na(race_eth_qc) & crowd == TRUE, race_c, race_eth_qc)) %>%
+  mutate(race_eth_qc = fct_collapse(race_eth_qc,
+                                    "B" = c("B", "Black", "Dwayne B"),
+                                    "L" = c("L", "Hispanic/Latino"),
+                                    "W" = c("W", "Jr._Alton Anthony W"))) %>% 
+  #Clean up armed_qc
+  mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, armed, armed_qc)) %>%
+  select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, everything()) %>% 
+  #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
+  #filter(!(uof !=  "shot" & match != "yes_match")) %>% 
+  #Alter qc details for elias portillo case
+  #mutate(name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc)) %>%
+  #Alter qc details for alton folmar case
+  #mutate(name_qc = if_else(date == "2017-06-19" & name =="folmar", "alton folmar", name_qc),
+  #       match_qc = if_else(date_qc == "2017-06-19" & name_qc =="alton folmar", "yes_match", match_qc),
+  #       armed_qc = if_else(date_qc == "2017-06-19" & name_qc =="alton folmar", "Handgun", armed_qc)) %>% 
+  select(date_qc, name_qc, match_qc, race_eth_qc, race_p, race_c, armed_qc, armed, subjectweapon) %>% 
+  distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
 
 
 #Combined Data, All Departments
