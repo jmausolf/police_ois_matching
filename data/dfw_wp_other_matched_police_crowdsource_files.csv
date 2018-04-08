@@ -5,5 +5,7 @@ date,name,police,crowd,case,location,subjectweapon,officers,grandjurydisposition
 2015-09-21,gerardo ramirez,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,840,shot,gun,24,M,H,TX,True,attack,Not fleeing,False
 2016-01-19,gary wayne jones,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,1185,shot,gun,36,M,W,TX,False,attack,Car,False
 2016-10-19,anthony garcia,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,1978,shot,gun,24,M,NA,TX,False,other,Not fleeing,False
-2016-12-07,keelan charles murray,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2108,shot,physical attack,37,M,W,TX,False,undetermined,NA,False
+2016-12-07,keelan charles murray,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2108,shot,undetermined,37,M,W,TX,False,undetermined,NA,False
 2017-01-18,genevive dawes,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2231,shot,unarmed,21,F,W,TX,False,other,Car,True
+2017-06-19,alton folmar,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2681,shot,gun,28,M,W,TX,False,other,Not fleeing,False
+2018-02-27,marlon smith,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,3447,shot,gun,29,M,B,TX,False,attack,Not fleeing,False

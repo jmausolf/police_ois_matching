@@ -1,34 +1,34 @@
 date,name,police,crowd,case,location,subjectweapon,officers,grandjurydisposition,ag_url,summaryurl,geolocation,original,race_p,gender_p,outcome,det_outcome,city,timestamp,datesearched,county,agencyname,victimsage,gender_c,race_c,hispanicorlatinoorigin,shotsfired,hitorkilled,armedorunarmed,weapon,summary,sourcelink,nameofofficerorofficers,shootings,wastheshootingjustified,receiveupdates,other_name,emailaddress,twitter,dateofincident,resultspagenumber,unnamed26,state,state_name
-2011-03-24,steven sanchez,TRUE,NA,73571Y,230 S. Riverfront Boulevard,Handgun,"Christian, Lawrence  W/M; Offutt, Philip W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_73571Y.pdf,"230 S Riverfront Boulevard
+2011-03-24,steven sanchez,TRUE,NA,73571Y,230 S. Riverfront Boulevard,Handgun,"Christian, Lawrence  W/M; Offutt, Philip W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_73571Y.pdf,"230 S. Riverfront Boulevard
 Dallas, Texas
 (32.775714, -96.813213)","Sanchez, Steven L/M",L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-05-08,oscar spicer,TRUE,NA,117903Y,6417 Ridgecrest Road,Unarmed,"Mosher, Michael W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_117903Y.pdf,"6417 Ridgecrest Road
 Dallas, Texas
-(32.86643, -96.752763)","Spicer, Oscar B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.866439, -96.752819)","Spicer, Oscar B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-06-24,unknown,TRUE,NA,165748Y,7152 Fair Oaks Avenue,Vehicle,"Silvia, Katherine W/F; Dillard, Joseph W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_165748Y.pdf,"7152 Fair Oaks Avenue
 Dallas, Texas
-(32.873176, -96.75778)",Unknown B/M,B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2011-07-22,earl mcdonald,TRUE,NA,192694Y,2550 W. Redbird Lane,Unarmed,"Hayden, Kevin B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_192694Y.pdf,"2550 W Redbird Lane
+(32.873098, -96.757877)",Unknown B/M,B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2011-07-22,earl mcdonald,TRUE,NA,192694Y,2550 W. Redbird Lane,Unarmed,"Hayden, Kevin B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_192694Y.pdf,"2550 W. Redbird Lane
 Dallas, Texas
-(32.671139, -96.859781)","McDonald, Earl B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.671131, -96.859825)","McDonald, Earl B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-10-01,demarcus johnson,TRUE,NA,259768Y,2000 Commerce Street,Handgun,"Walls, Germaine B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_259768Y.pdf,"2000 Commerce Street
 Dallas, Texas
 (32.780995, -96.793979)","Johnson, Demarcus B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-11-09,reginald erwin,TRUE,NA,296242Y,2500 Wells Street,Handgun,"Hughes, Thomas W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_296242Y.pdf,"2500 Wells Street
 Dallas, Texas
-(32.739761, -96.754039)","Erwin, Reginald B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.739424, -96.754433)","Erwin, Reginald B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-11-16,unknown,TRUE,NA,302639Y,2900 Spruce Valley Lane,Unarmed,"Pacheco, Louis L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_302639Y.pdf,"2900 Spruce Valley Lane
 Dallas, Texas
 (32.713913, -96.876091)",Unknown L/M,L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-11-30,adolfo garcia,TRUE,NA,313491Y,3800 Dilido Street,Handgun,"Johnson, Michael B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_313491Y.pdf,"3800 Dilido Street
 Dallas, Texas
 (32.798557, -96.688211)","Garcia, Adolfo L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2011-12-05,stephen malone,TRUE,NA,318272Y,400 S. Houston Street,Handgun,"Martinez, Jesus L/M; Cox, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_318272Y.pdf,"400 S Houston Street
+2011-12-05,stephen malone,TRUE,NA,318272Y,400 S. Houston Street,Handgun,"Martinez, Jesus L/M; Cox, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_318272Y.pdf,"400 S. Houston Street
 Dallas, Texas
 (32.776672, -96.807184)","Malone, Stephen W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-12-10,dan eaglin,TRUE,NA,322771Y,12121 Audelia Road,Knife,"Zarate, Daniel W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_322771Y.pdf,"12121 Audelia Road
 Dallas, Texas
-(32.91251, -96.718124)","Eaglin, Dan B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.912511, -96.718124)","Eaglin, Dan B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2011-12-27,cedric stephens,TRUE,NA,336939Y,3700 Penelope Street,Handgun,"Ceraso, Gregory W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2011/OIS_2011_336939Y.pdf,"3700 Penelope Street
 Dallas, Texas
 (32.771356, -96.752516)","Stephens, Cedric B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -37,37 +37,37 @@ Dallas, Texas
 (32.908554, -96.71764)","Dixon, Derrick B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-02-02,randolph glenn,TRUE,NA,27878Z,2700 Medill Street,Unarmed,"Bunthavuth, Te A/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_27878Z.pdf,"2700 Medill Street
 Dallas, Texas
-(32.77543, -96.767489)","Glenn, Randolph B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.774874, -96.766843)","Glenn, Randolph B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-02-02,donnell collins,TRUE,NA,27843Z,2502 Grand Avenue,Handgun,"Shipp, Joshua W/M; Hughes, Thomas W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_27843Z.pdf,"2502 Grand Avenue
 Dallas, Texas
-(32.768928, -96.774809)","Collins, Donnell B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-02-13,william banks,TRUE,TRUE,36192Z,1180 N. St. Augustine Road,Handgun,"Deborst, Paul W/M ; Bacon, Mark W/M; Canete, Daniel A/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_36192Z.pdf,"1180 N St Augustine Road
+(32.768895, -96.77485)","Collins, Donnell B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2012-02-13,william banks,TRUE,TRUE,36192Z,1180 N. St. Augustine Road,Handgun,"Deborst, Paul W/M ; Bacon, Mark W/M; Canete, Daniel A/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_36192Z.pdf,"1180 N. St. Augustine Road
 Dallas, Texas
 (32.732343, -96.656941)","Banks, William B/M",B,M,deceased,deceased,Dallas,11/18/2015 16:04:54,2/13/2012,Dallas,Dallas Police Department,26,Male,Black or African American,Unknown,2,Killed,Armed,Unknown,A man believed to have robbed two people at gunpoint is dead after a chase and officer involved shooting in Dallas.,http://www.nbcdfw.com/news/local/Officer-Involved-Shooting-in-Dallas-139237443.html,NA,Yes,2,Add me!,Jennifer Galati,paigeifer@gmail.com,NA,2/13/2012,1.0,"No, I have an incident/more incidents to log.",TX,Texas
 2012-02-24,travis henderson,TRUE,NA,45802Z,17601 Marsh Lane,Handgun,"McDonnold, Samuel W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_45802Z.pdf,"17601 Marsh Lane
 Dallas, Texas
-(32.990759, -96.854966)","Henderson, Travis W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.990678, -96.854956)","Henderson, Travis W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-03-07,luis escalante,TRUE,NA,56177Z,3000 Lombardy Lane,Vehicle,"Rudloff, Roger W/M; Payovich, Timothy W/M; Crow, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_56177Z.pdf,"3000 Lombardy Lane
 Dallas, Texas
-(32.866402, -96.875284)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.866402, -96.875283)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-03-07,james cipirano,TRUE,NA,56177Z,3000 Lombardy Lane,Vehicle,"Rudloff, Roger W/M; Payovich, Timothy W/M; Crow, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_56177Z.pdf,"3000 Lombardy Lane
 Dallas, Texas
-(32.866402, -96.875284)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.866402, -96.875283)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-03-07,luis escalante,TRUE,NA,56177Z,3000 Lombardy Lane,Vehicle,"Rudloff, Roger W/M; Payovich, Timothy W/M; Crow, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_56177Z.pdf,"3000 Lombardy Lane
 Dallas, Texas
-(32.866402, -96.875284)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.866402, -96.875283)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-03-07,james cipirano,TRUE,NA,56177Z,3000 Lombardy Lane,Vehicle,"Rudloff, Roger W/M; Payovich, Timothy W/M; Crow, Jason W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_56177Z.pdf,"3000 Lombardy Lane
 Dallas, Texas
-(32.866402, -96.875284)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-03-15,see,TRUE,NA,62683Z,400 S. Llewellyn Avenue,Unarmed,"Nelson, Saint W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_62683Z.pdf,"400 S Llewellyn Avenue
+(32.866402, -96.875283)","Escalante, Luis  L/M; Cipirano, James L/M",L,M,deceased,1 deceased 1 injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2012-03-15,see,TRUE,NA,62683Z,400 S. Llewellyn Avenue,Unarmed,"Nelson, Saint W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_62683Z.pdf,"400 S. Llewellyn Avenue
 Dallas, Texas
 (32.741997, -96.832146)",See Summary,Summary,NA,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-05-22,andrais smith,TRUE,NA,125333Z,5900 Stretch Drive,Handgun,"Banes, Matthew W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_125333Z.pdf,"5900 Stretch Drive
 Dallas, Texas
-(32.73341, -96.92265)","Smith, Andrais B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.733521, -96.922808)","Smith, Andrais B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-05-26,terry wilson,TRUE,NA,128833Z,3373 Lombardy Lane,Vehicle,"Todd, James W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_128833Z.pdf,"3373 Lombardy Lane
 Dallas, Texas
-(32.866454, -96.86715)","Wilson, Terry B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.866454, -96.867149)","Wilson, Terry B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-05-26,unknown,TRUE,NA,129379Z,2000 Campfire Circle,Vehicle,"Edwards, Marilyn B/F",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_129379Z.pdf,"2000 Campfire Circle
 Dallas, Texas
 (32.682796, -96.855363)",Unknown L/M; Unknown L/F,L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -82,7 +82,7 @@ Dallas, Texas
 (32.682796, -96.855363)",Unknown L/M; Unknown L/F,L,F,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-05-27,richard latour,TRUE,NA,130254Z,7129 Tabor Drive,Handgun,"McGuire, John W/M; Adams, Joseph W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_130254Z.pdf,"7129 Tabor Drive
 Dallas, Texas
-(32.877259, -96.737028)","LaTour, Richard W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.877255, -96.737003)","LaTour, Richard W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-05-29,ismail abdulkarim,TRUE,NA,132098Z,18220 Dallas Parkway,Vehicle,"Spears, Dennis Jr.  W/M; St. Clair, James Jr. B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_132098Z.pdf,"18220 Dallas Parkway
 Dallas, Texas
 (32.998567, -96.829037)","Abdulkarim, Ismail W/M",W,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -91,8 +91,8 @@ Dallas, Texas
 (32.927507, -96.782904)","Johnson, Camilia B/F",B,F,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-06-02,john husband,TRUE,NA,135680Z,3600 Folklore Trail,Handgun,"Limbaugh, Leland L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_135680Z.pdf,"3600 Folklore Trail
 Dallas, Texas
-(32.698661, -96.84111)","Husband, John B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-06-24,kendrick mcdaniel,TRUE,TRUE,155523Z,4345 W. Camp Wisdom Road,Handgun,"Howard, Cortenay B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_155523Z.pdf,"4345 W Camp Wisdom Road
+(32.698502, -96.840794)","Husband, John B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2012-06-24,kendrick mcdaniel,TRUE,TRUE,155523Z,4345 W. Camp Wisdom Road,Handgun,"Howard, Cortenay B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_155523Z.pdf,"4345 W. Camp Wisdom Road
 Dallas, Texas
 (32.662027, -96.890533)","McDaniel, Kendrick B/M",B,M,deceased,deceased,Dallas,12/7/2015 15:13:17,6/25/2012,NA,Dallas Police Department,18,Male,Black or African American,Unknown,2,Killed,Armed,Handgun,"ON JUNE 24, 2012 AT ABOUT 10:00 A.M., COMP, WHO IS A DALLAS POLICE OFFICER IN FULL
 DALLAS POLICE UNIFORM WENT TO 4345 WEST CAMP WISDOM AT THE TACO BELL TO GET SOME
@@ -112,7 +112,7 @@ OBSERVED COMP HOLDING THREE
 (3) SUSPECTS AT GUNPOINT. - A/P WAS TRANSPORTED TO METHODIST CENTRAL HOSPITAL BY
 DFR 749. - CAPERS DET DAVISON 4267 WAS NOTIFIED AND CAME OUT TO THE OFFENSE
 LOCATION. - THE A/CS WERE TRANSPORTED TO CAPERS TO BE INTERVIEWED.",http://www.dallasobserver.com/news/dallas-police-involved-in-yet-another-shooting-this-one-at-taco-bell-7134418,Cortenay Howard,Yes,4,No thanks.,NA,NA,NA,6/24/2012,1.0,This is the first incident I am logging.,TX,Texas
-2012-07-15,daniel cortez,TRUE,NA,174404Z,200 S. Pearl Street,Handgun,"Vanderslice, Christopher W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_174404Z.pdf,"200 S Pearl Street
+2012-07-15,daniel cortez,TRUE,NA,174404Z,200 S. Pearl Street,Handgun,"Vanderslice, Christopher W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_174404Z.pdf,"200 S. Pearl Street
 Dallas, Texas
 (32.781368, -96.79226)","Cortez, Daniel L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-07-24,james harper,TRUE,NA,183313Z,3803 Mural Lane,Unarmed,"Rowden, Brian W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_183313Z.pdf,"3803 Mural Lane
@@ -120,31 +120,31 @@ Dallas, Texas
 (32.763694, -96.733512)","Harper, James B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-08-03,NA,TRUE,NA,191609Z,3851 Casa Del Sol Lane,Handgun,"Rhodes, Phillip W/M; Hubert, Kyle W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_191609Z.pdf,"3851 Casa Del Sol Lane
 Dallas, Texas
-(32.851542, -96.654635)","Gabaldon, Robeto L/M",Gabaldon_Robeto L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-08-06,antonio johnson,TRUE,NA,194377Z,12670 E. Northwest Highway,Vehicle,"Waskom, David W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_194377Z.pdf,"12670 E Northwest Highway
+(32.851544, -96.654637)","Gabaldon, Robeto L/M",Gabaldon_Robeto L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2012-08-06,antonio johnson,TRUE,NA,194377Z,12670 E. Northwest Highway,Vehicle,"Waskom, David W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_194377Z.pdf,"12670 E. Northwest Highway
 Dallas, Texas
-(32.864019, -96.662901)","Johnson, Antonio B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.864015, -96.663252)","Johnson, Antonio B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-10-27,devoncey kelly,TRUE,NA,267651Z,3716 Spring Avenue,Unarmed,"Shipp, Joshua W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_267651Z.pdf,"3716 Spring Avenue
 Dallas, Texas
-(32.769103, -96.748631)","Kelly, Devoncey B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-10-28,justen hill,TRUE,NA,268942Z,800 N. Winnetka Avenue,Handgun,"Khan, Arif A/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_268942Z.pdf,"800 N Winnetka Avenue
+(32.769068, -96.74867)","Kelly, Devoncey B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2012-10-28,justen hill,TRUE,NA,268942Z,800 N. Winnetka Avenue,Handgun,"Khan, Arif A/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_268942Z.pdf,"800 N. Winnetka Avenue
 Dallas, Texas
 (32.752379, -96.840285)","Hill, Justen W/M",W,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-11-25,joshua lyons,TRUE,NA,291975Z,8400 Forney Road,Unarmed,"Ledezma, Bernadino L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_291975Z.pdf,"8400 Forney Road
 Dallas, Texas
-(32.777894, -96.675429)","Lyons, Joshua B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.777909, -96.676113)","Lyons, Joshua B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2012-12-06,robert williams,TRUE,NA,302115Z,9500 Castlefield Drive,Shotgun,"Bass, Davey W/M; Gomez, Antonio L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_302115Z.pdf,"9500 Castlefield Drive
 Dallas, Texas
 (32.752272, -96.660059)","Williams, Robert B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2012-12-14,NA,TRUE,NA,308643Z,4542 W. Kiest Boulevard,Handgun,"Foster, Daniel W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_308643Z.pdf,"4542 W Kiest Boulevard
+2012-12-14,NA,TRUE,NA,308643Z,4542 W. Kiest Boulevard,Handgun,"Foster, Daniel W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2012/OIS_2012_308643Z.pdf,"4542 W. Kiest Boulevard
 Dallas, Texas
-(32.705618, -96.896632)","Ellis, Lenny B/M",Ellis_Lenny B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-01-03,unknown,TRUE,NA,2315A,1515 S. Buckner Boulevard,Vehicle,"Ned, Charles B/M; Phelps, Farie B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_2315A.pdf,"1515 S Buckner Boulevard
+(32.705618, -96.896629)","Ellis, Lenny B/M",Ellis_Lenny B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013-01-03,unknown,TRUE,NA,2315A,1515 S. Buckner Boulevard,Vehicle,"Ned, Charles B/M; Phelps, Farie B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_2315A.pdf,"1515 S. Buckner Boulevard
 Dallas, Texas
-(32.738639, -96.682972)",Unknown L/M,L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.738319, -96.682973)",Unknown L/M,L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-01-07,derrick glover,TRUE,NA,5567A,4322 Fernwood Avenue,Handgun,"Palk, Devon W/M; Dorward, Christopher W/M; Sharkey, Johnathan L/M; Nilsen, Christopher W/M; Banes, Matthew W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_5567A.pdf,"4322 Fernwood Avenue
 Dallas, Texas
-(32.694357, -96.798039)","Glover, Derrick B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.694391, -96.798056)","Glover, Derrick B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-02-08,rawlison stoney,TRUE,NA,32587A,6500 Skillman Street,Shotgun,"Womack, Darryl W/M; Russell, Daniel W/M; Hurst, Glen W/M; Hales, Ryan W/M; McCluskey, William W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_32587A.pdf,"6500 Skillman Street
 Dallas, Texas
 (32.865103, -96.743538)","Stoney, Rawlison W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -153,13 +153,13 @@ Dallas, Texas
 ","Curry, James L/M",L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-03-10,allen clinton,TRUE,NA,56628A,3303 Southern Oaks Boulevard,Hands,"Staller, Clark W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_56628A.pdf,"3303 Southern Oaks Boulevard
 Dallas, Texas
-(32.718454, -96.773914)","Clinton, Allen B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-03-14,tyrique johnson,TRUE,NA,60045A,2208 W. Northwest Highway,Handgun,"Timms, Christopher B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_60045A.pdf,"2208 W Northwest Highway
+(32.718457, -96.773913)","Clinton, Allen B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013-03-14,tyrique johnson,TRUE,NA,60045A,2208 W. Northwest Highway,Handgun,"Timms, Christopher B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_60045A.pdf,"2208 W. Northwest Highway
 Dallas, Texas
-(32.8641, -96.898998)","Johnson, Tyrique B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.864076, -96.898926)","Johnson, Tyrique B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-03-15,christopher jones,TRUE,NA,60944A,9147 Skillman Street,BB Gun,"Tholl, Kyle W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_60944A.pdf,"9147 Skillman Street
 Dallas, Texas
-(32.902101, -96.717073)","Jones, Christopher B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.902178, -96.717065)","Jones, Christopher B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-04-06,eduardo solis,TRUE,NA,84022A,534 Sunset Avenue,Vehicle,"Ramirez, Ricardo L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_84022A.pdf,"534 Sunset Avenue
 Dallas, Texas
 (32.744151, -96.831751)","Solis, Eduardo L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -171,17 +171,17 @@ Dallas, Texas
 (32.865243, -96.858268)","Acosta-Serrano, Jose L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-06-19,darron robinson,TRUE,NA,154621A,8943 Senate Street,Handgun,"Freeman, Eric W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_154621A.pdf,"8943 Senate Street
 Dallas, Texas
-(32.800166, -96.689744)","Robinson, Darron B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-06-26,edward anderson,TRUE,NA,161783A,2310 Martin Luther King Jr. Blvd,Knife,"Bowling, Joseph W/M; Salazar, Samantha L/F",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_161783A.pdf,"2310 Martin Luther King Jr Blvd
+(32.800173, -96.689689)","Robinson, Darron B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013-06-26,edward anderson,TRUE,NA,161783A,2310 Martin Luther King Jr. Blvd,Knife,"Bowling, Joseph W/M; Salazar, Samantha L/F",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_161783A.pdf,"2310 Martin Luther King Jr. Blvd
 Dallas, Texas
-(32.764725, -96.773437)","Anderson, Edward Jr. B/M",Jr. B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.764686, -96.77348)","Anderson, Edward Jr. B/M",Jr. B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-07-17,gerardo pinedo,TRUE,NA,182199A,1639 Conner Drive,Unarmed,"Robinson, Jamal B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_182199A.pdf,"1639 Conner Drive
 Dallas, Texas
 (32.740734, -96.680953)","Pinedo, Gerardo Jr. L/M",Jr. L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-07-31,unknown,TRUE,NA,194631A,4600 Haverwood Lane,Handgun,"Bailey, Berkeley W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_194631A.pdf,"4600 Haverwood Lane
 Dallas, Texas
 (33.00733, -96.831946)",Unknown L/M,L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-09-06,domingo soto,TRUE,NA,229702A,8000 C. F. Hawn Freeway,Handgun,"Merta, Matthew W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_229702A.pdf,"8000 C F Hawn Freeway
+2013-09-06,domingo soto,TRUE,NA,229702A,8000 C. F. Hawn Freeway,Handgun,"Merta, Matthew W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_229702A.pdf,"8000 C. F. Hawn Freeway
 Dallas, Texas
 (32.715279, -96.685849)","Soto, Domingo L/M",L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-09-14,bryan branch,TRUE,NA,236584A,2825 Oak Lawn Avenue,Handgun,"Barrett, Russell W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_236584A.pdf,"2825 Oak Lawn Avenue
@@ -189,35 +189,35 @@ Dallas, Texas
 (32.807607, -96.810215)","Branch, Bryan B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-09-26,william hall,TRUE,NA,248051A,10316 Sandra Lynn Drive,Handgun,"Everett, Alexander L/M; Summers, Daniel W/M; McDaniel, Julian B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_248051A.pdf,"10316 Sandra Lynn Drive
 Dallas, Texas
-(32.838091, -96.656448)","Hall, William W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.838118, -96.656481)","Hall, William W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-10-02,david blair,TRUE,NA,253345A,1339 Morrell Avenue,Handgun,"Cantu, Richard L/M; Aquino, Jesse L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_253345A.pdf,"1339 Morrell Avenue
 Dallas, Texas
 (32.739141, -96.803885)","Blair, David B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-10-11,noe montiel,TRUE,NA,260599A,222 N. Barnett Avenue,Unarmed,"Simonds, Brian B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_260599A.pdf,"222 N Barnett Avenue
+2013-10-11,noe montiel,TRUE,NA,260599A,222 N. Barnett Avenue,Unarmed,"Simonds, Brian B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_260599A.pdf,"222 N. Barnett Avenue
 Dallas, Texas
 (32.747219, -96.871408)","Montiel, Noe L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-10-14,bobby bennett,TRUE,NA,263673A,9452 Crimnson Court,Knife,"Spencer, Cardan B/M",True Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_263673A.pdf,"9452 Crimnson Court
 Dallas, Texas
-(32.669013, -96.662659)","Bennett, Bobby W/M",W,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2013-11-01,salvador munoz,TRUE,NA,280218A,1524 E. Missouri Avenue,Taser,"Ross, John B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_280218A.pdf,"1524 E Missouri Avenue
+(32.669055, -96.662586)","Bennett, Bobby W/M",W,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013-11-01,salvador munoz,TRUE,NA,280218A,1524 E. Missouri Avenue,Taser,"Ross, John B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_280218A.pdf,"1524 E. Missouri Avenue
 Dallas, Texas
-(32.717978, -96.802025)","Munoz, Salvador L/M",L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.717978, -96.802026)","Munoz, Salvador L/M",L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2013-12-09,kelvion walker,TRUE,TRUE,311475A,9524 Military Parkway,Unarmed,"Wilburn, Amy W/F",True Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2013/OIS_2013_311475A.pdf,"9524 Military Parkway
 Dallas, Texas
 (32.768313, -96.657518)","Walker, Kelvion B/M",B,M,injured,injured,Dallas,1/29/2015 19:07:14,1/10/2014,Dallas Conty,Dallas Police,19,Male,Black or African American,Not of Hispanic or Latino origin,NA,Hit,Unarmed,Unarmed,Mr. Walker was stopped as part of a carjacking investigation. The officer shot and injured him.,http://dfw.cbslocal.com/2014/01/10/police-unions-take-opposite-sides-in-officer-involved-shooting/,Senior Corporal Amy Wilburn,Yes,1,I've already requested to receive updates.,NA,NA,NA,12/9/2013,1.0,"No, I have an incident/more incidents to log.",TX,Texas
 2014-01-02,michael schmidt,TRUE,TRUE,912B,2728 McKinnon Street,Handgun,"Ortiz, Manuel L/M; Wilcox, Robert W/M; Scoggins, Jason W/M; Evangelista, Derreck W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_912B.pdf,"2728 McKinnon Street
 Dallas, Texas
-(32.7943, -96.80728)","Schmidt, Michael W/M",W,M,deceased,deceased,Dallas,11/19/2015 0:10:19,1/2/2014,NA,Dallas Police Department,47,Male,White,Not of Hispanic or Latino origin,NA,Killed,Armed,Handgun,A 47 year old attorney reported that there was a burglar in his apartment. He told the employee at his condo complex that there was a burglar and the employee called the police. Schmidt started firing at officers when they arrived. No officers were injured. Schmidt was killed.,http://www.nbcdfw.com/news/local/Dallas-Police-Fatally-Shoot-Armed-Man-in-Condominium-Lobby-238431761.html,NA,Yes,NA,No thanks.,NA,NA,NA,1/2/2014,1.0,This is the first incident I am logging.,TX,Texas
+(32.794326, -96.807311)","Schmidt, Michael W/M",W,M,deceased,deceased,Dallas,11/19/2015 0:10:19,1/2/2014,NA,Dallas Police Department,47,Male,White,Not of Hispanic or Latino origin,NA,Killed,Armed,Handgun,A 47 year old attorney reported that there was a burglar in his apartment. He told the employee at his condo complex that there was a burglar and the employee called the police. Schmidt started firing at officers when they arrived. No officers were injured. Schmidt was killed.,http://www.nbcdfw.com/news/local/Dallas-Police-Fatally-Shoot-Armed-Man-in-Condominium-Lobby-238431761.html,NA,Yes,NA,No thanks.,NA,NA,NA,1/2/2014,1.0,This is the first incident I am logging.,TX,Texas
 2014-02-15,rakeem perkins,TRUE,NA,37894B,13030 Audelia Road,Handgun,"Burns, Joshua W/M; Varillas, Salvador L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_37894B.pdf,"13030 Audelia Road
 Dallas, Texas
 (32.924254, -96.71798)","Perkins, Rakeem B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-02-19,rene hernandez,TRUE,NA,40931B,4200 Elmira Street,Handgun,"Casey, John W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_40931B.pdf,"4200 Elmira Street
 Dallas, Texas
 (32.777606, -96.713337)","Hernandez, Rene L/M",L,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-04-04,codi bullard,TRUE,NA,79223B,1221 S. Lamar Street,Knife,"Moore, Jacqueline W/F",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_79223B.pdf,"1221 S Lamar Street
+2014-04-04,codi bullard,TRUE,NA,79223B,1221 S. Lamar Street,Knife,"Moore, Jacqueline W/F",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_79223B.pdf,"1221 S. Lamar Street
 Dallas, Texas
-(32.768672, -96.796936)","Bullard, Codi W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-04-21,michael mayo,TRUE,NA,94757B,3314 W. Camp Wisdom Road,Handgun,"Hamilton, Robert A/M; Milligan, Marshall W/M; Huante, Gerardo L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_94757B.pdf,"3314 W Camp Wisdom Road
+(32.768618, -96.796861)","Bullard, Codi W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014-04-21,michael mayo,TRUE,NA,94757B,3314 W. Camp Wisdom Road,Handgun,"Hamilton, Robert A/M; Milligan, Marshall W/M; Huante, Gerardo L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_94757B.pdf,"3314 W. Camp Wisdom Road
 Dallas, Texas
 (32.662542, -96.875551)","Mayo, Michael W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-05-24,richard calderon,TRUE,NA,125236B,6048 Belmont Avenue,Handgun,"Bryant, Derek B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_125236B.pdf,"6048 Belmont Avenue
@@ -225,40 +225,40 @@ Dallas, Texas
 (32.817316, -96.761852)","Calderon, Richard L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-06-14,jacquinn mcclinton,TRUE,NA,143473-2014,208 Glencairn Drive,Screwdriver,"Mondy, Michael B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_143473-2014.pdf,"208 Glencairn Drive
 Dallas, Texas
-(32.657723, -96.825258)","McClinton, Jacquinn B/F",B,F,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.657684, -96.825264)","McClinton, Jacquinn B/F",B,F,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-06-14,jason harrison,TRUE,NA,143229-2014,8124 Forest Lane,Vehicle,"Rogers, John W/M; Hutchins, Andrew W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_143229-2014.pdf,"8124 Forest Lane
 Dallas, Texas
 (32.909156, -96.763977)","Harrison, Jason B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-06-26,rodney hodge,TRUE,NA,154184-2014,3000 Lantana Lane,Handgun,"Tena, Edward L/M; Bowling, Joseph W/M; Sansom, Dameon B/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_154184-2014.pdf,"3000 Lantana Lane
 Dallas, Texas
-(32.695534, -96.764151)","Hodge, Rodney B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-07-10,trevino everardo,TRUE,NA,166059-2014,500 S. Llewellyn Avenue,Handgun,"Berry, Jeffrey W/M; Arrivillaga, Daniel L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_166059-2014.pdf,"500 S Llewellyn Avenue
+(32.695679, -96.76377)","Hodge, Rodney B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014-07-10,trevino everardo,TRUE,NA,166059-2014,500 S. Llewellyn Avenue,Handgun,"Berry, Jeffrey W/M; Arrivillaga, Daniel L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_166059-2014.pdf,"500 S. Llewellyn Avenue
 Dallas, Texas
 (32.741149, -96.832159)","Everardo, Trevino L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-08-10,andrew gaynier,TRUE,NA,192024-2014,400 S. Rosemont Avenue,Unarmed,"Hudson, Antonio L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_192024-2014.pdf,"400 S Rosemont Avenue
+2014-08-10,andrew gaynier,TRUE,NA,192024-2014,400 S. Rosemont Avenue,Unarmed,"Hudson, Antonio L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_192024-2014.pdf,"400 S. Rosemont Avenue
 Dallas, Texas
 (32.741691, -96.847878)","Gaynier, Andrew W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-08-11,jose gonzalez,TRUE,NA,192550-2014,3647 Espanola Drive,Knife,"Gladden, Kevin W/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_192550-2014.pdf,"3647 Espanola Drive
 Dallas, Texas
 (32.868365, -96.856854)","Gonzalez, Jose L/M",L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-08-20,terence groessel,TRUE,NA,200830-2014,7921 L.B.J. Freeway,Handgun,"Jankowski, Jay W/M; Herczeg, Michelle W/F",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_200830-2014.pdf,"7921 L B J Freeway
+2014-08-20,terence groessel,TRUE,NA,200830-2014,7921 L.B.J. Freeway,Handgun,"Jankowski, Jay W/M; Herczeg, Michelle W/F",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_200830-2014.pdf,"7921 L.B.J. Freeway
 Dallas, Texas
-(32.924845, -96.770077)","Groessel, Terence W/M",W,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+","Groessel, Terence W/M",W,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-08-21,ladarius campbell,TRUE,NA,201507-2014,4800 Veterans Drive,Handgun,"Martinez, Ruben Jr. L/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_201507-2014.pdf,"4800 Veterans Drive
 Dallas, Texas
-(32.692857, -96.781851)","Campbell, Ladarius B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.692883, -96.781869)","Campbell, Ladarius B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-08-25,steven douglas,TRUE,NA,204701-2014,9000 Lake June Road,Handgun,"Moreno, Rogelio L/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_204701-2014.pdf,"9000 Lake June Road
 Dallas, Texas
 (32.734192, -96.665266)","Douglas, Steven B/M",B,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-08-27,sergio ramos,TRUE,NA,206124-2014,13739 N. Central Expressway,Handgun,"Gamez, Jose L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_206124-2014.pdf,"13739 N Central Expressway
+2014-08-27,sergio ramos,TRUE,NA,206124-2014,13739 N. Central Expressway,Handgun,"Gamez, Jose L/M",No Bill,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_206124-2014.pdf,"13739 N. Central Expressway
 Dallas, Texas
 (32.935786, -96.75182)","Ramos, Sergio L/M",L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-2014-09-07,joel allen,TRUE,NA,216145-2014,1550 Empire Central,Vehicle,"DeWilde, Michael W/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_216145-2014.pdf,"1550 Empire
-Central Dallas, Texas
-(32.826574, -96.864537)","Allen, Joel W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014-09-07,joel allen,TRUE,NA,216145-2014,1550 Empire Central,Vehicle,"DeWilde, Michael W/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_216145-2014.pdf,"1550 Empire Central
+Dallas, Texas
+","Allen, Joel W/M",W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-10-01,jimmy cupples,TRUE,NA,236112-2014,4807 Maple Avenue,Toy Handgun,"Walls, Ryan W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_236112-2014.pdf,"4807 Maple Avenue
 Dallas, Texas
-(32.814824, -96.826787)","Cupples, Jimmy Jr. W/M",Jr. W,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+(32.814787, -96.826702)","Cupples, Jimmy Jr. W/M",Jr. W,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2014-10-22,gregory mcgee,TRUE,NA,254101-2014,9770 Forest Lane,Unarmed,"Johnson, Michael B/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2014/OIS_2014_254101-2014.pdf,"9770 Forest Lane
 Dallas, Texas
 (32.909415, -96.718739)","McGee, Gregory B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

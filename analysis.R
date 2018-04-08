@@ -179,14 +179,19 @@ dfw_wp_df_deceased <- refine_matches(dfw_wp_df, "deceased") %>%
   mutate(race_eth_qc = if_else(is.na(race_eth_qc) & crowd == TRUE, race_c, race_eth_qc)) %>%
   mutate(race_eth_qc = fct_collapse(race_eth_qc,
                                     "B" = c("B", "Black", "Dwayne B"),
-                                    "L" = c("L", "Hispanic/Latino"))) %>% 
+                                    "L" = c("L", "Hispanic/Latino"),
+                                    "W" = c("W", "Jr._Alton Anthony W"))) %>% 
   #Clean up armed_qc
   mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, armed, armed_qc)) %>%
-    select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, uof, everything()) %>% 
-    #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
-    filter(!(uof !=  "shot" & match != "yes_match")) %>% 
-    #Alter qc details for elias portillo case
-    mutate(name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc)) %>% 
+  select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, uof, everything()) %>% 
+  #Missing police files could be out of jurisdiction, but WP does not have the pd responsible
+  filter(!(uof !=  "shot" & match != "yes_match")) %>% 
+  #Alter qc details for elias portillo case
+  mutate(name_qc = if_else(date == "2016-08-25" & name =="unknown", "elias portillo", name_qc)) %>%
+  #Alter qc details for alton folmar case
+  mutate(name_qc = if_else(date == "2017-06-19" & name =="folmar", "alton folmar", name_qc),
+         match_qc = if_else(date_qc == "2017-06-19" & name_qc =="alton folmar", "yes_match", match_qc),
+         armed_qc = if_else(date_qc == "2017-06-19" & name_qc =="alton folmar", "Handgun", armed_qc)) %>% 
   select(date_qc, name_qc, match_qc, race_eth_qc, race_p, race_c, armed_qc, armed, subjectweapon) %>% 
   distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc) %>% 
     mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
@@ -457,6 +462,7 @@ errors_table <- make_var_df()[-1,] %>%
   add_pd_case("White", summary_row_var_val(dem_errors, "race_eth_qc", "W")) %>%
   add_pd_case("Black", summary_row_var_val(dem_errors, "race_eth_qc", "B")) %>% 
   add_pd_case("Hispanic/Latino", summary_row_var_val(dem_errors, "race_eth_qc", "L")) %>%
+  add_pd_case("Asian", summary_row_var_val(dem_errors, "race_eth_qc", "A")) %>%
   add_pd_case("Native American", summary_row_var_val(dem_errors, "race_eth_qc", "N")) %>% 
   add_pd_case("Unarmed", summary_row_var_val(dem_errors, "armed_qc", "Unarmed"))  %>%
   add_pd_case("Armed", summary_row_var_val(dem_errors, "armed_qc", "Unarmed", negate = TRUE))  %>% 
@@ -543,7 +549,7 @@ gdf_den <- rbind(wp, gd) %>%
 ggplot(gdf_den) +
   geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
   facet_grid(.~outcome) +
-  scale_fill_manual(values=c("#BF1200")) +
+  scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
   xlab("Crowd Source") +
   ylab("Proportion of Matches and Non Matches by Type") +
   labs(title = "Matched Reports of Officer Involved Shootings",
