@@ -2,6 +2,9 @@ from download import *
 from clean import *
 import argparse
 import re
+import time
+import sys
+
 
 
 
@@ -28,7 +31,7 @@ def clean_files():
 	clean_den_police_ois()
 	clean_jax_police_ois()
 	clean_wp_crowdsource()
-	#clean_gv_crowdsource()
+	clean_gv_crowdsource()
 	clean_gd_crowdsource()
 	clean_ds_crowdsource()
 
@@ -63,6 +66,21 @@ def run_tasks(d, c, m, profiles):
 		else:
 			pass 
 
+def check_requested_profiles(profiles):
+	while True:
+		print("[*] you have requested the following profiles:")
+		print(profiles)
+
+
+		selection = input("[*] to confirm, enter [y], to deny enter [n]: ")
+		s = str(selection)
+
+		if s == 'y':
+			print("[*] initializing requested tasks for specified profile...")
+			return
+		else:
+			print("[*] exiting program...")
+			sys.exit()
 
 
 if __name__=='__main__':
@@ -70,13 +88,20 @@ if __name__=='__main__':
 	parser.add_argument("-d", "--download", default=False, type=bool, help="download files")
 	parser.add_argument("-c", "--clean", default=False, type=bool, help="clean files")
 	parser.add_argument("-m", "--merge", default=False, type=bool, help="merge files")
+	parser.add_argument("-v", "--verbose", default=False, type=bool, help="profiles")
 	args = parser.parse_args()
 
 	if not (args.download or args.clean or args.merge):
 	    parser.error('No action requested, add --download True or --clean True or --merge True')
 
 	#Load Profiles and Run
-	profiles = make_report_profiles(police_ois_reports, crowdsource_ois_reports)
+	if args.verbose is True:
+		profiles = make_report_profiles(police_ois_reports_verbose, crowdsource_ois_reports)
+		check_requested_profiles(profiles)
+	else:
+		profiles = make_report_profiles(police_ois_reports, crowdsource_ois_reports)
+		check_requested_profiles(profiles)
+
 	print("[*] Running requested tasks...")
 	run_tasks(args.download, args.clean, args.merge, profiles)
 	print("[*] Done.")

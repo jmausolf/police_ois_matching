@@ -24,12 +24,24 @@ crowdsource_ois_reports = {
 #Police OIS Reports
 police_ois_reports = {
 	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
+				['all']],
+	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
+				['all']],
+	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
+				['all']]
+}
+
+
+#Police OIS Reports: Verbose - Make a Spreadsheet for Each Type
+police_ois_reports_verbose = {
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
 				['deceased', 'injured', 'other', 'shootmiss', 'all', 'non_fatal']],
 	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
 				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
 	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
 				['deceased', 'shot_alive', 'not_shot_alive', 'all', 'non_fatal']]
 }
+
 
 #All Reports
 ois_reports = [crowdsource_ois_reports, police_ois_reports]

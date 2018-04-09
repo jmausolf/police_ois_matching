@@ -1,3 +1,3 @@
-pd <- "den"
-ois_type <- "non_fatal"
-cs <- "gv"
+pd <- "dfw"
+ois_type <- "all"
+cs <- "gd"
