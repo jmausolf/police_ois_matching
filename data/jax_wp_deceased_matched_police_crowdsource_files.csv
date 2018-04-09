@@ -1,0 +1,33 @@
+date,name,police,crowd,incidentnumber,originalincidenttype,rtrcasenbr,streetnbr,streetname,streettype,streetdirection,apartmentnbr,city.x,stateprovince,postalcode,zone,subsector,incidentlocation,officername,officerrace,officergender,officerage,officertenure,race_p,gender_p,suspectage,suspectweapon,uofwithinpolicy,furthersituationaltrainingrequired,referredtoia,rtrcasestatus,time,suspectshot,fatal,outcome,city.y,id,mannerofdeath,armed,age,gender_c,race_c,state,signsofmentalillness,threatlevel,flee,bodycamera
+2015-07-02,icto larosa,TRUE,NA,2015-0450679,Narcotics Investigation,RTR15-00014,3605,Drexel,St,NA,NA,Jacksonville,Florida,32207,3,G1,"3605 Drexel St
+Jacksonville, Florida 32207",Undercover,W,M,35,9,B,M,23,Vehicle,Yes,No,No,Case Completed,00:00:00,yes,yes,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015-08-23,richard compo,TRUE,TRUE,2015-0577370,Domestic Violence,RTR15-00019,9452,Old Plank,Rd,NA,NA,Jacksonville,Florida,32220,5,O2,"9452 Old Plank Rd
+Jacksonville, Florida 32220","Adams, R. D.; Wilkie, C. W.",W; W,M; M,43; 46,18; 22,W,M,37,Rifle,Yes; Yes,No; No,No; No,Case Closed,00:00:00,yes,yes,deceased,Jacksonville,768,shot,gun,36,M,W,FL,True,attack,Not fleeing,False
+2015-10-28,jerry graham,TRUE,TRUE,2015-0736734,Search Warrant,RTR15-00027,212,Century,St,NA,NA,Jacksonville,Florida,32211,2,E2,"212 Century St
+Jacksonville, Florida 32211",Undercover,W,M,36,9,B,M,34,Handgun,Yes,No,No,Case Closed,00:00:00,yes,yes,deceased,Jacksonville,961,shot,gun,34,M,B,FL,False,attack,Not fleeing,False
+2016-05-14,cody marsh,TRUE,NA,2016-0310352,Armed Person,RTR16-00011,305,Union,St,E,NA,Jacksonville,Florida,32202,1,A3,"305 Union St E
+Jacksonville, Florida 32202","Cochran, J. D.; White, J. M.",B; H,M; M,30; 37,2; 7,W,M,19,Knife,Pending; Pending,Pending; Pending,Pending; Pending,Pending RTR Review Board Hearing,00:00:00,yes,yes,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-05-22,ernell bing,TRUE,NA,2016-0330793,Traffic Stop,RTR16-00012,1900,Liberty,St,N,NA,Jacksonville,Florida,32206,1,B2,"1900 Liberty St N
+Jacksonville, Florida 32206","Landerville, T. L.",W,M,29,7,B,M,23,Vehicle,Pending,Pending,Pending,Pending RTR Review Board Hearing,00:00:00,yes,yes,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016-10-20,jacob depetris,TRUE,TRUE,2016-0696413,Armed Dispute,RTR16-00024,12799,Shims,Rd,NA,NA,Jacksonville,Florida,32226,6,Q3,"12799 Shims Rd
+Jacksonville, Florida 32226","Smith, Howard M.",W,M,55,27,W,M,29,Shotgun,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,1980,shot,gun,29,M,W,FL,False,attack,Not fleeing,False
+2017-02-06,jerome allen,TRUE,TRUE,2017-0089599,Narcotics Investigation,RTR17-00002,1351,5th,St,W,NA,Jacksonville,Florida,32209,5,M3,"1351 5th St W
+Jacksonville, Florida 32209",Undercover,W,M,47,8,B,M,22,Replica Handgun,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2305,shot,toy weapon,22,M,B,FL,False,attack,Not fleeing,False
+2017-03-17,terrance king,TRUE,NA,2017-0182910,Armed Robbery,RTR17-00005,7584,Patrice,Ct,NA,NA,Jacksonville,Florida,32210,4,K2,"7584 Patrice Ct
+Jacksonville, Florida 32210",Undercover,W,M,46,22,B,M,29,Handgun,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017-04-26,selwyn hall,TRUE,TRUE,2017-0277645,Domestic Battery,RTR17-00008,330,19th,St,E,NA,Jacksonville,Florida,32206,1,B2,"330 19th St E
+Jacksonville, Florida 32206","McGee, Ryan L.",W,M,28,4,B,M,57,Taser,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2530,shot and Tasered,Taser,57,M,B,FL,False,other,Not fleeing,False
+2017-05-09,terry campbell,TRUE,TRUE,2017-0311493,Assault/Battery,RTR17-00009,1700,Mindanao,Dr,NA,104,Jacksonville,Florida,32246,2,E3,"1700 Mindanao Dr #104
+Jacksonville, Florida 32246","Nauss Iv, Robert M.",W,M,40,16,B,M,25,Handgun,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2564,shot,gun,25,M,B,FL,True,attack,Not fleeing,False
+2017-07-25,michael harris,TRUE,TRUE,2017-0500269,Robbery,RTR17-00012,5009,Old Middleburg,Rd,N,NA,Jacksonville,Florida,32210,4,K2,"5009 Old Middleburg Rd N
+Jacksonville, Florida 32210","Hurst, Bradley S.; Mason, Jeremy S.",W; W,M; M,48; 41,10; 11,W,M,28,Handgun,Pending; Pending,Pending; Pending,Pending; Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2802,shot,gun,28,M,W,FL,False,attack,Car,False
+2017-08-14,robert bracewell,TRUE,TRUE,2017-0550905,Abduction/Kidnap,RTR17-00014,6600,San Juan,Ave,NA,NA,Jacksonville,Florida,NA,NA,NA,"6600 San Juan  Ave
+Jacksonville, Florida","Jester, Brandon L.; Langston, Benjamin J.",W; W,M; M,31; 29,2; 3,W,M,20,Handgun,Pending; Pending,Pending; Pending,Pending; Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2865,shot,gun,20,M,W,FL,False,attack,Not fleeing,False
+2017-08-18,derrick brabham,TRUE,TRUE,2017-0561923,Suicide Threat / Armed Dispute,RTR17-00015,5176,Seaboard,Ave,NA,NA,Jacksonville,Florida,32210,4,J2,"5176 Seaboard Ave
+Jacksonville, Florida 32210","Fox, Michael P.; Jarrell, Kevin C.",W; W,M; M,33; 32,11; 5,B,M,25,Rifle,Pending; Pending,Pending; Pending,Pending; Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2881,shot,gun,25,M,B,FL,False,attack,Not fleeing,False
+2017-08-25,daniel blyler,TRUE,TRUE,2017-0578181,Intoxicated Person,RTR17-00019,1355,Edgewood,Ave,N,NA,Jacksonville,Florida,32254,5,M2,"1355 Edgewood Ave N
+Jacksonville, Florida 32254","Johnson, Lemmuel K.",B,M,41,15,W,M,44,Handgun,Pending,Pending,Pending,Pending State Attorney Review,00:00:00,yes,yes,deceased,Jacksonville,2897,shot,gun,44,M,W,FL,False,other,Not fleeing,False
+2015-03-19,kendre alston,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Jacksonville,265,shot,gun,16,M,B,FL,False,attack,Car,False
+2015-05-12,d'angelo stallworth,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Jacksonville,441,shot,gun,28,M,B,FL,False,other,Foot,False
+2015-07-02,victor larosa,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Jacksonville,603,shot,unarmed,23,M,B,FL,False,attack,Foot,False
+2016-05-22,vernell bing,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Jacksonville,1562,shot,unarmed,22,M,B,FL,False,other,Car,False
