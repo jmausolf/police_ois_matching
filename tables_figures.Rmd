@@ -39,19 +39,19 @@ bash
 $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 -->
 
-```{r, child='tables/table1edit.tex', eval=T}
+```{r, child='tables/table1edit.tex', eval=F}
 ```
 
 
-```{r, child='tables/table2edit.tex', eval=T}
+```{r, child='tables/table2edit.tex', eval=F}
 ```
 
 
-```{r, child='tables/table3edit.tex', eval=T}
+```{r, child='tables/table3edit.tex', eval=F}
 ```
 
 
-```{r, child='tables/table4edit.tex', eval=T}
+```{r, child='tables/table4edit.tex', eval=F}
 ```
 
 
@@ -90,5 +90,13 @@ $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=1.0\textwidth]{./images/plt3.png}
+		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Jacksonville Sheriff's Office by Crowdsource}
+\end{figure}
+
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{./images/plt_combined.png}
 		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - All Police Departments by Crowdsource}
 \end{figure}
+
