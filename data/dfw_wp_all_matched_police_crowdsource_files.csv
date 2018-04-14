@@ -1,7 +1,7 @@
 date,name,police,crowd,case,location,subjectweapon,officers,grandjurydisposition,ag_url,summaryurl,geolocation,original,race_p,gender_p,outcome,det_outcome,city,id,mannerofdeath,armed,age,gender_c,race_c,state,signsofmentalillness,threatlevel,flee,bodycamera
 2015-02-09,desmond luster,TRUE,TRUE,031347-2015,7400 Bonnie View Road,Vehicle,"Tollerton, Aaron W/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_031347-2015.pdf,"7400 Bonnie View Road
 Dallas, Texas
-(32.656712, -96.750342)","Luster, Desmond Dwayne B/M",Dwayne B,M,deceased,deceased,Dallas,137,shot,gun,45,M,B,TX,False,attack,Not fleeing,False
+(32.656712, -96.750342)","Luster, Desmond Dwayne B/M",Dwayne B,M,deceased,deceased,Dallas,137,shot,gun,45.0,M,B,TX,False,attack,Not fleeing,False
 2015-06-12,martin rivas,TRUE,NA,133475-2015,2620 Creative Place,Unarmed,"Bernal, Jose L/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_133475-2015.pdf,"2620 Creative Place
 Dallas, Texas
 (32.759052, -96.864368)","Rivas, Martin L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -16,13 +16,13 @@ Dallas, Texas
 (32.807917, -96.874081)","Garcia, Fernando L/M",L,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2015-07-07,joe cody,TRUE,TRUE,155466-2015,1100 N. Bishop Blvd,Handgun,"Cummings, Robert W/M; Prince, Stephen W/M; Howard, Lonnie W/M; Hooker, Matthew NA/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_155466-2015.pdf,"1100 N. Bishop Blvd
 Dallas, Texas
-(32.756137, -96.827795)","Cody, Joe W/M",W,M,deceased,deceased,Dallas,611,shot,gun,59,M,W,TX,False,attack,Not fleeing,False
+(32.756137, -96.827795)","Cody, Joe W/M",W,M,deceased,deceased,Dallas,611,shot,gun,59.0,M,W,TX,False,attack,Not fleeing,False
 2015-08-27,bertrand davis,TRUE,TRUE,199250-2015,3610 Penelope Street,Pellet Gun,"Terry, Mathew W/M; Neal, Scott W/M; Joseph, Bryan B/M; Thomas, Kevin B/M; Rice, Rachel W/F; Flores, Lucas L/M; Jones, Rory B/M; Mills, Tyler W/M; King, Joe L/M",Pending,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_199250-2015.pdf,"3610 Penelope Street
 Dallas, Texas
-(32.770752, -96.753187)","Davis, Bertrand B/M",B,M,deceased,deceased,Dallas,781,shot and Tasered,box cutter,42,M,B,TX,False,attack,Not fleeing,False
+(32.770752, -96.753187)","Davis, Bertrand B/M",B,M,deceased,deceased,Dallas,781,shot and Tasered,box cutter,42.0,M,B,TX,False,attack,Not fleeing,False
 2015-09-21,gerardo ramirez,TRUE,TRUE,219229-2015,10800 Stone Canyon Rd,Handgun,"Hill, Christopher W/M; Akin, Theron W/M",Pending,http://dallaspolice.net/reports/OIS/ag_forms/AGF_219229-2015.pdf,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_219229-2015.pdf,"10800 Stone Canyon Rd
 Dallas, Texas
-(32.893931, -96.774919)","Ramirez, Gerardo L/M",L,M,deceased,deceased,Dallas,840,shot,gun,24,M,H,TX,True,attack,Not fleeing,False
+(32.893931, -96.774919)","Ramirez, Gerardo L/M",L,M,deceased,deceased,Dallas,840,shot,gun,24.0,M,H,TX,True,attack,Not fleeing,False
 2015-09-30,sebastian coleman,TRUE,NA,226926-2015,4207 Wiley College Dr,Handgun,"Zabriske, Alexander W/M",NA,NA,http://dallaspolice.net/reports/OIS/narrative/2015/OIS_2015_226926-2015.pdf,"4207 Wiley College Dr
 Dallas, Texas
 (32.670058, -96.748464)","Coleman, Sebastian B/M",B,M,shootmiss,shoot and miss,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -73,7 +73,7 @@ Dallas, Texas
 (32.711354, -96.820003)","Zapata, George L/M",L,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2016-10-19,anthony garcia,TRUE,TRUE,251177-2016,3500 Virginia Boulevard,BB Gun,"Guzman, Jose L/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_251177-2016.pdf,"3500 Virginia Boulevard
 Dallas, Texas
-(32.740937, -96.876894)","Garcia, Anthony L/M",L,M,deceased,deceased,Dallas,1978,shot,gun,24,M,NA,TX,False,other,Not fleeing,False
+(32.740937, -96.876894)","Garcia, Anthony L/M",L,M,deceased,deceased,Dallas,1978,shot,gun,24.0,M,NA,TX,False,other,Not fleeing,False
 2016-10-26,tradareon choice,TRUE,NA,257303-2016,3000 Martin Luther King Boulevard,Handgun,"Helm, Zachary W/M",NA,Yes,http://dallaspolice.net/reports/OIS/narrative/2016/OIS_2016_257303-2016.pdf,"3000 Martin Luther King Boulevard
 Dallas, Texas
 (32.771737, -96.765423)","Choice, Tradareon B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -82,7 +82,7 @@ Dallas, Texas
 ","Phang, Phan A/M",A,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2017-01-18,genevive dawes,TRUE,TRUE,013548-2017,4700 Eastside Avenue,Vehicle,"Kimpel, Jason W/M; Hess, Christopher W/M",NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_013548-2017.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2017_013548-2017.pdf,"4700 Eastside Avenue
 Dallas, Texas
-","Dawes, Genevive L/F",L,F,deceased,deceased,Dallas,2231,shot,unarmed,21,F,W,TX,False,other,Car,True
+","Dawes, Genevive L/F",L,F,deceased,deceased,Dallas,2231,shot,unarmed,21.0,F,W,TX,False,other,Car,True
 2017-03-30,dominique holligan,TRUE,NA,071174-2017,3001 Clydedale Drive,Handgun,"Willis, Jason W/M",NA,http://www.dallaspolice.net/reports/OIS/ag_forms/AGF_071174-2017.pdf,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2017_071174-2017.pdf,"3001 Clydedale Drive
 Dallas, Texas
 (32.861297, -96.873968)","Holligan, Dominique B/M",B,M,injured,injured,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -103,7 +103,7 @@ Dallas, Texas
 (32.746151, -96.642059)","Folmar Jr., Alton Anthony W/M",Jr._Alton Anthony W,M,deceased,deceased,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2018-02-27,marlon smith,TRUE,TRUE,042227-2018,2115 Hulse Boulevard,Handgun,"Kennedy, Jason; Hibbets, Kurt",Pending,NA,http://www.dallaspolice.net/reports/OIS/narrative/2017/OIS_2018_042227-2018.pdf,"2115 Hulse Boulevard
 Dallas, Texas
-(32.736802, -96.795218)","Smith, Marlon B/M",B,M,deceased,deceased,Dallas,3447,shot,gun,29,M,B,TX,False,attack,Not fleeing,False
-2016-01-19,gary jones,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,1185,shot,gun,36,M,W,TX,False,attack,Car,False
-2016-12-07,keelan murray,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2108,shot,undetermined,37,M,W,TX,False,undetermined,NA,False
-2017-06-19,alton folmar,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2681,shot,gun,28,M,W,TX,False,other,Not fleeing,False
+(32.736802, -96.795218)","Smith, Marlon B/M",B,M,deceased,deceased,Dallas,3447,shot,gun,29.0,M,B,TX,False,attack,Not fleeing,False
+2016-01-19,gary jones,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,1185,shot,gun,36.0,M,W,TX,False,attack,Car,False
+2016-12-07,keelan murray,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2108,shot,undetermined,37.0,M,W,TX,False,undetermined,NA,False
+2017-06-19,alton folmar,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Dallas,2681,shot,gun,28.0,M,W,TX,False,other,Not fleeing,False

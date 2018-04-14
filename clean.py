@@ -43,7 +43,6 @@ def rm_mid_initials_suffixes(var, df):
     s = s.str.replace(' sr', ' ').str.replace(' senior', ' ')
     s = s.str.replace(' iii', ' ').str.replace(' third', ' ').str.replace(' the third', ' ')
     s = s.str.replace(' iv', ' ').str.replace(' fourth', ' ').str.replace(' the fourth', ' ')
-    s = s.str.replace(' v', ' ').str.replace(' fifth', ' ').str.replace(' the fifth', ' ')
     s = s.str.strip()
 
     #replace more than one white space with a space
