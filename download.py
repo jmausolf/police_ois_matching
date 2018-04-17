@@ -28,6 +28,12 @@ police_ois_reports = {
 	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
 				['all']],
 	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
+				['all']],
+	#Orlando
+	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
+				['all']],
+	#Knoxville
+	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
 				['all']]
 }
 
@@ -39,7 +45,13 @@ police_ois_reports_verbose = {
 	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
 				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
 	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
-				['deceased', 'shot_alive', 'not_shot_alive', 'all', 'non_fatal']]
+				['deceased', 'shot_alive', 'not_shot_alive', 'all', 'non_fatal']],
+	#Orlando
+	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
+	#Knoxville
+	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
 }
 
 
@@ -93,6 +105,17 @@ def wget_download_rename(key, value):
 		pass
 
 
+def convert_xlsx_csv(file):
+	print("Converting file: '{}' to .csv file...".format(file))
+	pd.read_excel(file).to_csv(str(file).replace("xlsx", "csv"))
+
+
+def convert_files_xlsx_csv(stem='police_ois_report'):
+	files = glob('*{}*.xlsx'.format(stem))
+	for file in files:
+		convert_xlsx_csv(file)
+
+
 def unzip(zipfilename, subfilename="", rename=""):
 	with zipfile.ZipFile(zipfilename,"r") as zip_ref:
 	    zip_ref.extract(subfilename, ".")
@@ -113,5 +136,6 @@ def download(ois_reports):
 	print("[*] unzipping downloaded files...")
 	unzip_rename('gv_crowdsource_ois_report', 'wget', ['Events.tsv'])
 	unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
+	convert_files_xlsx_csv("police_ois_report")
 	subprocess.call("bash collect_files.sh", shell=True)
 
