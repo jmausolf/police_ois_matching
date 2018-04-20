@@ -237,7 +237,25 @@ def clean_jax_police_ois():
     print(df.head(5))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-#clean_jax_police_ois()
+
+def clean_mco_police_ois():
+    print("[*] cleaning police ois report...")
+    infile = glob('downloads/{}*{}*.csv'.format('mco', 'police'))[0].replace('.csv', '')
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = split_subjects('suspectname', df)
+    #df = split_race_gender(df)
+    #df = reverse_names('name', df)
+    #df = rm_mid_initials_suffixes('name', df)
+    #df = rm_middle_name('name', df)
+    #ren('subjectdeceasedinjuredorshootandmiss', 'outcome', df)
+    #ren('attorneygeneralformsurl', 'ag_url', df)
+    #df = lower_var('outcome', df)
+    #print(df.head(5))
+    print(df)
+    #df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
+clean_mco_police_ois()
 
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
