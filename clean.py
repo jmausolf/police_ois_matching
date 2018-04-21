@@ -29,6 +29,15 @@ def remove_punct(text):
     return re.sub(r'[]\\?!\"\'#$%&(){}+*/:;,._`|~\\[<=>@\\^-]', "", text)
 
 
+def replace_char(var, df, inchar=',', outchar='_'):
+
+    s = df[var].str.replace(inchar, outchar)
+    s.name = var
+    df = df.drop(var, axis=1)
+    df = pd.concat([df, s], axis=1)
+    return(df)
+
+
 def rm_mid_initials_suffixes(var, df):
 
     #replace text preceding ".", e.g. jr. sen.
@@ -103,6 +112,44 @@ def split_subjects(var, df):
     df = df.drop(var, axis=1).join(s)
     return(df)
 
+def split_subjects_2vars(var1, sep1, var2, sep2, df):
+
+    s1 = df[var1].str.split(sep1, expand=True).stack().str.strip().reset_index(level=1, drop=True)
+    s2 = df[var2].str.split(sep2, expand=True).stack().str.strip().reset_index(level=1, drop=True)
+    
+    print(s1.shape)
+    print(s2.shape)
+    df1 = pd.concat([s1,s2], axis=1, keys=[var1, var2])
+
+    df = df.drop([var1, var2], axis=1).join(df1).reset_index(drop=True)
+    return df
+
+
+def split_sep_var(var, sep, df):
+    return df[var].str.split(sep, expand=True).stack().str.strip().reset_index(level=1, drop=True)
+    
+
+def split_subjects_nvars(vslist, df):
+
+    varlist = []
+    seplist = []
+    series_list = []
+
+    for vs in vslist:
+        var = vs[0]
+        sep = vs[1]
+
+        varlist.append(var)
+        seplist.append(sep)
+
+        s = split_sep_var(var, sep, df)
+        series_list.append(s)
+
+    df1 = pd.concat(series_list, axis=1, keys=varlist)
+    df = df.drop(varlist, axis=1).join(df1).reset_index(drop=True)
+    return df
+
+
 
 def split_subjects_gv(var, df):
     #Make a Copy
@@ -145,7 +192,9 @@ def reverse_names(var, df, lower=True, delim='_'):
         s = df[var].apply(lambda x: d.join(x.split(d)[::-1])).str.replace(d, ' ').str.lower()
     else:
         s = df[var].apply(lambda x: d.join(x.split(d)[::-1])).str.replace(d, ' ')   
-    df = df.drop(var, axis=1).join(s)
+    #df = df.drop(var, axis=1).join(s)
+    df = df.drop(var, axis=1)
+    df = pd.concat([df, s], axis=1)
     return(df)
 
 def lower_var(var, df):
@@ -243,17 +292,24 @@ def clean_mco_police_ois():
     infile = glob('downloads/{}*{}*.csv'.format('mco', 'police'))[0].replace('.csv', '')
     df = pd.read_csv('{}.csv'.format(infile))
     df = clean_cols(df)
-    df = split_subjects('suspectname', df)
-    #df = split_race_gender(df)
-    #df = reverse_names('name', df)
-    #df = rm_mid_initials_suffixes('name', df)
-    #df = rm_middle_name('name', df)
-    #ren('subjectdeceasedinjuredorshootandmiss', 'outcome', df)
-    #ren('attorneygeneralformsurl', 'ag_url', df)
-    #df = lower_var('outcome', df)
-    #print(df.head(5))
-    print(df)
-    #df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+    df = replace_char('location', df, '\n', ' ')
+    df = split_subjects_nvars([['suspectname', ';'], ['fatal', ','], ['suspecthit', ','], ['suspectrace', ',']], df)
+    df = replace_char('suspectname', df, ',', '_')
+    df = reverse_names('suspectname', df, delim='_')
+    df = ren('suspectname', 'name', df)
+    df = rm_mid_initials_suffixes('name', df)
+    df = rm_middle_name('name', df)
+    df = ren('suspectrace', 'race', df)
+    df = lower_var('suspecthit', df)
+    df = lower_var('fatal', df)
+    df = replace_char('fatal', df, 'n', 'no')
+    df = replace_char('fatal', df, 'noo', 'no')
+    df['outcome'] = ''
+    df.loc[(df.fatal=='yes'), 'outcome'] = 'deceased'
+    df.loc[((df.fatal=='no') & (df.suspecthit=='yes')), 'outcome'] = 'shot_alive'
+    df.loc[((df.fatal=='no') & (df.suspecthit=='no')), 'outcome'] = 'not_shot_alive' 
+    print(df.head(5))
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
 clean_mco_police_ois()
 
