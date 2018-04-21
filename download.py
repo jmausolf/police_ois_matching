@@ -33,8 +33,8 @@ police_ois_reports = {
 	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
 				['all']],
 	#Knoxville
-	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
-				['all']]
+	#'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
+	#			['all']]
 }
 
 
@@ -50,8 +50,8 @@ police_ois_reports_verbose = {
 	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
 				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
 	#Knoxville
-	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
-				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
+	#'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
+	#			['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
 }
 
 

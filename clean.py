@@ -311,7 +311,7 @@ def clean_mco_police_ois():
     print(df.head(5))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-clean_mco_police_ois()
+#clean_mco_police_ois()
 
 #Clean crowdsource data frame
 def clean_wp_crowdsource():

@@ -21,6 +21,39 @@ cdf <- read_csv(Sys.glob(crowd_glob))
 #################################################
 
 
+orlando_pd <- function(pdf, start_date, end_date, ois_type){
+  
+  #clean types
+  df <- pdf
+  
+  if(missing(start_date)) start_date = '2009-05-01'
+  if(missing(end_date)) end_date = '2018-01-01'
+  if(missing(ois_type) || ois_type=='all'){
+    df <- df
+    type <- "All types of OIS"
+  } else if (ois_type=='non_fatal'){
+    df <- df %>% filter(outcome !='deceased')
+    type <- "All non-fatal types of OIS"
+  } else {
+    df <- df %>% filter(outcome == ois_type)
+    type <- ois_type
+  }
+  
+  df <- df %>%
+    mutate(police = TRUE) %>% 
+    mutate(date = mdy(date)) %>% 
+    filter(date >=  start_date,
+           date < end_date) %>% 
+    select(case, date, name, everything()) %>%
+    rename(race_p = race,
+           gender_p = suspectgender)
+  
+  print(paste("Orlando Police:", start_date, "-", end_date, type, sep = " "))
+  return(df)
+}
+
+
+
 jacksonville_pd <- function(pdf, start_date, end_date, ois_type){
   
   #clean types
@@ -281,6 +314,7 @@ police_select <- function(pd, start_date, end_date, outcome='all'){
   if(pd == 'dfw') police <- dallas_pd(pdf, start_date, end_date, outcome)
   if(pd == 'den') police <- denver_pd(pdf, start_date, end_date, outcome)
   if(pd == 'jax') police <- jacksonville_pd(pdf, start_date, end_date, outcome)
+  if(pd == 'mco') police <- orlando_pd(pdf, start_date, end_date, outcome)
   return(police)  
 }
 
@@ -288,6 +322,7 @@ police_citystate <- function(pd){
   if(pd == 'dfw') citystate <- list("Dallas", "TX")
   if(pd == 'den') citystate <- list("Denver", "CO")
   if(pd == 'jax') citystate <- list("Jacksonville", "FL")
+  if(pd == 'mco') citystate <- list("Orlando", "FL")
   return(citystate)  
 }
 
