@@ -11,7 +11,7 @@ system('mkdir -p images')
 system('mkdir -p tables')
 
 #pd <- "dfw"
-pd_types <- c("dfw", "den", "jax")
+pd_types <- c("dfw", "den", "jax", "mco")
 ois_type <- "all"
 cs_types <- c("wp", "gd", "ds")
 
@@ -276,9 +276,42 @@ jax_wp_df_deceased <- refine_matches(jax_wp_df, "deceased") %>%
 
 
 
+#WP Cleaning - Orlando PD
+mco_wp_df_deceased <- refine_matches(mco_wp_df, "deceased") %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match,
+         race_eth_qc = race_p,
+         armed_qc = suspectsweapon) %>% 
+  #Clean up race_eth_qc
+  mutate(race_eth_qc = if_else(is.na(race_eth_qc) & crowd == TRUE, race_c, race_eth_qc)) %>%
+  mutate(race_eth_qc = fct_collapse(race_eth_qc,
+                                    "B" = c("Black"),
+                                    "L" = c("H"),
+                                    "W" = c("White"),
+                                    "O" = c("Other"))) %>% 
+  #Clean up armed_qc
+  mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, armed, armed_qc)) %>%
+  #Alter qc details for charlin charles case (police reversed, mispelled name)
+  mutate(name_qc = if_else(date == "2016-05-01" & name =="charles carlin", "charlin charles", name_qc),
+         armed_qc = if_else(date_qc == "2016-05-01" & name_qc =="charlin charles", "Toy Gun", armed_qc),
+         match_qc = if_else(date_qc == "2016-05-01" & name_qc =="charlin charles", "yes_match", match_qc)) %>%
+  #Remove Unmatched Cases Not Orlando PD (Part of Orange County Sheriff per GD data)
+  filter(name_qc != c("deresha armstrong", "william charbonneau")) %>% 
+  select(date_qc, name_qc, match_qc, race_eth_qc, race_p, race_c, armed_qc, armed) %>% 
+  distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+
+
+
+
 
 #Combined Data, All Departments
-all_wp_df_deceased <- rbind(dfw_wp_df_deceased, den_wp_df_deceased)
+all_wp_df_deceased <- rbind(dfw_wp_df_deceased, den_wp_df_deceased, jax_wp_df_deceased, mco_wp_df_deceased)
 
 
 #Create Desired DF Table
@@ -286,6 +319,7 @@ wpdf <- make_pd_df()[-1,] %>%
   add_pd_case("Dallas Police Department", summary_row(dfw_wp_df_deceased)) %>% 
   add_pd_case("Denver Police Department", summary_row(den_wp_df_deceased)) %>%
   add_pd_case("Jacksonville Sheriff's Office", summary_row(jax_wp_df_deceased)) %>%
+  add_pd_case("Orlando Police Department", summary_row(mco_wp_df_deceased)) %>%
   add_pd_case("All Police Departments  ", summary_row(all_wp_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
@@ -374,7 +408,7 @@ den_gd_df_deceased <- refine_matches(den_gd_df, "deceased") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
-#WP Cleaning - Jacksonville PD
+#GD Cleaning - Jacksonville PD
 jax_gd_df_deceased <- refine_matches(jax_gd_df, "deceased") %>% 
   mutate(date_qc = date, 
          name_qc = name,
@@ -389,7 +423,7 @@ jax_gd_df_deceased <- refine_matches(jax_gd_df, "deceased") %>%
   mutate(race_eth_qc = fct_collapse(race_eth_qc, "B" = c("Black"))) %>% 
   #Clean up armed_qc
   mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, armed, armed_qc)) %>%
-  #Remove Cases That Are Not Denver PD
+  #Remove Cases That Are Not PD
   filter(!(pd !=  "Jacksonville Sheriff's Office" & match != "yes_match")) %>% 
   #Remove Cases That Are Not OIS
   filter(!(uof !=  "Gunshot" & match != "yes_match")) %>% 
@@ -405,16 +439,51 @@ jax_gd_df_deceased <- refine_matches(jax_gd_df, "deceased") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
+#GD Cleaning - Orlando FL
+mco_gd_df_deceased <- refine_matches(mco_gd_df, "deceased") %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match,
+         race_eth_qc = race_p,
+         armed_qc = suspectsweapon) %>%
+  rename(pd = lawenforcementagency) %>% 
+  mutate(pd = if_else(is.na(pd) & police == TRUE, "Orlando Police Department", pd)) %>%
+  mutate(uof = if_else(is.na(classification) & police == TRUE, "Gunshot", classification)) %>% 
+  #Clean up race_eth_qc
+  mutate(race_eth_qc = if_else(is.na(race_eth_qc) & crowd == TRUE, race_c, race_eth_qc)) %>%
+  mutate(race_eth_qc = fct_collapse(race_eth_qc,
+                                    "B" = c("Black"),
+                                    "W" = c("White"),
+                                    "O" = c("Other"))) %>% 
+  #Clean up armed_qc
+  mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, armed, armed_qc)) %>%
+  #Remove Cases That Are Not PD
+  filter(!(pd !=  "Orlando Police Department" & match != "yes_match")) %>% 
+  #Remove Cases That Are Not OIS
+  filter(!(uof !=  "Gunshot" & match != "yes_match")) %>% 
+  select(date, date_qc, name, name_qc, police, crowd, match, match_qc, outcome, everything()) %>% 
+  #Alter qc details for charlin charles case (police reversed, mispelled name)
+  mutate(name_qc = if_else(date == "2016-05-01" & name =="charles carlin", "charlin charles", name_qc),
+         armed_qc = if_else(date_qc == "2016-05-01" & name_qc =="charlin charles", "Toy Gun", armed_qc),
+         match_qc = if_else(date_qc == "2016-05-01" & name_qc =="charlin charles", "yes_match", match_qc)) %>%
+  select(date_qc, name_qc, match_qc, race_eth_qc, race_p, race_c, armed_qc, armed) %>% 
+  distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
 
   
 #Combined Data, All Departments
-all_gd_df_deceased <- rbind(dfw_gd_df_deceased, den_gd_df_deceased, jax_gd_df_deceased)
+all_gd_df_deceased <- rbind(dfw_gd_df_deceased, den_gd_df_deceased, jax_gd_df_deceased, mco_gd_df_deceased)
 
 #Create GD Matches Table
 gddf <- make_pd_df()[-1,] %>% 
   add_pd_case("Dallas Police Department", summary_row(dfw_gd_df_deceased)) %>% 
   add_pd_case("Denver Police Department", summary_row(den_gd_df_deceased)) %>% 
   add_pd_case("Jacksonville Sheriff's Office", summary_row(jax_gd_df_deceased)) %>% 
+  add_pd_case("Orlando Police Department", summary_row(mco_gd_df_deceased)) %>% 
   add_pd_case("All Police Departments  ", summary_row(all_gd_df_deceased)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
@@ -434,7 +503,7 @@ save_stargazer("tables/table2.tex", as.data.frame(gddf), header=FALSE, type='lat
 
 
 
-#DS Cleaning
+#DS Cleaning - Dallas PD
 dfw_ds_df_all <- refine_matches(dfw_ds_df, "all") %>% 
   mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
   mutate(date_qc = date, 
@@ -495,13 +564,85 @@ dfw_ds_df_deceased <- dfw_ds_df_all %>%
 dfw_ds_df_nonfatal <- dfw_ds_df_all %>% 
   filter(outcome_qc != "deceased")
 
+
+
+
+#DS Cleaning - Orlando PD
+mco_ds_df_all <- refine_matches(mco_ds_df, "all") %>% 
+  mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match,
+         outcome_qc = outcome,
+         race_eth_qc = race_p,
+         armed_qc = suspectsweapon) %>%
+  rename(pd = agencyname) %>% 
+  mutate(pd = if_else(is.na(pd) & police == TRUE, "Orlando Police Department", pd),
+         pd = if_else(pd == "Orlando Police", "Orlando Police Department", pd),
+         pd = if_else(pd == "orlando police", "Orlando Police Department", pd),
+         pd = if_else(pd == "Orlando PD", "Orlando Police Department", pd, missing = "Unknown")) %>% 
+  #Clean up race_eth_qc
+  unite(race_eth_c, c(race_c, hispanicorlatinoorigin), remove = FALSE) %>% 
+  mutate(race_eth_qc = if_else(is.na(race_eth_qc) & crowd == TRUE, race_eth_c, race_eth_qc)) %>%
+  mutate(race_eth_qc = if_else(is.na(race_eth_qc), "Unknown", race_eth_qc)) %>% 
+  mutate(race_eth_qc = fct_collapse(race_eth_qc,
+                                    "B" = c("B", "Black", 
+                                            "Black or African American_Unknown",
+                                            "Black or African American_Not of Hispanic or Latino origin"),
+                                    "L" = c("L", "Hispanic/Latino", "H"),
+                                    "O" = c("Native American"),
+                                    "W" = c("W", "White", "White_Not of Hispanic or Latino origin"),
+                                    "U" = c("Summary", "Unknown_Unknown"))) %>% 
+  #Clean up armed_qc
+  mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, weapon, armed_qc)) %>%
+  select(date, date_qc, name, name_qc, match, match_qc, outcome, outcome_qc, race_eth_qc, armed_qc, everything()) %>% 
+  #Remove Cases That Are Not Dallas PD
+  filter(pd == "Orlando Police Department") %>%
+  #Alter qc details for karvas gamble case (cs spelling and wrong date)
+  mutate(date_qc = if_else(date == "2013-01-17" & name =="karvis gamble", as.Date("2013-01-16"), date_qc),
+         date_qc = if_else(date == "2013-01-30" & name =="karvis gamble", as.Date("2013-01-16"), date_qc),
+         name_qc = if_else(date_qc == "2013-01-16" & name =="karvis gamble", "karvas gamble", name_qc),
+         match_qc = if_else(date_qc == "2013-01-16" & name_qc =="karvas gamble", "yes_match", match_qc),
+         outcome_qc = if_else(date_qc == "2013-01-16" & name_qc =="karvas gamble", "deceased", outcome_qc),
+         race_eth_qc = if_else(date_qc == "2013-01-16" & name_qc =="karvas gamble", "B", as.character(race_eth_qc))) %>% 
+  #Alter qc details for sadiki allwood case (unknown name by crowd)
+  mutate(name_qc = if_else(date_qc == "2013-01-15" & name =="unknown", "sadiki allwood", name_qc),
+         match_qc = if_else(date_qc == "2013-01-15" & name_qc =="sadiki allwood", "yes_match", match_qc),
+         outcome_qc = if_else(date_qc == "2013-01-15" & name_qc =="sadiki allwood", "shot_alive", outcome_qc),
+         race_eth_qc = if_else(date_qc == "2013-01-15" & name_qc =="sadiki allwood", "B", as.character(race_eth_qc))) %>% 
+  #Alter qc details for marcus cull case (unknown name by crowd)
+  mutate(name_qc = if_else(date_qc == "2011-05-06" & name =="unknown", "marcus cull", name_qc),
+         match_qc = if_else(date_qc == "2011-05-06" & name_qc =="marcus cull", "yes_match", match_qc),
+         outcome_qc = if_else(date_qc == "2011-05-06" & name_qc =="marcus cull", "shot_alive", outcome_qc),
+         race_eth_qc = if_else(date_qc == "2011-05-06" & name_qc =="marcus cull", "B", as.character(race_eth_qc)),
+         armed_qc = if_else(date_qc == "2011-05-06" & name_qc=="marcus cull", "Motor Vehicle", armed_qc)) %>% 
+  #Alter qc details for cordaryl wilson (police missing)
+  mutate(outcome_qc = if_else(date_qc == "2013-01-16" & name == "cordaryl wilson", "shot_alive", outcome_qc)) %>% 
+  distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc, outcome_qc) %>%
+  arrange(match_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+mco_ds_df_deceased <- mco_ds_df_all %>% 
+  filter(outcome_qc == "deceased")
+
+mco_ds_df_nonfatal <- mco_ds_df_all %>% 
+  filter(outcome_qc != "deceased")
+
+
 #Create Desired DF Table
 dsdf <- make_pd_df()[-1,] %>% 
   add_pd_case("Dallas Police Department - Fatal", summary_row(dfw_ds_df_deceased)) %>% 
+  add_pd_case("Orlando Police Department - Fatal", summary_row(mco_ds_df_deceased)) %>% 
   add_pd_case("Dallas Police Department - Non Fatal", summary_row(dfw_ds_df_nonfatal)) %>% 
+  add_pd_case("Orlando Police Department - Non Fatal", summary_row(mco_ds_df_nonfatal)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
+
+
 
 
 #Save Table
@@ -517,56 +658,94 @@ all_ds_df_deceased <- dfw_ds_df_all %>%
   filter(outcome_qc == "deceased") %>% 
   select(-outcome_qc) 
 
-#Pretable Cleaning
-dem_errors <- rbind(all_wp_df_deceased, all_gd_df_deceased, all_ds_df_deceased) %>%
-  mutate(race_eth_qc = as.factor(if_else(is.na(race_eth_qc), "MISSING", as.character(race_eth_qc)))) %>%
-  mutate(armed_qc = fct_collapse(armed_qc,
-                                    "Firearm" = c("Firearm", "gun", "Assault Rifle", 
-                                                  "Rifle", "Handgun", "Shotgun"),
-                                    "Air Gun" = c("BB Gun", "Pellet Gun"),
-                                    "Taser" = c("Taser"),
-                                    "Other" = c("Screwdriver", "Blunt Object"),
-                                    "Vehicle" = c("Vehicle", "Motor Vehicle"),
-                                    "Unarmed" = c("Simulated Weapon", "physical attack", "Hands"),
-                                    "Undetermined" = c("undetermined"))) %>% 
-  mutate(armed_bin = if_else(armed_qc != "Unarmed" & armed_qc != "Undetermined", "Armed", "Unarmed/Undetermined"))
+all_ds_df_deceased <- rbind(dfw_ds_df_deceased, mco_ds_df_deceased) %>% 
+  select(-outcome_qc) 
+
+
 
 
 #Create Variable Error Table
 #Create Desired DF Table
-errors_table <- make_var_df()[-1,] %>% 
-  #Race/Ethnicity
-  add_pd_case("White", summary_row_var_val(dem_errors, "race_eth_qc", "W")) %>%
-  add_pd_case("Black", summary_row_var_val(dem_errors, "race_eth_qc", "B")) %>% 
-  add_pd_case("Hispanic/Latino", summary_row_var_val(dem_errors, "race_eth_qc", "L")) %>%
-  add_pd_case("Asian", summary_row_var_val(dem_errors, "race_eth_qc", "A")) %>%
-  add_pd_case("Native American", summary_row_var_val(dem_errors, "race_eth_qc", "N")) %>% 
-  #Race Missing
-  add_pd_case("Missing Race/Ethnicity", summary_row_var_val(dem_errors, "race_eth_qc", "MISSING")) %>%   
-  #Armed/Unarmed-Undetermined Bin
-  add_pd_case("Unarmed or Undetermined", summary_row_var_val(dem_errors, "armed_bin", "Unarmed/Undetermined"))  %>%
-  add_pd_case("Armed", summary_row_var_val(dem_errors, "armed_bin", "Armed"))  %>%
-  #Armed Types
-  add_pd_case("Firearm", summary_row_var_val(dem_errors, "armed_qc", "Firearm"))  %>% 
-  add_pd_case("Air Gun", summary_row_var_val(dem_errors, "armed_qc", "Air Gun"))  %>% 
-  add_pd_case("Taser", summary_row_var_val(dem_errors, "armed_qc", "Taser"))  %>%
-  add_pd_case("Knife", summary_row_var_val(dem_errors, "armed_qc", "Knife"))  %>%
-  add_pd_case("Vehicle", summary_row_var_val(dem_errors, "armed_qc", "Vehicle"))  %>% 
-  add_pd_case("Other", summary_row_var_val(dem_errors, "armed_qc", "Other"))  %>% 
-  #Armed Missing
-  add_pd_case("Missing Weapon Type", summary_row_var_val(dem_errors, "armed_qc", "MISSING")) %>%   
-  add_pd_case("Total", summary_row_var_val(dem_errors))  %>% 
-  rename("Matched" = Matches,
-         "Not Matched by Crowd" = No_Match_Crowd,
-         "Not Matched by Police" = No_Match_Police)
+make_errors_table <- function(df) {
+  errors_table <- make_var_df()[-1,] %>% 
+    #Race/Ethnicity
+    add_pd_case("White", summary_row_var_val(df, "race_eth_qc", "W")) %>%
+    add_pd_case("Black", summary_row_var_val(df, "race_eth_qc", "B")) %>% 
+    add_pd_case("Hispanic/Latino", summary_row_var_val(df, "race_eth_qc", "L")) %>%
+    add_pd_case("Asian", summary_row_var_val(df, "race_eth_qc", "A")) %>%
+    add_pd_case("Native American", summary_row_var_val(df, "race_eth_qc", "N")) %>% 
+    #Race Missing
+    add_pd_case("Missing Race/Ethnicity", summary_row_var_val(df, "race_eth_qc", "MISSING")) %>%   
+    #Armed/Unarmed-Undetermined Bin
+    add_pd_case("Unarmed or Undetermined", summary_row_var_val(df, "armed_bin", "Unarmed/Undetermined"))  %>%
+    add_pd_case("Armed", summary_row_var_val(df, "armed_bin", "Armed"))  %>%
+    #Armed Types
+    add_pd_case("Firearm", summary_row_var_val(df, "armed_qc", "Firearm"))  %>% 
+    add_pd_case("Air Gun", summary_row_var_val(df, "armed_qc", "Air Gun"))  %>% 
+    add_pd_case("Toy Gun", summary_row_var_val(df, "armed_qc", "Toy Gun"))  %>% 
+    add_pd_case("Taser", summary_row_var_val(df, "armed_qc", "Taser"))  %>%
+    add_pd_case("Knife", summary_row_var_val(df, "armed_qc", "Knife"))  %>%
+    add_pd_case("Vehicle", summary_row_var_val(df, "armed_qc", "Vehicle"))  %>% 
+    add_pd_case("Other", summary_row_var_val(df, "armed_qc", "Other"))  %>% 
+    #Armed Missing
+    add_pd_case("Missing Weapon Type", summary_row_var_val(df, "armed_qc", "MISSING")) %>%   
+    add_pd_case("Total", summary_row_var_val(df))  %>% 
+    rename("Matched" = Matches,
+           "Not Matched by Crowd" = No_Match_Crowd,
+           "Not Matched by Police" = No_Match_Police)
+  
+  return(errors_table)
+}
 
+
+
+clean_error_data <- function(df) {
+  error_data <- df %>%
+    mutate(race_eth_qc = as.factor(if_else(is.na(race_eth_qc), "MISSING", as.character(race_eth_qc)))) %>%
+    mutate(armed_qc = fct_collapse(armed_qc,
+                                   "Firearm" = c("Firearm", "gun", "Assault Rifle", 
+                                                 "Rifle", "Handgun", "Shotgun"),
+                                   "Air Gun" = c("BB Gun", "Pellet Gun"),
+                                   "Taser" = c("Taser"),
+                                   "Toy Gun" =c("Toy Gun", "Replica Handgun"),
+                                   "Other" = c("Screwdriver", "Blunt Object"),
+                                   "Vehicle" = c("Vehicle", "Motor Vehicle"),
+                                   "Unarmed" = c("Simulated Weapon", "Hands", "unarmed", "Hands/ASP"),
+                                   "Undetermined" = c("undetermined"))) %>% 
+    mutate(armed_bin = if_else(armed_qc != "Unarmed" & armed_qc != "Undetermined", "Armed", "Unarmed/Undetermined"))
+  
+  return(error_data)
+}
+
+
+
+
+
+error_all_deceased <- rbind(all_wp_df_deceased, all_gd_df_deceased, all_ds_df_deceased) %>%
+  clean_error_data() %>% 
+  make_errors_table()
 
 #Save Table
-save_stargazer("tables/table4.tex", as.data.frame(errors_table), header=FALSE, type='latex',
+save_stargazer("tables/table4.tex", as.data.frame(error_all_deceased), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matches and Mismatches of Fatal Shootings by Subject Race and Weapon Type",
-               notes  = "Notes: Crowdsources: Washington Post, The Guardian, Deadspin",
+               notes  = "Notes: Crowdsources: Washington Post, The Guardian, Deadspin. Police Departments: Dallas, Denver, Jacksonville, Orlando.",
                summary = FALSE)
+
+
+
+error_wp_gd_deceased <- rbind(all_wp_df_deceased, all_gd_df_deceased) %>%
+  clean_error_data() %>% 
+  make_errors_table()
+
+#Save Table
+save_stargazer("tables/table5.tex", as.data.frame(error_wp_gd_deceased), header=FALSE, type='latex',
+               font.size = "footnotesize",
+               title = "Matches and Mismatches of Fatal Shootings by Subject Race and Weapon Type",
+               notes  = "Notes: Crowdsources: Washington Post, The Guardian. Police Departments: Dallas, Denver, Jacksonville, Orlando.",
+               summary = FALSE)
+
+
 
 
 
@@ -602,7 +781,7 @@ ggplot(gdf_dfw) +
   xlab("Crowd Source") +
   ylab("Proportion of Matches and Non Matches by Type") +
   labs(title = "Matched Reports of Officer Involved Shootings",
-       subtitle = "Dallas Police Department, 2011 - 2017") +
+       subtitle = "Dallas Police Department, 2011 - 2018") +
   theme(legend.position="bottom") +
   theme(legend.title=element_blank()) + 
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -636,7 +815,7 @@ ggplot(gdf_den) +
   xlab("Crowd Source") +
   ylab("Proportion of Matches and Non Matches by Type") +
   labs(title = "Matched Reports of Officer Involved Shootings",
-       subtitle = "Denver Police Department, 2015 - 2016") +
+       subtitle = "Denver Police Department, 2015 - 2018") +
   theme(legend.position="bottom") +
   theme(legend.title=element_blank()) + 
   theme(plot.title = element_text(hjust = 0.5))
@@ -679,9 +858,49 @@ ggsave("images/plt3.png", width = 8, height = 4.8)
 
 
 
+#Graph Data - Orlando
+wp <- mco_wp_df_deceased %>%
+  mutate(outcome = "Fatal") %>% 
+  mutate(source = "Washington Post")
+
+gd <- mco_gd_df_deceased %>%
+  mutate(outcome = "Fatal") %>% 
+  mutate(source = "The Guardian")
+
+ds <- mco_ds_df_all %>% 
+  mutate(outcome = if_else(outcome_qc == "deceased", "Fatal", "Non-Fatal")) %>% 
+  mutate(source = "Deadspin") %>% 
+  select(-outcome_qc) 
+
+gdf_mco <- rbind(wp, gd, ds) %>% 
+  mutate(outcome = factor(outcome),
+         source = factor(source)) %>% 
+  mutate(match_qc = factor(match_qc, 
+                           levels = c("no_match_police_missing", "no_match_crowd_missing", "yes_match"),
+                           labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) %>% 
+  mutate(pd = "Orlando Police Department")
+
+
+#Graph - Orlando
+ggplot(gdf_mco) +
+  geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
+  facet_grid(.~outcome) +
+  scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
+  xlab("Crowd Source") +
+  ylab("Proportion of Matches and Non Matches by Type") +
+  labs(title = "Matched Reports of Officer Involved Shootings",
+       subtitle = "Orlando Police Department, 2011 - 2018") +
+  theme(legend.position="bottom") +
+  theme(legend.title=element_blank()) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggsave("images/plt4.png", width = 8, height = 4.8)
+
+
+
+
 
 #Combined Graphs
-base_combine <- rbind(gdf_dfw, gdf_den, gdf_jax)
+base_combine <- rbind(gdf_dfw, gdf_den, gdf_jax, gdf_mco)
 duplicate_all <- base_combine %>%
   mutate(pd = "All Police Departments")
 gdf_combined <- rbind(base_combine, duplicate_all) %>% 
@@ -695,7 +914,7 @@ by_pd <- ggplot(gdf_combined) +
   xlab("Crowd Source") +
   ylab("Proportion of Matches and Non Matches by Type") +
   labs(title = "Matched Reports of Officer Involved Shootings",
-       caption = "Dallas Police Department, 2011 - 2017\nDenver Police Department, 2015 - 2016") +
+       caption = "Dallas Police Department, 2011 - 2018\nDenver Police Department, 2015 - 2016\nJacksonville Sheriff's Office 2015-2016\nOrlando Police Department, 2011-2018") +
   theme(legend.position="bottom") +
   theme(legend.title=element_blank()) + 
   theme(plot.title = element_text(hjust = 0.5)) +

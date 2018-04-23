@@ -70,6 +70,9 @@ $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 ```{r, child='tables/table4.tex', eval=T}
 ```
 
+```{r, child='tables/table5.tex', eval=T}
+```
+
 
 
 
@@ -91,6 +94,12 @@ $for file in *.tex; do cp $file ${file%%.*}edit.tex; done
 		\centering
 		\includegraphics[width=1.0\textwidth]{./images/plt3.png}
 		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Jacksonville Sheriff's Office by Crowdsource}
+\end{figure}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{./images/plt4.png}
+		\caption[Figure 1]{Matched Reports of Officer Involved Shootings - Orlando Police Department by Crowdsource}
 \end{figure}
 
 
