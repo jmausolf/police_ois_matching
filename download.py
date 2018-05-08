@@ -23,18 +23,18 @@ crowdsource_ois_reports = {
 
 #Police OIS Reports
 police_ois_reports = {
-	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
-				['all']],
-	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
-				['all']],
-	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
-				['all']],
+	#'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
+	#			['all']],
+	#'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
+	#			['all']],
+	#'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
+	#			['all']],
 	#Orlando
-	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
-				['all']],
+	#'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
+	#			['all']],
 	#Knoxville
-	#'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
-	#			['all']]
+	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
+				['all']]
 }
 
 
@@ -50,8 +50,8 @@ police_ois_reports_verbose = {
 	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
 				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']],
 	#Knoxville
-	#'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
-	#			['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
+	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
+				['deceased', 'injured', 'not_injured', 'all', 'non_fatal']]
 }
 
 
@@ -111,7 +111,7 @@ def convert_xlsx_csv(file):
 
 
 def convert_files_xlsx_csv(stem='police_ois_report'):
-	files = glob('*{}*.xlsx'.format(stem))
+	files = glob('downloads/*{}*.xlsx'.format(stem))
 	for file in files:
 		convert_xlsx_csv(file)
 
@@ -133,9 +133,10 @@ def unzip_rename(globstem, ext, req_subfiles):
 def download(ois_reports):
 	print("[*] downloading files...")
 	[wget_download_rename(k, v) for d in ois_reports for k, v in d.items()]
+	print("[*] converting xlsx files...")
+	convert_files_xlsx_csv("police_ois_report")
 	print("[*] unzipping downloaded files...")
 	unzip_rename('gv_crowdsource_ois_report', 'wget', ['Events.tsv'])
 	unzip_rename('gd_crowdsource_ois_report', 'zip', ['the-counted-2015.csv', 'the-counted-2016.csv'])
-	convert_files_xlsx_csv("police_ois_report")
 	subprocess.call("bash collect_files.sh", shell=True)
 

@@ -5,13 +5,14 @@ library(forcats)
 library(tibble)
 library(stargazer)
 library(ggpubr)
+library(gridExtra)
 
 ##Make directories
 system('mkdir -p images')
 system('mkdir -p tables')
 
 #pd <- "dfw"
-pd_types <- c("dfw", "den", "jax", "mco")
+pd_types <- c("dfw", "den", "jax", "mco", "tys")
 ois_type <- "all"
 cs_types <- c("wp", "gd", "ds")
 
@@ -38,11 +39,10 @@ refine_matches <- function(mdf, ois_type) {
     mutate(match = if_else(police == TRUE & crowd == TRUE, "yes_match", "no_match")) %>%
     mutate(match = if_else(match == "no_match" & police == TRUE & crowd == FALSE, "no_match_crowd_missing", match)) %>%
     mutate(match = if_else(match == "no_match" & crowd == TRUE & police == FALSE, "no_match_police_missing", match)) %>%
-    mutate(outcome = if_else(police == TRUE, outcome, "unknown_police_missing", "unknown_police_missing")) %>% 
+    mutate(outcome = if_else(police == TRUE, outcome, "unknown_police_missing", "unknown_police_missing")) %>%
     select(date, name, police, crowd, match, outcome, everything()) %>% 
     unique() %>% 
     arrange(match) 
-    #rowid_to_column("id")
   
   if(ois_type=='all'){
     df <- df
@@ -127,7 +127,6 @@ summary_row <- function(df) {
 
 
 summary_row_var_val <- function(df, col_name, value, negate) {
-  #variablen <- as.name(variablen)
   require("dplyr")
   require("lazyeval")
 
@@ -175,6 +174,13 @@ summary_row_var_val <- function(df, col_name, value, negate) {
   return(rv)
 }
 
+
+
+
+
+################################
+## Cleaning WP
+################################
 
 
 #WP Cleaning - Dallas PD
@@ -307,9 +313,6 @@ mco_wp_df_deceased <- refine_matches(mco_wp_df, "deceased") %>%
 
 
 
-
-
-
 #Combined Data, All Departments
 all_wp_df_deceased <- rbind(dfw_wp_df_deceased, den_wp_df_deceased, jax_wp_df_deceased, mco_wp_df_deceased)
 
@@ -333,6 +336,12 @@ save_stargazer("tables/table1.tex", as.data.frame(wpdf), header=FALSE, type='lat
                summary = FALSE)
 
 
+
+
+
+################################
+## Cleaning GD
+################################
 
 
 #GD Cleaning
@@ -408,6 +417,7 @@ den_gd_df_deceased <- refine_matches(den_gd_df, "deceased") %>%
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
 
 
+
 #GD Cleaning - Jacksonville PD
 jax_gd_df_deceased <- refine_matches(jax_gd_df, "deceased") %>% 
   mutate(date_qc = date, 
@@ -437,6 +447,7 @@ jax_gd_df_deceased <- refine_matches(jax_gd_df, "deceased") %>%
   mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
          no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
          no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
 
 
 #GD Cleaning - Orlando FL
@@ -503,6 +514,11 @@ save_stargazer("tables/table2.tex", as.data.frame(gddf), header=FALSE, type='lat
 
 
 
+################################
+## Cleaning DS
+################################
+
+
 #DS Cleaning - Dallas PD
 dfw_ds_df_all <- refine_matches(dfw_ds_df, "all") %>% 
   mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
@@ -566,7 +582,6 @@ dfw_ds_df_nonfatal <- dfw_ds_df_all %>%
 
 
 
-
 #DS Cleaning - Orlando PD
 mco_ds_df_all <- refine_matches(mco_ds_df, "all") %>% 
   mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
@@ -596,7 +611,7 @@ mco_ds_df_all <- refine_matches(mco_ds_df, "all") %>%
   #Clean up armed_qc
   mutate(armed_qc = if_else(is.na(armed_qc) & crowd == TRUE, weapon, armed_qc)) %>%
   select(date, date_qc, name, name_qc, match, match_qc, outcome, outcome_qc, race_eth_qc, armed_qc, everything()) %>% 
-  #Remove Cases That Are Not Dallas PD
+  #Remove Cases That Are Not Orlando PD
   filter(pd == "Orlando Police Department") %>%
   #Alter qc details for karvas gamble case (cs spelling and wrong date)
   mutate(date_qc = if_else(date == "2013-01-17" & name =="karvis gamble", as.Date("2013-01-16"), date_qc),
@@ -632,12 +647,54 @@ mco_ds_df_nonfatal <- mco_ds_df_all %>%
   filter(outcome_qc != "deceased")
 
 
+
+#DS Cleaning - Knoxville PD
+tys_ds_df_all <- refine_matches(tys_ds_df, "all") %>% 
+  mutate(name = if_else(is.na(name), "error_unknown", name)) %>% 
+  mutate(date_qc = date, 
+         name_qc = name,
+         match_qc = match,
+         outcome_qc = outcome,
+         race_eth_qc = race_p,
+         armed_qc = "unknown") %>%
+  rename(pd = agencyname) %>% 
+  mutate(pd = if_else(is.na(pd) & police == TRUE, "Knoxville Police Department", pd),
+         pd = if_else(pd == "Knoxville PD", "Knoxville Police Department", pd)) %>% 
+  select(date, date_qc, name, name_qc, match, match_qc, outcome, outcome_qc, race_eth_qc, everything()) %>% 
+  #Remove Cases That Are Not Knoxville PD
+  filter(pd == "Knoxville Police Department") %>%
+  distinct(date_qc, name_qc, match_qc, race_eth_qc, armed_qc, outcome_qc) %>%
+  arrange(match_qc) %>% 
+  mutate(matches = (if_else(match_qc == "yes_match", 1, 0)),
+         no_match_police = if_else(match_qc == "no_match_police_missing", 1, 0),
+         no_match_crowd = if_else(match_qc == "no_match_crowd_missing", 1, 0))
+
+
+tys_ds_df_deceased <- tys_ds_df_all %>% 
+  filter(outcome_qc == "deceased")
+
+tys_ds_df_nonfatal <- tys_ds_df_all %>% 
+  filter(outcome_qc != "deceased")
+
+
+## ALL DS
+all_ds_df_deceased <- rbind(dfw_ds_df_deceased, mco_ds_df_deceased, tys_ds_df_deceased) %>% 
+  select(-outcome_qc) 
+
+all_ds_df_nonfatal <- rbind(dfw_ds_df_nonfatal, mco_ds_df_nonfatal, tys_ds_df_nonfatal) %>% 
+  select(-outcome_qc) 
+
+
 #Create Desired DF Table
 dsdf <- make_pd_df()[-1,] %>% 
   add_pd_case("Dallas Police Department - Fatal", summary_row(dfw_ds_df_deceased)) %>% 
   add_pd_case("Orlando Police Department - Fatal", summary_row(mco_ds_df_deceased)) %>% 
+  add_pd_case("Knoxville Police Department - Fatal", summary_row(tys_ds_df_deceased)) %>%
+  add_pd_case("All Police Departments - Fatal", summary_row(all_ds_df_deceased)) %>%
   add_pd_case("Dallas Police Department - Non Fatal", summary_row(dfw_ds_df_nonfatal)) %>% 
   add_pd_case("Orlando Police Department - Non Fatal", summary_row(mco_ds_df_nonfatal)) %>% 
+  add_pd_case("Knoxville Police Department - Non Fatal", summary_row(tys_ds_df_nonfatal)) %>%
+  add_pd_case("All Police Departments - Non Fatal", summary_row(all_ds_df_nonfatal)) %>% 
   rename("Matched" = Matches,
          "Not Matched by Crowd" = No_Match_Crowd,
          "Not Matched by Police" = No_Match_Police)
@@ -653,15 +710,18 @@ save_stargazer("tables/table3.tex", as.data.frame(dsdf), header=FALSE, type='lat
                summary = FALSE)
 
 
-#Analysis of Matches, Mismatches by Race and Armed Status
-all_ds_df_deceased <- dfw_ds_df_all %>% 
-  filter(outcome_qc == "deceased") %>% 
-  select(-outcome_qc) 
-
-all_ds_df_deceased <- rbind(dfw_ds_df_deceased, mco_ds_df_deceased) %>% 
-  select(-outcome_qc) 
 
 
+
+
+
+
+
+################################
+## #Analysis of Matches, 
+## Mismatches by Race and 
+## Armed Status
+################################
 
 
 #Create Variable Error Table
@@ -712,12 +772,11 @@ clean_error_data <- function(df) {
                                    "Vehicle" = c("Vehicle", "Motor Vehicle"),
                                    "Unarmed" = c("Simulated Weapon", "Hands", "unarmed", "Hands/ASP"),
                                    "Undetermined" = c("undetermined"))) %>% 
-    mutate(armed_bin = if_else(armed_qc != "Unarmed" & armed_qc != "Undetermined", "Armed", "Unarmed/Undetermined"))
+    mutate(armed_qc = fct_collapse(armed_qc, "MISSING" = c("unknown"))) %>% 
+    mutate(armed_bin = if_else(armed_qc != "Unarmed" & armed_qc != "Undetermined" & armed_qc != "MISSING", "Armed", "Unarmed/Undetermined"))
   
   return(error_data)
 }
-
-
 
 
 
@@ -729,7 +788,7 @@ error_all_deceased <- rbind(all_wp_df_deceased, all_gd_df_deceased, all_ds_df_de
 save_stargazer("tables/table4.tex", as.data.frame(error_all_deceased), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matches and Mismatches of Fatal Shootings by Subject Race and Weapon Type",
-               notes  = "Notes: Crowdsources: Washington Post, The Guardian, Deadspin. Police Departments: Dallas, Denver, Jacksonville, Orlando.",
+               notes  = c("Notes:", "Crowdsources: Washington Post, The Guardian, Deadspin.", "Police Departments: Dallas, Denver, Jacksonville, Orlando, Knoxville."),
                summary = FALSE)
 
 
@@ -742,12 +801,15 @@ error_wp_gd_deceased <- rbind(all_wp_df_deceased, all_gd_df_deceased) %>%
 save_stargazer("tables/table5.tex", as.data.frame(error_wp_gd_deceased), header=FALSE, type='latex',
                font.size = "footnotesize",
                title = "Matches and Mismatches of Fatal Shootings by Subject Race and Weapon Type",
-               notes  = "Notes: Crowdsources: Washington Post, The Guardian. Police Departments: Dallas, Denver, Jacksonville, Orlando.",
+               notes  = c("Notes:", "Crowdsources: Washington Post, The Guardian.", "Police Departments: Dallas, Denver, Jacksonville, Orlando."),
                summary = FALSE)
 
 
 
 
+################################
+## Graphs
+################################
 
 
 #Graph Data - Dallas
@@ -897,10 +959,39 @@ ggplot(gdf_mco) +
 
 
 
+#Graph Data - Knoxville
+ds <- tys_ds_df_all %>% 
+  mutate(outcome = if_else(outcome_qc == "deceased", "Fatal", "Non-Fatal")) %>% 
+  mutate(source = "Deadspin") %>% 
+  select(-outcome_qc) 
+
+# gdf_tys <- rbind(wp, gd, ds) %>% 
+gdf_tys <- ds %>% 
+  mutate(outcome = factor(outcome),
+         source = factor(source)) %>% 
+  mutate(match_qc = factor(match_qc, 
+                           levels = c("no_match_police_missing", "no_match_crowd_missing", "yes_match"),
+                           labels = c( "Not Matched by Police", "Not Matched by Crowdsource", "Matched"))) %>% 
+  mutate(pd = "Knoxville Police Department")
+
+
+#Graph - Knoxville
+ggplot(gdf_tys) +
+  geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
+  facet_grid(.~outcome) +
+  scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
+  xlab("Crowd Source") +
+  ylab("Proportion of Matches and Non Matches by Type") +
+  labs(title = "Matched Reports of Officer Involved Shootings",
+       subtitle = "Knoxville Police Department, 2011 - 2014") +
+  theme(legend.position="bottom") +
+  theme(legend.title=element_blank()) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggsave("images/plt5.png", width = 8, height = 4.8)
 
 
 #Combined Graphs
-base_combine <- rbind(gdf_dfw, gdf_den, gdf_jax, gdf_mco)
+base_combine <- rbind(gdf_dfw, gdf_den, gdf_jax, gdf_mco, gdf_tys)
 duplicate_all <- base_combine %>%
   mutate(pd = "All Police Departments")
 gdf_combined <- rbind(base_combine, duplicate_all) %>% 
@@ -908,22 +999,17 @@ gdf_combined <- rbind(base_combine, duplicate_all) %>%
 
 
 by_pd <- ggplot(gdf_combined) +
-  geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
-  facet_grid(.~pd) +
-  scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
-  xlab("Crowd Source") +
-  ylab("Proportion of Matches and Non Matches by Type") +
-  labs(title = "Matched Reports of Officer Involved Shootings",
-       caption = "Dallas Police Department, 2011 - 2018\nDenver Police Department, 2015 - 2016\nJacksonville Sheriff's Office 2015-2016\nOrlando Police Department, 2011-2018") +
-  theme(legend.position="bottom") +
-  theme(legend.title=element_blank()) + 
-  theme(plot.title = element_text(hjust = 0.5)) +
-  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+          geom_bar(aes(source, fill = match_qc), alpha=1, position = "fill") +
+          facet_wrap(~pd, nrow=2) +
+          scale_fill_manual(values=c("#2174B0", "#093E63", "#BF1200")) +
+          xlab("Crowd Source") +
+          ylab("Proportion of Matches and Non Matches by Type") +
+          labs(title = "Matched Reports of Officer Involved Shootings",
+               caption = "Dallas Police Department, 2011 - 2018\nDenver Police Department, 2015 - 2016\nJacksonville Sheriff's Office 2015-2016\nOrlando Police Department, 2011-2018\nKnoxville Police Department, 2011 - 2014") +
+          theme(legend.position="bottom") +
+          theme(legend.title=element_blank()) + 
+          theme(plot.title = element_text(hjust = 0.5)) +
+          theme(axis.text.x = element_text(angle = 30, hjust = 1))
 ggsave("images/plt_combined.png", width = 8, height = 4.8)
 
 
-
-#Additional way to combine graphs
-# ggarrange(by_pd, combined_pd,
-#           common.legend = TRUE, legend = "bottom") 
-# ggsave("images/combined.png", width = 8, height = 4.8)

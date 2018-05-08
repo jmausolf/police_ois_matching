@@ -311,7 +311,28 @@ def clean_mco_police_ois():
     print(df.head(5))
     df.to_csv('{}_cleaned.csv'.format(infile), index=False)
 
-#clean_mco_police_ois()
+
+def clean_tys_police_ois():
+    print("[*] cleaning police ois report...")
+    infile = glob('downloads/{}*{}*.csv'.format('tys', 'police'))[0].replace('.csv', '')
+    df = pd.read_csv('{}.csv'.format(infile))
+    df = clean_cols(df)
+    df = df.drop(['unnamed0'], axis=1)
+    df = replace_char('subjectname', df, ' and ', ';')
+    df = split_subjects_nvars([['subjectracesex', ','], ['subjectname', ';']], df)
+    df = split_vars('subjectracesex', 'race', 'sex', '/', df)
+    df = ren('subjectname', 'name', df)
+    df = lower_var('name', df)
+    df = rm_mid_initials_suffixes('name', df)
+    df = rm_middle_name('name', df)
+    df = replace_char('name', df, ',', '')
+    df['outcome'] = ''
+    df.loc[((df.method=='Lethal') | (df.method=="Shot-Fatal")), 'outcome'] = 'deceased'
+    df.loc[((df.method=='Shot-Non Lethal')), 'outcome'] = 'shot_alive'
+    df.loc[((df.method=='Shot-Missed') | (df.method=="Shot-Not Struck")), 'outcome'] = 'not_shot_alive' 
+    print(df.head(25))
+    df.to_csv('{}_cleaned.csv'.format(infile), index=False)
+
 
 #Clean crowdsource data frame
 def clean_wp_crowdsource():
