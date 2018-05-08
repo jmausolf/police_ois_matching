@@ -1,0 +1,3 @@
+date,name,police,crowd,rptnumber,location,comments,method,status,officernames,officerracesex,race_p,gender_p,outcome,city,uid,age,gender_c,race_c,month,day,year,streetaddress,state,classification,lawenforcementagency,armed
+2015-09-12,jack stevens,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Knoxville,825,45,Male,White,September,12,2015,8105 Ball Camp Pike,TN,Gunshot,Knox County Sheriff's Office Swat team,Firearm
+2015-12-18,amos frerichs,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Knoxville,1119,32,Male,White,December,18,2015,145 Moss Grove Blvd,TN,Gunshot,Knox County Sheriff's Office,Vehicle

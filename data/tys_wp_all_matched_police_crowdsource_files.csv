@@ -1,0 +1,4 @@
+date,name,police,crowd,rptnumber,location,comments,method,status,officernames,officerracesex,race_p,gender_p,outcome,city,id,mannerofdeath,armed,age,gender_c,race_c,state,signsofmentalillness,threatlevel,flee,bodycamera
+2015-12-18,amos frerichs,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Knoxville,1101,shot,vehicle,32,M,W,TN,False,attack,Car,False
+2017-02-13,brandon lambert,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Knoxville,2334,shot,vehicle,32,M,W,TN,False,attack,Car,False
+2017-05-23,albert gagnier,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Knoxville,2605,shot,gun,74,M,W,TN,False,attack,Not fleeing,False
