@@ -23,15 +23,15 @@ crowdsource_ois_reports = {
 
 #Police OIS Reports
 police_ois_reports = {
-	#'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
-	#			['all']],
-	#'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
-	#			['all']],
-	#'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
-	#			['all']],
+	'dfw' : ['police', 'https://www.dallasopendata.com/api/views/4gmt-jyx2/rows.csv?accessType=DOWNLOAD', 
+				['all']],
+	'den' : ['police', 'https://www.denvergov.org/media/gis/DataCatalog/denver_police_officer_involved_shootings/csv/denver_police_officer_involved_shootings.csv', 
+				['all']],
+	'jax' : ['police', 'http://transparency.jaxsheriff.org/OIS/Export',
+				['all']],
 	#Orlando
-	#'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
-	#			['all']],
+	'mco' : ['police', 'https://data.cityoforlando.net/api/views/7xrj-vc8d/rows.csv?accessType=DOWNLOAD',
+				['all']],
 	#Knoxville
 	'tys' : ['police', 'http://knoxvilletn.gov/UserFiles/Servers/Server_109478/File/Police/OpenRecords/OfficerInvolvedShootings2010-2015.xlsx',
 				['all']]
