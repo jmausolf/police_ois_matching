@@ -39,6 +39,10 @@ After entering this command, you will be prompted to confirm which profiles you 
 
 To continue executing the merge, enter `y` into the terminal when prompted.
 
+```
+[*] to confirm, enter [y], to deny enter [n]: y
+```
+
 Running the above commands will download the original data sources, clean those datasets, and make a series of matched reports for each combination of crowd source, police department, and type of officer involved shooting reported by each police department.
 
 ## Analysis
